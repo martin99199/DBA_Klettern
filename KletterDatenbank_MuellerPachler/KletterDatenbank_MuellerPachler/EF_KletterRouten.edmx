@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EF_KletterRouten.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="EF_KletterRoutenStoreContainer">
+    <EntitySet Name="PersonSet" EntityType="EF_KletterRouten.Store.PersonSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ZOT_WunschlisteSet" EntityType="EF_KletterRouten.Store.ZOT_WunschlisteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ZOT_DurchstiegslisteSet" EntityType="EF_KletterRouten.Store.ZOT_DurchstiegslisteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RouteSet" EntityType="EF_KletterRouten.Store.RouteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SektorSet" EntityType="EF_KletterRouten.Store.SektorSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GebietSet" EntityType="EF_KletterRouten.Store.GebietSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="GebietSektor" Association="EF_KletterRouten.Store.GebietSektor">
+      <End Role="Gebiet" EntitySet="GebietSet" />
+      <End Role="Sektor" EntitySet="SektorSet" />
+    </AssociationSet>
+    <AssociationSet Name="SektorRoute" Association="EF_KletterRouten.Store.SektorRoute">
+      <End Role="Sektor" EntitySet="SektorSet" />
+      <End Role="Route" EntitySet="RouteSet" />
+    </AssociationSet>
+    <AssociationSet Name="RouteZOT_Durchstiegsliste" Association="EF_KletterRouten.Store.RouteZOT_Durchstiegsliste">
+      <End Role="Route" EntitySet="RouteSet" />
+      <End Role="ZOT_Durchstiegsliste" EntitySet="ZOT_DurchstiegslisteSet" />
+    </AssociationSet>
+    <AssociationSet Name="RouteZOT_Wunschliste" Association="EF_KletterRouten.Store.RouteZOT_Wunschliste">
+      <End Role="Route" EntitySet="RouteSet" />
+      <End Role="ZOT_Wunschliste" EntitySet="ZOT_WunschlisteSet" />
+    </AssociationSet>
+    <AssociationSet Name="PersonZOT_Durchstiegsliste" Association="EF_KletterRouten.Store.PersonZOT_Durchstiegsliste">
+      <End Role="Person" EntitySet="PersonSet" />
+      <End Role="ZOT_Durchstiegsliste" EntitySet="ZOT_DurchstiegslisteSet" />
+    </AssociationSet>
+    <AssociationSet Name="PersonZOT_Wunschliste" Association="EF_KletterRouten.Store.PersonZOT_Wunschliste">
+      <End Role="Person" EntitySet="PersonSet" />
+      <End Role="ZOT_Wunschliste" EntitySet="ZOT_WunschlisteSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="PersonSet">
+    <Key>
+      <PropertyRef Name="ID_Person" />
+    </Key>
+    <Property Name="ID_Person" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Vorname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nachname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Geburtsdatum" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ZOT_WunschlisteSet">
+    <Key>
+      <PropertyRef Name="ID_Person" />
+      <PropertyRef Name="ID_Sektor" />
+      <PropertyRef Name="ID_Route" />
+    </Key>
+    <Property Name="ID_Person" Type="int" Nullable="false" />
+    <Property Name="ID_Sektor" Type="int" Nullable="false" />
+    <Property Name="ID_Route" Type="int" Nullable="false" />
+    <Property Name="Kommentar" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Route_ID_Route" Type="int" Nullable="false" />
+    <Property Name="Route_ID_Sektor" Type="int" Nullable="false" />
+    <Property Name="Person_ID_Person" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ZOT_DurchstiegslisteSet">
+    <Key>
+      <PropertyRef Name="ID_Person" />
+      <PropertyRef Name="ID_Sektor" />
+      <PropertyRef Name="ID_Route" />
+    </Key>
+    <Property Name="ID_Person" Type="int" Nullable="false" />
+    <Property Name="ID_Sektor" Type="int" Nullable="false" />
+    <Property Name="ID_Route" Type="int" Nullable="false" />
+    <Property Name="Kommentar" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Durchstiegsdatum" Type="datetime" Nullable="false" />
+    <Property Name="Route_ID_Route" Type="int" Nullable="false" />
+    <Property Name="Route_ID_Sektor" Type="int" Nullable="false" />
+    <Property Name="Person_ID_Person" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RouteSet">
+    <Key>
+      <PropertyRef Name="ID_Route" />
+      <PropertyRef Name="ID_Sektor" />
+    </Key>
+    <Property Name="ID_Route" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Sektor" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Schwierigkeitsgrad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IstBoulder" Type="bit" Nullable="false" />
+    <Property Name="Sektor_ID_Sektor" Type="int" Nullable="false" />
+    <Property Name="Sektor_ID_Gebiet" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SektorSet">
+    <Key>
+      <PropertyRef Name="ID_Sektor" />
+      <PropertyRef Name="ID_Gebiet" />
+    </Key>
+    <Property Name="ID_Sektor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Gebiet" Type="int" Nullable="false" />
+    <Property Name="NameSektor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GPS_Exakt" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Gebiet_ID_Gebiet" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GebietSet">
+    <Key>
+      <PropertyRef Name="ID_Gebiet" />
+    </Key>
+    <Property Name="ID_Gebiet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameGebiet" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ort" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PLZ" Type="int" Nullable="false" />
+    <Property Name="GPS_Parkplatz" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <Association Name="GebietSektor">
+    <End Role="Gebiet" Type="EF_KletterRouten.Store.GebietSet" Multiplicity="1" />
+    <End Role="Sektor" Type="EF_KletterRouten.Store.SektorSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gebiet">
+        <PropertyRef Name="ID_Gebiet" />
+      </Principal>
+      <Dependent Role="Sektor">
+        <PropertyRef Name="Gebiet_ID_Gebiet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SektorRoute">
+    <End Role="Sektor" Type="EF_KletterRouten.Store.SektorSet" Multiplicity="1" />
+    <End Role="Route" Type="EF_KletterRouten.Store.RouteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sektor">
+        <PropertyRef Name="ID_Sektor" />
+        <PropertyRef Name="ID_Gebiet" />
+      </Principal>
+      <Dependent Role="Route">
+        <PropertyRef Name="Sektor_ID_Sektor" />
+        <PropertyRef Name="Sektor_ID_Gebiet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RouteZOT_Durchstiegsliste">
+    <End Role="Route" Type="EF_KletterRouten.Store.RouteSet" Multiplicity="1" />
+    <End Role="ZOT_Durchstiegsliste" Type="EF_KletterRouten.Store.ZOT_DurchstiegslisteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="ID_Route" />
+        <PropertyRef Name="ID_Sektor" />
+      </Principal>
+      <Dependent Role="ZOT_Durchstiegsliste">
+        <PropertyRef Name="Route_ID_Route" />
+        <PropertyRef Name="Route_ID_Sektor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RouteZOT_Wunschliste">
+    <End Role="Route" Type="EF_KletterRouten.Store.RouteSet" Multiplicity="1" />
+    <End Role="ZOT_Wunschliste" Type="EF_KletterRouten.Store.ZOT_WunschlisteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="ID_Route" />
+        <PropertyRef Name="ID_Sektor" />
+      </Principal>
+      <Dependent Role="ZOT_Wunschliste">
+        <PropertyRef Name="Route_ID_Route" />
+        <PropertyRef Name="Route_ID_Sektor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonZOT_Durchstiegsliste">
+    <End Role="Person" Type="EF_KletterRouten.Store.PersonSet" Multiplicity="1" />
+    <End Role="ZOT_Durchstiegsliste" Type="EF_KletterRouten.Store.ZOT_DurchstiegslisteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="ID_Person" />
+      </Principal>
+      <Dependent Role="ZOT_Durchstiegsliste">
+        <PropertyRef Name="Person_ID_Person" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonZOT_Wunschliste">
+    <End Role="Person" Type="EF_KletterRouten.Store.PersonSet" Multiplicity="1" />
+    <End Role="ZOT_Wunschliste" Type="EF_KletterRouten.Store.ZOT_WunschlisteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="ID_Person" />
+      </Principal>
+      <Dependent Role="ZOT_Wunschliste">
+        <PropertyRef Name="Person_ID_Person" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="EF_KletterRouten" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="EF_KletterRoutenContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PersonSet" EntityType="EF_KletterRouten.Person" />
+          <EntitySet Name="ZOT_WunschlisteSet" EntityType="EF_KletterRouten.ZOT_Wunschliste" />
+          <EntitySet Name="ZOT_DurchstiegslisteSet" EntityType="EF_KletterRouten.ZOT_Durchstiegsliste" />
+          <EntitySet Name="RouteSet" EntityType="EF_KletterRouten.Route" />
+          <EntitySet Name="SektorSet" EntityType="EF_KletterRouten.Sektor" />
+          <EntitySet Name="GebietSet" EntityType="EF_KletterRouten.Gebiet" />
+          <AssociationSet Name="GebietSektor" Association="EF_KletterRouten.GebietSektor">
+            <End Role="Gebiet" EntitySet="GebietSet" />
+            <End Role="Sektor" EntitySet="SektorSet" />
+          </AssociationSet>
+          <AssociationSet Name="SektorRoute" Association="EF_KletterRouten.SektorRoute">
+            <End Role="Sektor" EntitySet="SektorSet" />
+            <End Role="Route" EntitySet="RouteSet" />
+          </AssociationSet>
+          <AssociationSet Name="RouteZOT_Durchstiegsliste" Association="EF_KletterRouten.RouteZOT_Durchstiegsliste">
+            <End Role="Route" EntitySet="RouteSet" />
+            <End Role="ZOT_Durchstiegsliste" EntitySet="ZOT_DurchstiegslisteSet" />
+          </AssociationSet>
+          <AssociationSet Name="RouteZOT_Wunschliste" Association="EF_KletterRouten.RouteZOT_Wunschliste">
+            <End Role="Route" EntitySet="RouteSet" />
+            <End Role="ZOT_Wunschliste" EntitySet="ZOT_WunschlisteSet" />
+          </AssociationSet>
+          <AssociationSet Name="PersonZOT_Durchstiegsliste" Association="EF_KletterRouten.PersonZOT_Durchstiegsliste">
+            <End Role="Person" EntitySet="PersonSet" />
+            <End Role="ZOT_Durchstiegsliste" EntitySet="ZOT_DurchstiegslisteSet" />
+          </AssociationSet>
+          <AssociationSet Name="PersonZOT_Wunschliste" Association="EF_KletterRouten.PersonZOT_Wunschliste">
+            <End Role="Person" EntitySet="PersonSet" />
+            <End Role="ZOT_Wunschliste" EntitySet="ZOT_WunschlisteSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="ID_Person" />
+          </Key>
+          <Property Name="ID_Person" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vorname" Type="String" Nullable="false" />
+          <Property Name="Nachname" Type="String" Nullable="false" />
+          <Property Name="Geburtsdatum" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="ZOT_Durchstiegsliste" Relationship="EF_KletterRouten.PersonZOT_Durchstiegsliste" FromRole="Person" ToRole="ZOT_Durchstiegsliste" />
+          <NavigationProperty Name="ZOT_Wunschliste" Relationship="EF_KletterRouten.PersonZOT_Wunschliste" FromRole="Person" ToRole="ZOT_Wunschliste" />
+        </EntityType>
+        <EntityType Name="ZOT_Wunschliste">
+          <Key>
+            <PropertyRef Name="ID_Person" />
+            <PropertyRef Name="ID_Sektor" />
+            <PropertyRef Name="ID_Route" />
+          </Key>
+          <Property Name="ID_Person" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="ID_Sektor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="ID_Route" Type="Int32" Nullable="false" />
+          <Property Name="Kommentar" Type="String" Nullable="true" />
+          <NavigationProperty Name="Route" Relationship="EF_KletterRouten.RouteZOT_Wunschliste" FromRole="ZOT_Wunschliste" ToRole="Route" />
+          <NavigationProperty Name="Person" Relationship="EF_KletterRouten.PersonZOT_Wunschliste" FromRole="ZOT_Wunschliste" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="ZOT_Durchstiegsliste">
+          <Key>
+            <PropertyRef Name="ID_Person" />
+            <PropertyRef Name="ID_Sektor" />
+            <PropertyRef Name="ID_Route" />
+          </Key>
+          <Property Name="ID_Person" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="ID_Sektor" Type="Int32" Nullable="false" />
+          <Property Name="ID_Route" Type="Int32" Nullable="false" />
+          <Property Name="Kommentar" Type="String" Nullable="true" />
+          <Property Name="Durchstiegsdatum" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Route" Relationship="EF_KletterRouten.RouteZOT_Durchstiegsliste" FromRole="ZOT_Durchstiegsliste" ToRole="Route" />
+          <NavigationProperty Name="Person" Relationship="EF_KletterRouten.PersonZOT_Durchstiegsliste" FromRole="ZOT_Durchstiegsliste" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="ID_Route" />
+            <PropertyRef Name="ID_Sektor" />
+          </Key>
+          <Property Name="ID_Route" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Sektor" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Schwierigkeitsgrad" Type="String" Nullable="false" />
+          <Property Name="IstBoulder" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Sektor" Relationship="EF_KletterRouten.SektorRoute" FromRole="Route" ToRole="Sektor" />
+          <NavigationProperty Name="ZOT_Durchstiegsliste" Relationship="EF_KletterRouten.RouteZOT_Durchstiegsliste" FromRole="Route" ToRole="ZOT_Durchstiegsliste" />
+          <NavigationProperty Name="ZOT_Wunschliste" Relationship="EF_KletterRouten.RouteZOT_Wunschliste" FromRole="Route" ToRole="ZOT_Wunschliste" />
+        </EntityType>
+        <EntityType Name="Sektor">
+          <Key>
+            <PropertyRef Name="ID_Sektor" />
+            <PropertyRef Name="ID_Gebiet" />
+          </Key>
+          <Property Name="ID_Sektor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Gebiet" Type="Int32" Nullable="false" />
+          <Property Name="NameSektor" Type="String" Nullable="false" />
+          <Property Name="GPS_Exakt" Type="String" Nullable="true" />
+          <NavigationProperty Name="Gebiet" Relationship="EF_KletterRouten.GebietSektor" FromRole="Sektor" ToRole="Gebiet" />
+          <NavigationProperty Name="Route" Relationship="EF_KletterRouten.SektorRoute" FromRole="Sektor" ToRole="Route" />
+        </EntityType>
+        <EntityType Name="Gebiet">
+          <Key>
+            <PropertyRef Name="ID_Gebiet" />
+          </Key>
+          <Property Name="ID_Gebiet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameGebiet" Type="String" Nullable="false" />
+          <Property Name="Ort" Type="String" Nullable="false" />
+          <Property Name="PLZ" Type="Int32" Nullable="false" />
+          <Property Name="GPS_Parkplatz" Type="String" Nullable="true" />
+          <NavigationProperty Name="Sektor" Relationship="EF_KletterRouten.GebietSektor" FromRole="Gebiet" ToRole="Sektor" />
+        </EntityType>
+        <Association Name="GebietSektor">
+          <End Type="EF_KletterRouten.Gebiet" Role="Gebiet" Multiplicity="1" />
+          <End Type="EF_KletterRouten.Sektor" Role="Sektor" Multiplicity="*" />
+        </Association>
+        <Association Name="SektorRoute">
+          <End Type="EF_KletterRouten.Sektor" Role="Sektor" Multiplicity="1" />
+          <End Type="EF_KletterRouten.Route" Role="Route" Multiplicity="*" />
+        </Association>
+        <Association Name="RouteZOT_Durchstiegsliste">
+          <End Type="EF_KletterRouten.Route" Role="Route" Multiplicity="1" />
+          <End Type="EF_KletterRouten.ZOT_Durchstiegsliste" Role="ZOT_Durchstiegsliste" Multiplicity="*" />
+        </Association>
+        <Association Name="RouteZOT_Wunschliste">
+          <End Type="EF_KletterRouten.Route" Role="Route" Multiplicity="1" />
+          <End Type="EF_KletterRouten.ZOT_Wunschliste" Role="ZOT_Wunschliste" Multiplicity="*" />
+        </Association>
+        <Association Name="PersonZOT_Durchstiegsliste">
+          <End Type="EF_KletterRouten.Person" Role="Person" Multiplicity="1" />
+          <End Type="EF_KletterRouten.ZOT_Durchstiegsliste" Role="ZOT_Durchstiegsliste" Multiplicity="*" />
+        </Association>
+        <Association Name="PersonZOT_Wunschliste">
+          <End Type="EF_KletterRouten.Person" Role="Person" Multiplicity="1" />
+          <End Type="EF_KletterRouten.ZOT_Wunschliste" Role="ZOT_Wunschliste" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EF_KletterRoutenStoreContainer" CdmEntityContainer="EF_KletterRoutenContainer">
+    <EntitySetMapping Name="PersonSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EF_KletterRouten.Person)">
+        <MappingFragment StoreEntitySet="PersonSet">
+          <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+          <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+          <ScalarProperty Name="Nachname" ColumnName="Nachname" />
+          <ScalarProperty Name="Geburtsdatum" ColumnName="Geburtsdatum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZOT_WunschlisteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EF_KletterRouten.ZOT_Wunschliste)">
+        <MappingFragment StoreEntitySet="ZOT_WunschlisteSet">
+          <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+          <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
+          <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
+          <ScalarProperty Name="Kommentar" ColumnName="Kommentar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZOT_DurchstiegslisteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EF_KletterRouten.ZOT_Durchstiegsliste)">
+        <MappingFragment StoreEntitySet="ZOT_DurchstiegslisteSet">
+          <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+          <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
+          <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
+          <ScalarProperty Name="Kommentar" ColumnName="Kommentar" />
+          <ScalarProperty Name="Durchstiegsdatum" ColumnName="Durchstiegsdatum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RouteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EF_KletterRouten.Route)">
+        <MappingFragment StoreEntitySet="RouteSet">
+          <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
+          <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Schwierigkeitsgrad" ColumnName="Schwierigkeitsgrad" />
+          <ScalarProperty Name="IstBoulder" ColumnName="IstBoulder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SektorSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EF_KletterRouten.Sektor)">
+        <MappingFragment StoreEntitySet="SektorSet">
+          <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
+          <ScalarProperty Name="ID_Gebiet" ColumnName="ID_Gebiet" />
+          <ScalarProperty Name="NameSektor" ColumnName="NameSektor" />
+          <ScalarProperty Name="GPS_Exakt" ColumnName="GPS_Exakt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GebietSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EF_KletterRouten.Gebiet)">
+        <MappingFragment StoreEntitySet="GebietSet">
+          <ScalarProperty Name="ID_Gebiet" ColumnName="ID_Gebiet" />
+          <ScalarProperty Name="NameGebiet" ColumnName="NameGebiet" />
+          <ScalarProperty Name="Ort" ColumnName="Ort" />
+          <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+          <ScalarProperty Name="GPS_Parkplatz" ColumnName="GPS_Parkplatz" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GebietSektor" TypeName="EF_KletterRouten.GebietSektor" StoreEntitySet="SektorSet">
+      <EndProperty Name="Gebiet">
+        <ScalarProperty Name="ID_Gebiet" ColumnName="Gebiet_ID_Gebiet" />
+      </EndProperty>
+      <EndProperty Name="Sektor">
+        <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
+        <ScalarProperty Name="ID_Gebiet" ColumnName="ID_Gebiet" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SektorRoute" TypeName="EF_KletterRouten.SektorRoute" StoreEntitySet="RouteSet">
+      <EndProperty Name="Sektor">
+        <ScalarProperty Name="ID_Sektor" ColumnName="Sektor_ID_Sektor" />
+        <ScalarProperty Name="ID_Gebiet" ColumnName="Sektor_ID_Gebiet" />
+      </EndProperty>
+      <EndProperty Name="Route">
+        <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
+        <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RouteZOT_Durchstiegsliste" TypeName="EF_KletterRouten.RouteZOT_Durchstiegsliste" StoreEntitySet="ZOT_DurchstiegslisteSet">
+      <EndProperty Name="Route">
+        <ScalarProperty Name="ID_Route" ColumnName="Route_ID_Route" />
+        <ScalarProperty Name="ID_Sektor" ColumnName="Route_ID_Sektor" />
+      </EndProperty>
+      <EndProperty Name="ZOT_Durchstiegsliste">
+        <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+        <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
+        <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RouteZOT_Wunschliste" TypeName="EF_KletterRouten.RouteZOT_Wunschliste" StoreEntitySet="ZOT_WunschlisteSet">
+      <EndProperty Name="Route">
+        <ScalarProperty Name="ID_Route" ColumnName="Route_ID_Route" />
+        <ScalarProperty Name="ID_Sektor" ColumnName="Route_ID_Sektor" />
+      </EndProperty>
+      <EndProperty Name="ZOT_Wunschliste">
+        <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+        <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
+        <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PersonZOT_Durchstiegsliste" TypeName="EF_KletterRouten.PersonZOT_Durchstiegsliste" StoreEntitySet="ZOT_DurchstiegslisteSet">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="ID_Person" ColumnName="Person_ID_Person" />
+      </EndProperty>
+      <EndProperty Name="ZOT_Durchstiegsliste">
+        <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+        <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
+        <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PersonZOT_Wunschliste" TypeName="EF_KletterRouten.PersonZOT_Wunschliste" StoreEntitySet="ZOT_WunschlisteSet">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="ID_Person" ColumnName="Person_ID_Person" />
+      </EndProperty>
+      <EndProperty Name="ZOT_Wunschliste">
+        <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+        <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
+        <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

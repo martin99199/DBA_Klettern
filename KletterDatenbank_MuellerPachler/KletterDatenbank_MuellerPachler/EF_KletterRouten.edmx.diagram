@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5c353a1160af43e9aaeea18975d78277" Name="Diagram1" >
+        <EntityTypeShape EntityType="EF_KletterRouten.Person" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="EF_KletterRouten.ZOT_Wunschliste" Width="1.5" PointX="3.5" PointY="3.5" />
+        <EntityTypeShape EntityType="EF_KletterRouten.ZOT_Durchstiegsliste" Width="1.5" PointX="2.625" PointY="0.5" />
+        <EntityTypeShape EntityType="EF_KletterRouten.Route" Width="1.5" PointX="4.625" PointY="0.5" />
+        <EntityTypeShape EntityType="EF_KletterRouten.Sektor" Width="1.5" PointX="7.25" PointY="0.5" />
+        <EntityTypeShape EntityType="EF_KletterRouten.Gebiet" Width="1.5" PointX="7.25" PointY="3.125" />
+        <AssociationConnector Association="EF_KletterRouten.GebietSektor" />
+        <AssociationConnector Association="EF_KletterRouten.SektorRoute" />
+        <AssociationConnector Association="EF_KletterRouten.RouteZOT_Durchstiegsliste" />
+        <AssociationConnector Association="EF_KletterRouten.RouteZOT_Wunschliste" />
+        <AssociationConnector Association="EF_KletterRouten.PersonZOT_Durchstiegsliste" />
+        <AssociationConnector Association="EF_KletterRouten.PersonZOT_Wunschliste" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
