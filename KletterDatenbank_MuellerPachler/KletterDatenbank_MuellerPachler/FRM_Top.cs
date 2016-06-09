@@ -27,7 +27,6 @@ namespace KletterDatenbank_MuellerPachler
             // TODO: This line of code loads data into the 'eF_KletterRoutenDataSet.Gebiet' table. You can move, or remove it, as needed.
             this.gebietTableAdapter.Fill(this.eF_KletterRoutenDataSet.Gebiet);
             // TODO: This line of code loads data into the 'eF_KletterRoutenDataSet.Sektor' table. You can move, or remove it, as needed.
-            this.sektorTableAdapter.Fill(this.eF_KletterRoutenDataSet.Sektor);
             // TODO: This line of code loads data into the 'eF_KletterRoutenDataSet.Person' table. You can move, or remove it, as needed.
             this.personTableAdapter.Fill(this.eF_KletterRoutenDataSet.Person);
 
