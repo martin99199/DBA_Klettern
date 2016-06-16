@@ -16,7 +16,7 @@ namespace KletterDatenbank_MuellerPachler
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FRM_Top());
+            Application.Run(new FrmTop());
         }
     }
 }

@@ -33,5 +33,27 @@ namespace KletterDatenbank_MuellerPachler.Properties {
                 return ((string)(this["EF_KletterRoutenConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PACHLERMARTIN\\SQLEXPRESS;Initial Catalog=EF_DB_Klettern_MuellerPachle" +
+            "r;Integrated Security=True")]
+        public string EF_DB_Klettern_MuellerPachlerConnectionString {
+            get {
+                return ((string)(this["EF_DB_Klettern_MuellerPachlerConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PACHLERMARTIN\\SQLEXPRESS;Initial Catalog=EF_DB_Kletterrouten;Integrat" +
+            "ed Security=True")]
+        public string EF_DB_KletterroutenConnectionString {
+            get {
+                return ((string)(this["EF_DB_KletterroutenConnectionString"]));
+            }
+        }
     }
 }

@@ -55,6 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EF_DB_KletterroutenDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EF_DB_KletterroutenDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="EF_KletterRouten.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,22 +75,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EF_KletterRouten.edmx</DependentUpon>
     </Compile>
-    <Compile Include="EF_KletterRoutenDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EF_KletterRoutenDataSet.xsd</DependentUpon>
+    <Compile Include="FrmTop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTop.Designer.cs">
+      <DependentUpon>FrmTop.cs</DependentUpon>
     </Compile>
     <Compile Include="FRM_Routen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FRM_Routen.Designer.cs">
       <DependentUpon>FRM_Routen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FRM_Top.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FRM_Top.Designer.cs">
-      <DependentUpon>FRM_Top.cs</DependentUpon>
     </Compile>
     <Compile Include="Gebiet.cs">
       <DependentUpon>EF_KletterRouten.tt</DependentUpon>
@@ -107,11 +107,11 @@
     <Compile Include="ZOT_Wunschliste.cs">
       <DependentUpon>EF_KletterRouten.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FrmTop.resx">
+      <DependentUpon>FrmTop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRM_Routen.resx">
       <DependentUpon>FRM_Routen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FRM_Top.resx">
-      <DependentUpon>FRM_Top.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -126,6 +126,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EF_KletterRouten.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="EF_DB_KletterroutenDataSet.xsc">
+      <DependentUpon>EF_DB_KletterroutenDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EF_DB_KletterroutenDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EF_DB_KletterroutenDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EF_DB_KletterroutenDataSet.xss">
+      <DependentUpon>EF_DB_KletterroutenDataSet.xsd</DependentUpon>
+    </None>
     <None Include="EF_KletterRouten.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EF_KletterRouten.Context.cs</LastGenOutput>
@@ -138,17 +149,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EF_KletterRouten.cs</LastGenOutput>
       <DependentUpon>EF_KletterRouten.edmx</DependentUpon>
-    </None>
-    <None Include="EF_KletterRoutenDataSet.xsc">
-      <DependentUpon>EF_KletterRoutenDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="EF_KletterRoutenDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>EF_KletterRoutenDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="EF_KletterRoutenDataSet.xss">
-      <DependentUpon>EF_KletterRoutenDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

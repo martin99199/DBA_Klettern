@@ -17,16 +17,16 @@ namespace KletterDatenbank_MuellerPachler
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sektor()
         {
-            this.Route = new HashSet<Route>();
+            this.Routen = new HashSet<Route>();
         }
     
-        public int ID_Sektor { get; set; }
-        public int ID_Gebiet { get; set; }
+        public int ID { get; set; }
         public string NameSektor { get; set; }
         public string GPS_Exakt { get; set; }
+        public int GebietID { get; set; }
     
-        public virtual Gebiet Gebiet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Route> Route { get; set; }
+        public virtual ICollection<Route> Routen { get; set; }
+        public virtual Gebiet Gebiet { get; set; }
     }
 }

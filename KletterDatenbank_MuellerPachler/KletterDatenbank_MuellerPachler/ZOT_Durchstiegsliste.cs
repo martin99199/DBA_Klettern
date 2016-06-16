@@ -14,13 +14,13 @@ namespace KletterDatenbank_MuellerPachler
     
     public partial class ZOT_Durchstiegsliste
     {
-        public int ID_Person { get; set; }
-        public int ID_Sektor { get; set; }
-        public int ID_Route { get; set; }
+        public int ID { get; set; }
         public string Kommentar { get; set; }
         public System.DateTime Durchstiegsdatum { get; set; }
+        public int PersonID { get; set; }
+        public int RouteID { get; set; }
     
-        public virtual Route Route { get; set; }
         public virtual Person Person { get; set; }
+        public virtual Route Route { get; set; }
     }
 }

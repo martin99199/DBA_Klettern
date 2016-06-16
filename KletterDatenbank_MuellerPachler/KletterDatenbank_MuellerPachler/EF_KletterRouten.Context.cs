@@ -25,11 +25,11 @@ namespace KletterDatenbank_MuellerPachler
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Person> PersonSet { get; set; }
-        public virtual DbSet<ZOT_Wunschliste> ZOT_WunschlisteSet { get; set; }
-        public virtual DbSet<ZOT_Durchstiegsliste> ZOT_DurchstiegslisteSet { get; set; }
-        public virtual DbSet<Route> RouteSet { get; set; }
-        public virtual DbSet<Sektor> SektorSet { get; set; }
-        public virtual DbSet<Gebiet> GebietSet { get; set; }
+        public virtual DbSet<Person> Personen { get; set; }
+        public virtual DbSet<ZOT_Wunschliste> ZOT_Wunschlisten { get; set; }
+        public virtual DbSet<ZOT_Durchstiegsliste> ZOT_Durchstiegslisten { get; set; }
+        public virtual DbSet<Route> Routen { get; set; }
+        public virtual DbSet<Sektor> Sektoren { get; set; }
+        public virtual DbSet<Gebiet> Gebiete { get; set; }
     }
 }

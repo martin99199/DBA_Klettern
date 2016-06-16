@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Pachler Martin\Documents\_1Studium FH_ATMaster\Semester2\Datenbanken_ILV\KletterDatenbank_MuellerPachler\KletterDatenbank_MuellerPachler\EF_KletterRouten.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Pachler Martin\Documents\GitHub\DBA_Klettern\KletterDatenbank_MuellerPachler\KletterDatenbank_MuellerPachler\EF_KletterRouten.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

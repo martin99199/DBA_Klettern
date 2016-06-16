@@ -1,62 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="EF_KletterRoutenStoreContainer" CdmEntityContainer="EF_KletterRoutenContainer">
-    <EntitySetMapping Name="PersonSet">
+    <EntitySetMapping Name="Personen">
       <EntityTypeMapping TypeName="IsTypeOf(EF_KletterRouten.Person)">
-        <MappingFragment StoreEntitySet="PersonSet">
-          <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+        <MappingFragment StoreEntitySet="Personen">
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Vorname" ColumnName="Vorname" />
           <ScalarProperty Name="Nachname" ColumnName="Nachname" />
           <ScalarProperty Name="Geburtsdatum" ColumnName="Geburtsdatum" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ZOT_WunschlisteSet">
+    <EntitySetMapping Name="ZOT_Wunschlisten">
       <EntityTypeMapping TypeName="IsTypeOf(EF_KletterRouten.ZOT_Wunschliste)">
-        <MappingFragment StoreEntitySet="ZOT_WunschlisteSet">
-          <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
-          <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
-          <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
+        <MappingFragment StoreEntitySet="ZOT_Wunschlisten">
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Kommentar" ColumnName="Kommentar" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ZOT_DurchstiegslisteSet">
+    <EntitySetMapping Name="ZOT_Durchstiegslisten">
       <EntityTypeMapping TypeName="IsTypeOf(EF_KletterRouten.ZOT_Durchstiegsliste)">
-        <MappingFragment StoreEntitySet="ZOT_DurchstiegslisteSet">
-          <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
-          <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
-          <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
+        <MappingFragment StoreEntitySet="ZOT_Durchstiegslisten">
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Kommentar" ColumnName="Kommentar" />
           <ScalarProperty Name="Durchstiegsdatum" ColumnName="Durchstiegsdatum" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="RouteSet">
+    <EntitySetMapping Name="Routen">
       <EntityTypeMapping TypeName="IsTypeOf(EF_KletterRouten.Route)">
-        <MappingFragment StoreEntitySet="RouteSet">
-          <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
-          <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
+        <MappingFragment StoreEntitySet="Routen">
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Schwierigkeitsgrad" ColumnName="Schwierigkeitsgrad" />
           <ScalarProperty Name="IstBoulder" ColumnName="IstBoulder" />
+          <ScalarProperty Name="SektorID" ColumnName="SektorID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SektorSet">
+    <EntitySetMapping Name="Sektoren">
       <EntityTypeMapping TypeName="IsTypeOf(EF_KletterRouten.Sektor)">
-        <MappingFragment StoreEntitySet="SektorSet">
-          <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
-          <ScalarProperty Name="ID_Gebiet" ColumnName="ID_Gebiet" />
+        <MappingFragment StoreEntitySet="Sektoren">
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NameSektor" ColumnName="NameSektor" />
           <ScalarProperty Name="GPS_Exakt" ColumnName="GPS_Exakt" />
+          <ScalarProperty Name="GebietID" ColumnName="GebietID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="GebietSet">
+    <EntitySetMapping Name="Gebiete">
       <EntityTypeMapping TypeName="IsTypeOf(EF_KletterRouten.Gebiet)">
-        <MappingFragment StoreEntitySet="GebietSet">
-          <ScalarProperty Name="ID_Gebiet" ColumnName="ID_Gebiet" />
+        <MappingFragment StoreEntitySet="Gebiete">
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NameGebiet" ColumnName="NameGebiet" />
           <ScalarProperty Name="Ort" ColumnName="Ort" />
           <ScalarProperty Name="PLZ" ColumnName="PLZ" />
@@ -64,66 +64,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="GebietSektor" TypeName="EF_KletterRouten.GebietSektor" StoreEntitySet="SektorSet">
-      <EndProperty Name="Gebiet">
-        <ScalarProperty Name="ID_Gebiet" ColumnName="Gebiet_ID_Gebiet" />
-      </EndProperty>
-      <EndProperty Name="Sektor">
-        <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
-        <ScalarProperty Name="ID_Gebiet" ColumnName="ID_Gebiet" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="SektorRoute" TypeName="EF_KletterRouten.SektorRoute" StoreEntitySet="RouteSet">
-      <EndProperty Name="Sektor">
-        <ScalarProperty Name="ID_Sektor" ColumnName="Sektor_ID_Sektor" />
-        <ScalarProperty Name="ID_Gebiet" ColumnName="Sektor_ID_Gebiet" />
-      </EndProperty>
-      <EndProperty Name="Route">
-        <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
-        <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="RouteZOT_Durchstiegsliste" TypeName="EF_KletterRouten.RouteZOT_Durchstiegsliste" StoreEntitySet="ZOT_DurchstiegslisteSet">
-      <EndProperty Name="Route">
-        <ScalarProperty Name="ID_Route" ColumnName="Route_ID_Route" />
-        <ScalarProperty Name="ID_Sektor" ColumnName="Route_ID_Sektor" />
-      </EndProperty>
-      <EndProperty Name="ZOT_Durchstiegsliste">
-        <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
-        <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
-        <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="RouteZOT_Wunschliste" TypeName="EF_KletterRouten.RouteZOT_Wunschliste" StoreEntitySet="ZOT_WunschlisteSet">
-      <EndProperty Name="Route">
-        <ScalarProperty Name="ID_Route" ColumnName="Route_ID_Route" />
-        <ScalarProperty Name="ID_Sektor" ColumnName="Route_ID_Sektor" />
-      </EndProperty>
-      <EndProperty Name="ZOT_Wunschliste">
-        <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
-        <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
-        <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="PersonZOT_Durchstiegsliste" TypeName="EF_KletterRouten.PersonZOT_Durchstiegsliste" StoreEntitySet="ZOT_DurchstiegslisteSet">
-      <EndProperty Name="Person">
-        <ScalarProperty Name="ID_Person" ColumnName="Person_ID_Person" />
-      </EndProperty>
-      <EndProperty Name="ZOT_Durchstiegsliste">
-        <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
-        <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
-        <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="PersonZOT_Wunschliste" TypeName="EF_KletterRouten.PersonZOT_Wunschliste" StoreEntitySet="ZOT_WunschlisteSet">
-      <EndProperty Name="Person">
-        <ScalarProperty Name="ID_Person" ColumnName="Person_ID_Person" />
-      </EndProperty>
-      <EndProperty Name="ZOT_Wunschliste">
-        <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
-        <ScalarProperty Name="ID_Sektor" ColumnName="ID_Sektor" />
-        <ScalarProperty Name="ID_Route" ColumnName="ID_Route" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

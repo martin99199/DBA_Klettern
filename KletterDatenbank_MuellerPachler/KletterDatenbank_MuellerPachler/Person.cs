@@ -17,18 +17,18 @@ namespace KletterDatenbank_MuellerPachler
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Person()
         {
-            this.ZOT_Durchstiegsliste = new HashSet<ZOT_Durchstiegsliste>();
-            this.ZOT_Wunschliste = new HashSet<ZOT_Wunschliste>();
+            this.ZOT_Wunschlisten = new HashSet<ZOT_Wunschliste>();
+            this.ZOT_Durchstiegslisten = new HashSet<ZOT_Durchstiegsliste>();
         }
     
-        public int ID_Person { get; set; }
+        public int ID { get; set; }
         public string Vorname { get; set; }
         public string Nachname { get; set; }
         public System.DateTime Geburtsdatum { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ZOT_Durchstiegsliste> ZOT_Durchstiegsliste { get; set; }
+        public virtual ICollection<ZOT_Wunschliste> ZOT_Wunschlisten { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ZOT_Wunschliste> ZOT_Wunschliste { get; set; }
+        public virtual ICollection<ZOT_Durchstiegsliste> ZOT_Durchstiegslisten { get; set; }
     }
 }

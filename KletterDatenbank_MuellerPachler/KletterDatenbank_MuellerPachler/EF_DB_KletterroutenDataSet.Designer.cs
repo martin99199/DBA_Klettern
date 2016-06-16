@@ -20,21 +20,23 @@ namespace KletterDatenbank_MuellerPachler {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("EF_KletterRoutenDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("EF_DB_KletterroutenDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class EF_KletterRoutenDataSet : global::System.Data.DataSet {
+    public partial class EF_DB_KletterroutenDataSet : global::System.Data.DataSet {
         
-        private GebietDataTable tableGebiet;
+        private GebieteDataTable tableGebiete;
         
-        private PersonDataTable tablePerson;
+        private PersonenDataTable tablePersonen;
         
-        private RouteDataTable tableRoute;
+        private RoutenDataTable tableRouten;
         
-        private SektorDataTable tableSektor;
+        private SektorenDataTable tableSektoren;
         
-        private ZOT_DurchstiegslisteDataTable tableZOT_Durchstiegsliste;
+        private ZOT_DurchstiegslistenDataTable tableZOT_Durchstiegslisten;
         
-        private ZOT_WunschlisteDataTable tableZOT_Wunschliste;
+        private ZOT_WunschlistenDataTable tableZOT_Wunschlisten;
+        
+        private global::System.Data.DataRelation relationFK_SektorRoute;
         
         private global::System.Data.DataRelation relationFK_GebietSektor;
         
@@ -50,7 +52,7 @@ namespace KletterDatenbank_MuellerPachler {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public EF_KletterRoutenDataSet() {
+        public EF_DB_KletterroutenDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -61,7 +63,7 @@ namespace KletterDatenbank_MuellerPachler {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected EF_KletterRoutenDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected EF_DB_KletterroutenDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -74,23 +76,23 @@ namespace KletterDatenbank_MuellerPachler {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Gebiet"] != null)) {
-                    base.Tables.Add(new GebietDataTable(ds.Tables["Gebiet"]));
+                if ((ds.Tables["Gebiete"] != null)) {
+                    base.Tables.Add(new GebieteDataTable(ds.Tables["Gebiete"]));
                 }
-                if ((ds.Tables["Person"] != null)) {
-                    base.Tables.Add(new PersonDataTable(ds.Tables["Person"]));
+                if ((ds.Tables["Personen"] != null)) {
+                    base.Tables.Add(new PersonenDataTable(ds.Tables["Personen"]));
                 }
-                if ((ds.Tables["Route"] != null)) {
-                    base.Tables.Add(new RouteDataTable(ds.Tables["Route"]));
+                if ((ds.Tables["Routen"] != null)) {
+                    base.Tables.Add(new RoutenDataTable(ds.Tables["Routen"]));
                 }
-                if ((ds.Tables["Sektor"] != null)) {
-                    base.Tables.Add(new SektorDataTable(ds.Tables["Sektor"]));
+                if ((ds.Tables["Sektoren"] != null)) {
+                    base.Tables.Add(new SektorenDataTable(ds.Tables["Sektoren"]));
                 }
-                if ((ds.Tables["ZOT_Durchstiegsliste"] != null)) {
-                    base.Tables.Add(new ZOT_DurchstiegslisteDataTable(ds.Tables["ZOT_Durchstiegsliste"]));
+                if ((ds.Tables["ZOT_Durchstiegslisten"] != null)) {
+                    base.Tables.Add(new ZOT_DurchstiegslistenDataTable(ds.Tables["ZOT_Durchstiegslisten"]));
                 }
-                if ((ds.Tables["ZOT_Wunschliste"] != null)) {
-                    base.Tables.Add(new ZOT_WunschlisteDataTable(ds.Tables["ZOT_Wunschliste"]));
+                if ((ds.Tables["ZOT_Wunschlisten"] != null)) {
+                    base.Tables.Add(new ZOT_WunschlistenDataTable(ds.Tables["ZOT_Wunschlisten"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -114,9 +116,9 @@ namespace KletterDatenbank_MuellerPachler {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GebietDataTable Gebiet {
+        public GebieteDataTable Gebiete {
             get {
-                return this.tableGebiet;
+                return this.tableGebiete;
             }
         }
         
@@ -124,9 +126,9 @@ namespace KletterDatenbank_MuellerPachler {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public PersonDataTable Person {
+        public PersonenDataTable Personen {
             get {
-                return this.tablePerson;
+                return this.tablePersonen;
             }
         }
         
@@ -134,9 +136,9 @@ namespace KletterDatenbank_MuellerPachler {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public RouteDataTable Route {
+        public RoutenDataTable Routen {
             get {
-                return this.tableRoute;
+                return this.tableRouten;
             }
         }
         
@@ -144,9 +146,9 @@ namespace KletterDatenbank_MuellerPachler {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SektorDataTable Sektor {
+        public SektorenDataTable Sektoren {
             get {
-                return this.tableSektor;
+                return this.tableSektoren;
             }
         }
         
@@ -154,9 +156,9 @@ namespace KletterDatenbank_MuellerPachler {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ZOT_DurchstiegslisteDataTable ZOT_Durchstiegsliste {
+        public ZOT_DurchstiegslistenDataTable ZOT_Durchstiegslisten {
             get {
-                return this.tableZOT_Durchstiegsliste;
+                return this.tableZOT_Durchstiegslisten;
             }
         }
         
@@ -164,9 +166,9 @@ namespace KletterDatenbank_MuellerPachler {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ZOT_WunschlisteDataTable ZOT_Wunschliste {
+        public ZOT_WunschlistenDataTable ZOT_Wunschlisten {
             get {
-                return this.tableZOT_Wunschliste;
+                return this.tableZOT_Wunschlisten;
             }
         }
         
@@ -212,7 +214,7 @@ namespace KletterDatenbank_MuellerPachler {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            EF_KletterRoutenDataSet cln = ((EF_KletterRoutenDataSet)(base.Clone()));
+            EF_DB_KletterroutenDataSet cln = ((EF_DB_KletterroutenDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -237,23 +239,23 @@ namespace KletterDatenbank_MuellerPachler {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Gebiet"] != null)) {
-                    base.Tables.Add(new GebietDataTable(ds.Tables["Gebiet"]));
+                if ((ds.Tables["Gebiete"] != null)) {
+                    base.Tables.Add(new GebieteDataTable(ds.Tables["Gebiete"]));
                 }
-                if ((ds.Tables["Person"] != null)) {
-                    base.Tables.Add(new PersonDataTable(ds.Tables["Person"]));
+                if ((ds.Tables["Personen"] != null)) {
+                    base.Tables.Add(new PersonenDataTable(ds.Tables["Personen"]));
                 }
-                if ((ds.Tables["Route"] != null)) {
-                    base.Tables.Add(new RouteDataTable(ds.Tables["Route"]));
+                if ((ds.Tables["Routen"] != null)) {
+                    base.Tables.Add(new RoutenDataTable(ds.Tables["Routen"]));
                 }
-                if ((ds.Tables["Sektor"] != null)) {
-                    base.Tables.Add(new SektorDataTable(ds.Tables["Sektor"]));
+                if ((ds.Tables["Sektoren"] != null)) {
+                    base.Tables.Add(new SektorenDataTable(ds.Tables["Sektoren"]));
                 }
-                if ((ds.Tables["ZOT_Durchstiegsliste"] != null)) {
-                    base.Tables.Add(new ZOT_DurchstiegslisteDataTable(ds.Tables["ZOT_Durchstiegsliste"]));
+                if ((ds.Tables["ZOT_Durchstiegslisten"] != null)) {
+                    base.Tables.Add(new ZOT_DurchstiegslistenDataTable(ds.Tables["ZOT_Durchstiegslisten"]));
                 }
-                if ((ds.Tables["ZOT_Wunschliste"] != null)) {
-                    base.Tables.Add(new ZOT_WunschlisteDataTable(ds.Tables["ZOT_Wunschliste"]));
+                if ((ds.Tables["ZOT_Wunschlisten"] != null)) {
+                    base.Tables.Add(new ZOT_WunschlistenDataTable(ds.Tables["ZOT_Wunschlisten"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -288,42 +290,43 @@ namespace KletterDatenbank_MuellerPachler {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableGebiet = ((GebietDataTable)(base.Tables["Gebiet"]));
+            this.tableGebiete = ((GebieteDataTable)(base.Tables["Gebiete"]));
             if ((initTable == true)) {
-                if ((this.tableGebiet != null)) {
-                    this.tableGebiet.InitVars();
+                if ((this.tableGebiete != null)) {
+                    this.tableGebiete.InitVars();
                 }
             }
-            this.tablePerson = ((PersonDataTable)(base.Tables["Person"]));
+            this.tablePersonen = ((PersonenDataTable)(base.Tables["Personen"]));
             if ((initTable == true)) {
-                if ((this.tablePerson != null)) {
-                    this.tablePerson.InitVars();
+                if ((this.tablePersonen != null)) {
+                    this.tablePersonen.InitVars();
                 }
             }
-            this.tableRoute = ((RouteDataTable)(base.Tables["Route"]));
+            this.tableRouten = ((RoutenDataTable)(base.Tables["Routen"]));
             if ((initTable == true)) {
-                if ((this.tableRoute != null)) {
-                    this.tableRoute.InitVars();
+                if ((this.tableRouten != null)) {
+                    this.tableRouten.InitVars();
                 }
             }
-            this.tableSektor = ((SektorDataTable)(base.Tables["Sektor"]));
+            this.tableSektoren = ((SektorenDataTable)(base.Tables["Sektoren"]));
             if ((initTable == true)) {
-                if ((this.tableSektor != null)) {
-                    this.tableSektor.InitVars();
+                if ((this.tableSektoren != null)) {
+                    this.tableSektoren.InitVars();
                 }
             }
-            this.tableZOT_Durchstiegsliste = ((ZOT_DurchstiegslisteDataTable)(base.Tables["ZOT_Durchstiegsliste"]));
+            this.tableZOT_Durchstiegslisten = ((ZOT_DurchstiegslistenDataTable)(base.Tables["ZOT_Durchstiegslisten"]));
             if ((initTable == true)) {
-                if ((this.tableZOT_Durchstiegsliste != null)) {
-                    this.tableZOT_Durchstiegsliste.InitVars();
+                if ((this.tableZOT_Durchstiegslisten != null)) {
+                    this.tableZOT_Durchstiegslisten.InitVars();
                 }
             }
-            this.tableZOT_Wunschliste = ((ZOT_WunschlisteDataTable)(base.Tables["ZOT_Wunschliste"]));
+            this.tableZOT_Wunschlisten = ((ZOT_WunschlistenDataTable)(base.Tables["ZOT_Wunschlisten"]));
             if ((initTable == true)) {
-                if ((this.tableZOT_Wunschliste != null)) {
-                    this.tableZOT_Wunschliste.InitVars();
+                if ((this.tableZOT_Wunschlisten != null)) {
+                    this.tableZOT_Wunschlisten.InitVars();
                 }
             }
+            this.relationFK_SektorRoute = this.Relations["FK_SektorRoute"];
             this.relationFK_GebietSektor = this.Relations["FK_GebietSektor"];
             this.relationFK_PersonZOT_Durchstiegsliste = this.Relations["FK_PersonZOT_Durchstiegsliste"];
             this.relationFK_RouteZOT_Durchstiegsliste = this.Relations["FK_RouteZOT_Durchstiegsliste"];
@@ -334,82 +337,82 @@ namespace KletterDatenbank_MuellerPachler {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "EF_KletterRoutenDataSet";
+            this.DataSetName = "EF_DB_KletterroutenDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/EF_KletterRoutenDataSet.xsd";
+            this.Namespace = "http://tempuri.org/EF_DB_KletterroutenDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableGebiet = new GebietDataTable();
-            base.Tables.Add(this.tableGebiet);
-            this.tablePerson = new PersonDataTable();
-            base.Tables.Add(this.tablePerson);
-            this.tableRoute = new RouteDataTable();
-            base.Tables.Add(this.tableRoute);
-            this.tableSektor = new SektorDataTable();
-            base.Tables.Add(this.tableSektor);
-            this.tableZOT_Durchstiegsliste = new ZOT_DurchstiegslisteDataTable();
-            base.Tables.Add(this.tableZOT_Durchstiegsliste);
-            this.tableZOT_Wunschliste = new ZOT_WunschlisteDataTable();
-            base.Tables.Add(this.tableZOT_Wunschliste);
+            this.tableGebiete = new GebieteDataTable();
+            base.Tables.Add(this.tableGebiete);
+            this.tablePersonen = new PersonenDataTable();
+            base.Tables.Add(this.tablePersonen);
+            this.tableRouten = new RoutenDataTable();
+            base.Tables.Add(this.tableRouten);
+            this.tableSektoren = new SektorenDataTable();
+            base.Tables.Add(this.tableSektoren);
+            this.tableZOT_Durchstiegslisten = new ZOT_DurchstiegslistenDataTable();
+            base.Tables.Add(this.tableZOT_Durchstiegslisten);
+            this.tableZOT_Wunschlisten = new ZOT_WunschlistenDataTable();
+            base.Tables.Add(this.tableZOT_Wunschlisten);
+            this.relationFK_SektorRoute = new global::System.Data.DataRelation("FK_SektorRoute", new global::System.Data.DataColumn[] {
+                        this.tableSektoren.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableRouten.SektorIDColumn}, false);
+            this.Relations.Add(this.relationFK_SektorRoute);
             this.relationFK_GebietSektor = new global::System.Data.DataRelation("FK_GebietSektor", new global::System.Data.DataColumn[] {
-                        this.tableGebiet.ID_GebietColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSektor.Gebiet_ID_GebietColumn}, false);
+                        this.tableGebiete.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableSektoren.GebietIDColumn}, false);
             this.Relations.Add(this.relationFK_GebietSektor);
             this.relationFK_PersonZOT_Durchstiegsliste = new global::System.Data.DataRelation("FK_PersonZOT_Durchstiegsliste", new global::System.Data.DataColumn[] {
-                        this.tablePerson.ID_PersonColumn}, new global::System.Data.DataColumn[] {
-                        this.tableZOT_Durchstiegsliste.Person_ID_PersonColumn}, false);
+                        this.tablePersonen.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableZOT_Durchstiegslisten.PersonIDColumn}, false);
             this.Relations.Add(this.relationFK_PersonZOT_Durchstiegsliste);
             this.relationFK_RouteZOT_Durchstiegsliste = new global::System.Data.DataRelation("FK_RouteZOT_Durchstiegsliste", new global::System.Data.DataColumn[] {
-                        this.tableRoute.ID_RouteColumn,
-                        this.tableRoute.ID_SektorColumn}, new global::System.Data.DataColumn[] {
-                        this.tableZOT_Durchstiegsliste.Route_ID_RouteColumn,
-                        this.tableZOT_Durchstiegsliste.Route_ID_SektorColumn}, false);
+                        this.tableRouten.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableZOT_Durchstiegslisten.RouteIDColumn}, false);
             this.Relations.Add(this.relationFK_RouteZOT_Durchstiegsliste);
             this.relationFK_PersonZOT_Wunschliste = new global::System.Data.DataRelation("FK_PersonZOT_Wunschliste", new global::System.Data.DataColumn[] {
-                        this.tablePerson.ID_PersonColumn}, new global::System.Data.DataColumn[] {
-                        this.tableZOT_Wunschliste.Person_ID_PersonColumn}, false);
+                        this.tablePersonen.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableZOT_Wunschlisten.PersonIDColumn}, false);
             this.Relations.Add(this.relationFK_PersonZOT_Wunschliste);
             this.relationFK_RouteZOT_Wunschliste = new global::System.Data.DataRelation("FK_RouteZOT_Wunschliste", new global::System.Data.DataColumn[] {
-                        this.tableRoute.ID_RouteColumn,
-                        this.tableRoute.ID_SektorColumn}, new global::System.Data.DataColumn[] {
-                        this.tableZOT_Wunschliste.Route_ID_RouteColumn,
-                        this.tableZOT_Wunschliste.Route_ID_SektorColumn}, false);
+                        this.tableRouten.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableZOT_Wunschlisten.RouteIDColumn}, false);
             this.Relations.Add(this.relationFK_RouteZOT_Wunschliste);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeGebiet() {
+        private bool ShouldSerializeGebiete() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializePerson() {
+        private bool ShouldSerializePersonen() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeRoute() {
+        private bool ShouldSerializeRouten() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeSektor() {
+        private bool ShouldSerializeSektoren() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeZOT_Durchstiegsliste() {
+        private bool ShouldSerializeZOT_Durchstiegslisten() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeZOT_Wunschliste() {
+        private bool ShouldSerializeZOT_Wunschlisten() {
             return false;
         }
         
@@ -424,7 +427,7 @@ namespace KletterDatenbank_MuellerPachler {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            EF_KletterRoutenDataSet ds = new EF_KletterRoutenDataSet();
+            EF_DB_KletterroutenDataSet ds = new EF_DB_KletterroutenDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -469,31 +472,31 @@ namespace KletterDatenbank_MuellerPachler {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void GebietRowChangeEventHandler(object sender, GebietRowChangeEvent e);
+        public delegate void GebieteRowChangeEventHandler(object sender, GebieteRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void PersonRowChangeEventHandler(object sender, PersonRowChangeEvent e);
+        public delegate void PersonenRowChangeEventHandler(object sender, PersonenRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void RouteRowChangeEventHandler(object sender, RouteRowChangeEvent e);
+        public delegate void RoutenRowChangeEventHandler(object sender, RoutenRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void SektorRowChangeEventHandler(object sender, SektorRowChangeEvent e);
+        public delegate void SektorenRowChangeEventHandler(object sender, SektorenRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void ZOT_DurchstiegslisteRowChangeEventHandler(object sender, ZOT_DurchstiegslisteRowChangeEvent e);
+        public delegate void ZOT_DurchstiegslistenRowChangeEventHandler(object sender, ZOT_DurchstiegslistenRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void ZOT_WunschlisteRowChangeEventHandler(object sender, ZOT_WunschlisteRowChangeEvent e);
+        public delegate void ZOT_WunschlistenRowChangeEventHandler(object sender, ZOT_WunschlistenRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GebietDataTable : global::System.Data.TypedTableBase<GebietRow> {
+        public partial class GebieteDataTable : global::System.Data.TypedTableBase<GebieteRow> {
             
-            private global::System.Data.DataColumn columnID_Gebiet;
+            private global::System.Data.DataColumn columnID;
             
             private global::System.Data.DataColumn columnNameGebiet;
             
@@ -505,8 +508,8 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GebietDataTable() {
-                this.TableName = "Gebiet";
+            public GebieteDataTable() {
+                this.TableName = "Gebiete";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -514,7 +517,7 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GebietDataTable(global::System.Data.DataTable table) {
+            internal GebieteDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -531,16 +534,16 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected GebietDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected GebieteDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ID_GebietColumn {
+            public global::System.Data.DataColumn IDColumn {
                 get {
-                    return this.columnID_Gebiet;
+                    return this.columnID;
                 }
             }
             
@@ -587,56 +590,56 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GebietRow this[int index] {
+            public GebieteRow this[int index] {
                 get {
-                    return ((GebietRow)(this.Rows[index]));
+                    return ((GebieteRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event GebietRowChangeEventHandler GebietRowChanging;
+            public event GebieteRowChangeEventHandler GebieteRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event GebietRowChangeEventHandler GebietRowChanged;
+            public event GebieteRowChangeEventHandler GebieteRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event GebietRowChangeEventHandler GebietRowDeleting;
+            public event GebieteRowChangeEventHandler GebieteRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event GebietRowChangeEventHandler GebietRowDeleted;
+            public event GebieteRowChangeEventHandler GebieteRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddGebietRow(GebietRow row) {
+            public void AddGebieteRow(GebieteRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GebietRow AddGebietRow(string NameGebiet, string Ort, int PLZ, string GPS_Parkplatz) {
-                GebietRow rowGebietRow = ((GebietRow)(this.NewRow()));
+            public GebieteRow AddGebieteRow(string NameGebiet, string Ort, int PLZ, string GPS_Parkplatz) {
+                GebieteRow rowGebieteRow = ((GebieteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         NameGebiet,
                         Ort,
                         PLZ,
                         GPS_Parkplatz};
-                rowGebietRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowGebietRow);
-                return rowGebietRow;
+                rowGebieteRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowGebieteRow);
+                return rowGebieteRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GebietRow FindByID_Gebiet(int ID_Gebiet) {
-                return ((GebietRow)(this.Rows.Find(new object[] {
-                            ID_Gebiet})));
+            public GebieteRow FindByID(int ID) {
+                return ((GebieteRow)(this.Rows.Find(new object[] {
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                GebietDataTable cln = ((GebietDataTable)(base.Clone()));
+                GebieteDataTable cln = ((GebieteDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -644,13 +647,13 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new GebietDataTable();
+                return new GebieteDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnID_Gebiet = base.Columns["ID_Gebiet"];
+                this.columnID = base.Columns["ID"];
                 this.columnNameGebiet = base.Columns["NameGebiet"];
                 this.columnOrt = base.Columns["Ort"];
                 this.columnPLZ = base.Columns["PLZ"];
@@ -660,8 +663,8 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID_Gebiet = new global::System.Data.DataColumn("ID_Gebiet", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID_Gebiet);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
                 this.columnNameGebiet = new global::System.Data.DataColumn("NameGebiet", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNameGebiet);
                 this.columnOrt = new global::System.Data.DataColumn("Ort", typeof(string), null, global::System.Data.MappingType.Element);
@@ -671,13 +674,13 @@ namespace KletterDatenbank_MuellerPachler {
                 this.columnGPS_Parkplatz = new global::System.Data.DataColumn("GPS_Parkplatz", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGPS_Parkplatz);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID_Gebiet}, true));
-                this.columnID_Gebiet.AutoIncrement = true;
-                this.columnID_Gebiet.AutoIncrementSeed = -1;
-                this.columnID_Gebiet.AutoIncrementStep = -1;
-                this.columnID_Gebiet.AllowDBNull = false;
-                this.columnID_Gebiet.ReadOnly = true;
-                this.columnID_Gebiet.Unique = true;
+                                this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
                 this.columnNameGebiet.AllowDBNull = false;
                 this.columnNameGebiet.MaxLength = 2147483647;
                 this.columnOrt.AllowDBNull = false;
@@ -688,28 +691,28 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GebietRow NewGebietRow() {
-                return ((GebietRow)(this.NewRow()));
+            public GebieteRow NewGebieteRow() {
+                return ((GebieteRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new GebietRow(builder);
+                return new GebieteRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(GebietRow);
+                return typeof(GebieteRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.GebietRowChanged != null)) {
-                    this.GebietRowChanged(this, new GebietRowChangeEvent(((GebietRow)(e.Row)), e.Action));
+                if ((this.GebieteRowChanged != null)) {
+                    this.GebieteRowChanged(this, new GebieteRowChangeEvent(((GebieteRow)(e.Row)), e.Action));
                 }
             }
             
@@ -717,8 +720,8 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.GebietRowChanging != null)) {
-                    this.GebietRowChanging(this, new GebietRowChangeEvent(((GebietRow)(e.Row)), e.Action));
+                if ((this.GebieteRowChanging != null)) {
+                    this.GebieteRowChanging(this, new GebieteRowChangeEvent(((GebieteRow)(e.Row)), e.Action));
                 }
             }
             
@@ -726,8 +729,8 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.GebietRowDeleted != null)) {
-                    this.GebietRowDeleted(this, new GebietRowChangeEvent(((GebietRow)(e.Row)), e.Action));
+                if ((this.GebieteRowDeleted != null)) {
+                    this.GebieteRowDeleted(this, new GebieteRowChangeEvent(((GebieteRow)(e.Row)), e.Action));
                 }
             }
             
@@ -735,14 +738,14 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.GebietRowDeleting != null)) {
-                    this.GebietRowDeleting(this, new GebietRowChangeEvent(((GebietRow)(e.Row)), e.Action));
+                if ((this.GebieteRowDeleting != null)) {
+                    this.GebieteRowDeleting(this, new GebieteRowChangeEvent(((GebieteRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveGebietRow(GebietRow row) {
+            public void RemoveGebieteRow(GebieteRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -751,7 +754,7 @@ namespace KletterDatenbank_MuellerPachler {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EF_KletterRoutenDataSet ds = new EF_KletterRoutenDataSet();
+                EF_DB_KletterroutenDataSet ds = new EF_DB_KletterroutenDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -769,7 +772,7 @@ namespace KletterDatenbank_MuellerPachler {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "GebietDataTable";
+                attribute2.FixedValue = "GebieteDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -815,9 +818,9 @@ namespace KletterDatenbank_MuellerPachler {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class PersonDataTable : global::System.Data.TypedTableBase<PersonRow> {
+        public partial class PersonenDataTable : global::System.Data.TypedTableBase<PersonenRow> {
             
-            private global::System.Data.DataColumn columnID_Person;
+            private global::System.Data.DataColumn columnID;
             
             private global::System.Data.DataColumn columnVorname;
             
@@ -827,8 +830,8 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PersonDataTable() {
-                this.TableName = "Person";
+            public PersonenDataTable() {
+                this.TableName = "Personen";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -836,7 +839,7 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal PersonDataTable(global::System.Data.DataTable table) {
+            internal PersonenDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -853,16 +856,16 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected PersonDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected PersonenDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ID_PersonColumn {
+            public global::System.Data.DataColumn IDColumn {
                 get {
-                    return this.columnID_Person;
+                    return this.columnID;
                 }
             }
             
@@ -901,55 +904,55 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PersonRow this[int index] {
+            public PersonenRow this[int index] {
                 get {
-                    return ((PersonRow)(this.Rows[index]));
+                    return ((PersonenRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event PersonRowChangeEventHandler PersonRowChanging;
+            public event PersonenRowChangeEventHandler PersonenRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event PersonRowChangeEventHandler PersonRowChanged;
+            public event PersonenRowChangeEventHandler PersonenRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event PersonRowChangeEventHandler PersonRowDeleting;
+            public event PersonenRowChangeEventHandler PersonenRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event PersonRowChangeEventHandler PersonRowDeleted;
+            public event PersonenRowChangeEventHandler PersonenRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddPersonRow(PersonRow row) {
+            public void AddPersonenRow(PersonenRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PersonRow AddPersonRow(string Vorname, string Nachname, System.DateTime Geburtsdatum) {
-                PersonRow rowPersonRow = ((PersonRow)(this.NewRow()));
+            public PersonenRow AddPersonenRow(string Vorname, string Nachname, System.DateTime Geburtsdatum) {
+                PersonenRow rowPersonenRow = ((PersonenRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Vorname,
                         Nachname,
                         Geburtsdatum};
-                rowPersonRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowPersonRow);
-                return rowPersonRow;
+                rowPersonenRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPersonenRow);
+                return rowPersonenRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PersonRow FindByID_Person(int ID_Person) {
-                return ((PersonRow)(this.Rows.Find(new object[] {
-                            ID_Person})));
+            public PersonenRow FindByID(int ID) {
+                return ((PersonenRow)(this.Rows.Find(new object[] {
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                PersonDataTable cln = ((PersonDataTable)(base.Clone()));
+                PersonenDataTable cln = ((PersonenDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -957,13 +960,13 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new PersonDataTable();
+                return new PersonenDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnID_Person = base.Columns["ID_Person"];
+                this.columnID = base.Columns["ID"];
                 this.columnVorname = base.Columns["Vorname"];
                 this.columnNachname = base.Columns["Nachname"];
                 this.columnGeburtsdatum = base.Columns["Geburtsdatum"];
@@ -972,8 +975,8 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID_Person = new global::System.Data.DataColumn("ID_Person", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID_Person);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
                 this.columnVorname = new global::System.Data.DataColumn("Vorname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVorname);
                 this.columnNachname = new global::System.Data.DataColumn("Nachname", typeof(string), null, global::System.Data.MappingType.Element);
@@ -981,13 +984,13 @@ namespace KletterDatenbank_MuellerPachler {
                 this.columnGeburtsdatum = new global::System.Data.DataColumn("Geburtsdatum", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGeburtsdatum);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID_Person}, true));
-                this.columnID_Person.AutoIncrement = true;
-                this.columnID_Person.AutoIncrementSeed = -1;
-                this.columnID_Person.AutoIncrementStep = -1;
-                this.columnID_Person.AllowDBNull = false;
-                this.columnID_Person.ReadOnly = true;
-                this.columnID_Person.Unique = true;
+                                this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
                 this.columnVorname.AllowDBNull = false;
                 this.columnVorname.MaxLength = 2147483647;
                 this.columnNachname.AllowDBNull = false;
@@ -997,28 +1000,28 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PersonRow NewPersonRow() {
-                return ((PersonRow)(this.NewRow()));
+            public PersonenRow NewPersonenRow() {
+                return ((PersonenRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new PersonRow(builder);
+                return new PersonenRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(PersonRow);
+                return typeof(PersonenRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.PersonRowChanged != null)) {
-                    this.PersonRowChanged(this, new PersonRowChangeEvent(((PersonRow)(e.Row)), e.Action));
+                if ((this.PersonenRowChanged != null)) {
+                    this.PersonenRowChanged(this, new PersonenRowChangeEvent(((PersonenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1026,8 +1029,8 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.PersonRowChanging != null)) {
-                    this.PersonRowChanging(this, new PersonRowChangeEvent(((PersonRow)(e.Row)), e.Action));
+                if ((this.PersonenRowChanging != null)) {
+                    this.PersonenRowChanging(this, new PersonenRowChangeEvent(((PersonenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1035,8 +1038,8 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.PersonRowDeleted != null)) {
-                    this.PersonRowDeleted(this, new PersonRowChangeEvent(((PersonRow)(e.Row)), e.Action));
+                if ((this.PersonenRowDeleted != null)) {
+                    this.PersonenRowDeleted(this, new PersonenRowChangeEvent(((PersonenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1044,14 +1047,14 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.PersonRowDeleting != null)) {
-                    this.PersonRowDeleting(this, new PersonRowChangeEvent(((PersonRow)(e.Row)), e.Action));
+                if ((this.PersonenRowDeleting != null)) {
+                    this.PersonenRowDeleting(this, new PersonenRowChangeEvent(((PersonenRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemovePersonRow(PersonRow row) {
+            public void RemovePersonenRow(PersonenRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1060,7 +1063,7 @@ namespace KletterDatenbank_MuellerPachler {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EF_KletterRoutenDataSet ds = new EF_KletterRoutenDataSet();
+                EF_DB_KletterroutenDataSet ds = new EF_DB_KletterroutenDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1078,7 +1081,7 @@ namespace KletterDatenbank_MuellerPachler {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "PersonDataTable";
+                attribute2.FixedValue = "PersonenDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1124,11 +1127,9 @@ namespace KletterDatenbank_MuellerPachler {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class RouteDataTable : global::System.Data.TypedTableBase<RouteRow> {
+        public partial class RoutenDataTable : global::System.Data.TypedTableBase<RoutenRow> {
             
-            private global::System.Data.DataColumn columnID_Route;
-            
-            private global::System.Data.DataColumn columnID_Sektor;
+            private global::System.Data.DataColumn columnID;
             
             private global::System.Data.DataColumn columnName;
             
@@ -1136,10 +1137,12 @@ namespace KletterDatenbank_MuellerPachler {
             
             private global::System.Data.DataColumn columnIstBoulder;
             
+            private global::System.Data.DataColumn columnSektorID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RouteDataTable() {
-                this.TableName = "Route";
+            public RoutenDataTable() {
+                this.TableName = "Routen";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1147,7 +1150,7 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RouteDataTable(global::System.Data.DataTable table) {
+            internal RoutenDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1164,24 +1167,16 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected RouteDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected RoutenDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ID_RouteColumn {
+            public global::System.Data.DataColumn IDColumn {
                 get {
-                    return this.columnID_Route;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ID_SektorColumn {
-                get {
-                    return this.columnID_Sektor;
+                    return this.columnID;
                 }
             }
             
@@ -1211,6 +1206,14 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SektorIDColumn {
+                get {
+                    return this.columnSektorID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1220,57 +1223,59 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RouteRow this[int index] {
+            public RoutenRow this[int index] {
                 get {
-                    return ((RouteRow)(this.Rows[index]));
+                    return ((RoutenRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RouteRowChangeEventHandler RouteRowChanging;
+            public event RoutenRowChangeEventHandler RoutenRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RouteRowChangeEventHandler RouteRowChanged;
+            public event RoutenRowChangeEventHandler RoutenRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RouteRowChangeEventHandler RouteRowDeleting;
+            public event RoutenRowChangeEventHandler RoutenRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RouteRowChangeEventHandler RouteRowDeleted;
+            public event RoutenRowChangeEventHandler RoutenRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddRouteRow(RouteRow row) {
+            public void AddRoutenRow(RoutenRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RouteRow AddRouteRow(int ID_Sektor, string Name, string Schwierigkeitsgrad, bool IstBoulder) {
-                RouteRow rowRouteRow = ((RouteRow)(this.NewRow()));
+            public RoutenRow AddRoutenRow(string Name, string Schwierigkeitsgrad, bool IstBoulder, SektorenRow parentSektorenRowByFK_SektorRoute) {
+                RoutenRow rowRoutenRow = ((RoutenRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        ID_Sektor,
                         Name,
                         Schwierigkeitsgrad,
-                        IstBoulder};
-                rowRouteRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowRouteRow);
-                return rowRouteRow;
+                        IstBoulder,
+                        null};
+                if ((parentSektorenRowByFK_SektorRoute != null)) {
+                    columnValuesArray[4] = parentSektorenRowByFK_SektorRoute[0];
+                }
+                rowRoutenRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowRoutenRow);
+                return rowRoutenRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RouteRow FindByID_RouteID_Sektor(int ID_Route, int ID_Sektor) {
-                return ((RouteRow)(this.Rows.Find(new object[] {
-                            ID_Route,
-                            ID_Sektor})));
+            public RoutenRow FindByID(int ID) {
+                return ((RoutenRow)(this.Rows.Find(new object[] {
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                RouteDataTable cln = ((RouteDataTable)(base.Clone()));
+                RoutenDataTable cln = ((RoutenDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1278,72 +1283,72 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new RouteDataTable();
+                return new RoutenDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnID_Route = base.Columns["ID_Route"];
-                this.columnID_Sektor = base.Columns["ID_Sektor"];
+                this.columnID = base.Columns["ID"];
                 this.columnName = base.Columns["Name"];
                 this.columnSchwierigkeitsgrad = base.Columns["Schwierigkeitsgrad"];
                 this.columnIstBoulder = base.Columns["IstBoulder"];
+                this.columnSektorID = base.Columns["SektorID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID_Route = new global::System.Data.DataColumn("ID_Route", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID_Route);
-                this.columnID_Sektor = new global::System.Data.DataColumn("ID_Sektor", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID_Sektor);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
                 this.columnSchwierigkeitsgrad = new global::System.Data.DataColumn("Schwierigkeitsgrad", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSchwierigkeitsgrad);
                 this.columnIstBoulder = new global::System.Data.DataColumn("IstBoulder", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIstBoulder);
+                this.columnSektorID = new global::System.Data.DataColumn("SektorID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSektorID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID_Route,
-                                this.columnID_Sektor}, true));
-                this.columnID_Route.AutoIncrement = true;
-                this.columnID_Route.AutoIncrementSeed = -1;
-                this.columnID_Route.AutoIncrementStep = -1;
-                this.columnID_Route.AllowDBNull = false;
-                this.columnID_Route.ReadOnly = true;
-                this.columnID_Sektor.AllowDBNull = false;
+                                this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
                 this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 2147483647;
                 this.columnSchwierigkeitsgrad.AllowDBNull = false;
                 this.columnSchwierigkeitsgrad.MaxLength = 2147483647;
                 this.columnIstBoulder.AllowDBNull = false;
+                this.columnSektorID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RouteRow NewRouteRow() {
-                return ((RouteRow)(this.NewRow()));
+            public RoutenRow NewRoutenRow() {
+                return ((RoutenRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new RouteRow(builder);
+                return new RoutenRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(RouteRow);
+                return typeof(RoutenRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.RouteRowChanged != null)) {
-                    this.RouteRowChanged(this, new RouteRowChangeEvent(((RouteRow)(e.Row)), e.Action));
+                if ((this.RoutenRowChanged != null)) {
+                    this.RoutenRowChanged(this, new RoutenRowChangeEvent(((RoutenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1351,8 +1356,8 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.RouteRowChanging != null)) {
-                    this.RouteRowChanging(this, new RouteRowChangeEvent(((RouteRow)(e.Row)), e.Action));
+                if ((this.RoutenRowChanging != null)) {
+                    this.RoutenRowChanging(this, new RoutenRowChangeEvent(((RoutenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1360,8 +1365,8 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.RouteRowDeleted != null)) {
-                    this.RouteRowDeleted(this, new RouteRowChangeEvent(((RouteRow)(e.Row)), e.Action));
+                if ((this.RoutenRowDeleted != null)) {
+                    this.RoutenRowDeleted(this, new RoutenRowChangeEvent(((RoutenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1369,14 +1374,14 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.RouteRowDeleting != null)) {
-                    this.RouteRowDeleting(this, new RouteRowChangeEvent(((RouteRow)(e.Row)), e.Action));
+                if ((this.RoutenRowDeleting != null)) {
+                    this.RoutenRowDeleting(this, new RoutenRowChangeEvent(((RoutenRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveRouteRow(RouteRow row) {
+            public void RemoveRoutenRow(RoutenRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1385,7 +1390,7 @@ namespace KletterDatenbank_MuellerPachler {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EF_KletterRoutenDataSet ds = new EF_KletterRoutenDataSet();
+                EF_DB_KletterroutenDataSet ds = new EF_DB_KletterroutenDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1403,7 +1408,7 @@ namespace KletterDatenbank_MuellerPachler {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "RouteDataTable";
+                attribute2.FixedValue = "RoutenDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1449,22 +1454,20 @@ namespace KletterDatenbank_MuellerPachler {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SektorDataTable : global::System.Data.TypedTableBase<SektorRow> {
+        public partial class SektorenDataTable : global::System.Data.TypedTableBase<SektorenRow> {
             
-            private global::System.Data.DataColumn columnID_Sektor;
-            
-            private global::System.Data.DataColumn columnID_Gebiet;
+            private global::System.Data.DataColumn columnID;
             
             private global::System.Data.DataColumn columnNameSektor;
             
             private global::System.Data.DataColumn columnGPS_Exakt;
             
-            private global::System.Data.DataColumn columnGebiet_ID_Gebiet;
+            private global::System.Data.DataColumn columnGebietID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SektorDataTable() {
-                this.TableName = "Sektor";
+            public SektorenDataTable() {
+                this.TableName = "Sektoren";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1472,7 +1475,7 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SektorDataTable(global::System.Data.DataTable table) {
+            internal SektorenDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1489,24 +1492,16 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected SektorDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected SektorenDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ID_SektorColumn {
+            public global::System.Data.DataColumn IDColumn {
                 get {
-                    return this.columnID_Sektor;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ID_GebietColumn {
-                get {
-                    return this.columnID_Gebiet;
+                    return this.columnID;
                 }
             }
             
@@ -1528,9 +1523,9 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Gebiet_ID_GebietColumn {
+            public global::System.Data.DataColumn GebietIDColumn {
                 get {
-                    return this.columnGebiet_ID_Gebiet;
+                    return this.columnGebietID;
                 }
             }
             
@@ -1545,60 +1540,58 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SektorRow this[int index] {
+            public SektorenRow this[int index] {
                 get {
-                    return ((SektorRow)(this.Rows[index]));
+                    return ((SektorenRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SektorRowChangeEventHandler SektorRowChanging;
+            public event SektorenRowChangeEventHandler SektorenRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SektorRowChangeEventHandler SektorRowChanged;
+            public event SektorenRowChangeEventHandler SektorenRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SektorRowChangeEventHandler SektorRowDeleting;
+            public event SektorenRowChangeEventHandler SektorenRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SektorRowChangeEventHandler SektorRowDeleted;
+            public event SektorenRowChangeEventHandler SektorenRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddSektorRow(SektorRow row) {
+            public void AddSektorenRow(SektorenRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SektorRow AddSektorRow(int ID_Gebiet, string NameSektor, string GPS_Exakt, GebietRow parentGebietRowByFK_GebietSektor) {
-                SektorRow rowSektorRow = ((SektorRow)(this.NewRow()));
+            public SektorenRow AddSektorenRow(string NameSektor, string GPS_Exakt, GebieteRow parentGebieteRowByFK_GebietSektor) {
+                SektorenRow rowSektorenRow = ((SektorenRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        ID_Gebiet,
                         NameSektor,
                         GPS_Exakt,
                         null};
-                if ((parentGebietRowByFK_GebietSektor != null)) {
-                    columnValuesArray[4] = parentGebietRowByFK_GebietSektor[0];
+                if ((parentGebieteRowByFK_GebietSektor != null)) {
+                    columnValuesArray[3] = parentGebieteRowByFK_GebietSektor[0];
                 }
-                rowSektorRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSektorRow);
-                return rowSektorRow;
+                rowSektorenRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSektorenRow);
+                return rowSektorenRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SektorRow FindByID_SektorID_Gebiet(int ID_Sektor, int ID_Gebiet) {
-                return ((SektorRow)(this.Rows.Find(new object[] {
-                            ID_Sektor,
-                            ID_Gebiet})));
+            public SektorenRow FindByID(int ID) {
+                return ((SektorenRow)(this.Rows.Find(new object[] {
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                SektorDataTable cln = ((SektorDataTable)(base.Clone()));
+                SektorenDataTable cln = ((SektorenDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1606,71 +1599,67 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new SektorDataTable();
+                return new SektorenDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnID_Sektor = base.Columns["ID_Sektor"];
-                this.columnID_Gebiet = base.Columns["ID_Gebiet"];
+                this.columnID = base.Columns["ID"];
                 this.columnNameSektor = base.Columns["NameSektor"];
                 this.columnGPS_Exakt = base.Columns["GPS_Exakt"];
-                this.columnGebiet_ID_Gebiet = base.Columns["Gebiet_ID_Gebiet"];
+                this.columnGebietID = base.Columns["GebietID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID_Sektor = new global::System.Data.DataColumn("ID_Sektor", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID_Sektor);
-                this.columnID_Gebiet = new global::System.Data.DataColumn("ID_Gebiet", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID_Gebiet);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
                 this.columnNameSektor = new global::System.Data.DataColumn("NameSektor", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNameSektor);
                 this.columnGPS_Exakt = new global::System.Data.DataColumn("GPS_Exakt", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGPS_Exakt);
-                this.columnGebiet_ID_Gebiet = new global::System.Data.DataColumn("Gebiet_ID_Gebiet", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGebiet_ID_Gebiet);
+                this.columnGebietID = new global::System.Data.DataColumn("GebietID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGebietID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID_Sektor,
-                                this.columnID_Gebiet}, true));
-                this.columnID_Sektor.AutoIncrement = true;
-                this.columnID_Sektor.AutoIncrementSeed = -1;
-                this.columnID_Sektor.AutoIncrementStep = -1;
-                this.columnID_Sektor.AllowDBNull = false;
-                this.columnID_Sektor.ReadOnly = true;
-                this.columnID_Gebiet.AllowDBNull = false;
+                                this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
                 this.columnNameSektor.AllowDBNull = false;
                 this.columnNameSektor.MaxLength = 2147483647;
                 this.columnGPS_Exakt.MaxLength = 2147483647;
-                this.columnGebiet_ID_Gebiet.AllowDBNull = false;
+                this.columnGebietID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SektorRow NewSektorRow() {
-                return ((SektorRow)(this.NewRow()));
+            public SektorenRow NewSektorenRow() {
+                return ((SektorenRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SektorRow(builder);
+                return new SektorenRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(SektorRow);
+                return typeof(SektorenRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.SektorRowChanged != null)) {
-                    this.SektorRowChanged(this, new SektorRowChangeEvent(((SektorRow)(e.Row)), e.Action));
+                if ((this.SektorenRowChanged != null)) {
+                    this.SektorenRowChanged(this, new SektorenRowChangeEvent(((SektorenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1678,8 +1667,8 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.SektorRowChanging != null)) {
-                    this.SektorRowChanging(this, new SektorRowChangeEvent(((SektorRow)(e.Row)), e.Action));
+                if ((this.SektorenRowChanging != null)) {
+                    this.SektorenRowChanging(this, new SektorenRowChangeEvent(((SektorenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1687,8 +1676,8 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.SektorRowDeleted != null)) {
-                    this.SektorRowDeleted(this, new SektorRowChangeEvent(((SektorRow)(e.Row)), e.Action));
+                if ((this.SektorenRowDeleted != null)) {
+                    this.SektorenRowDeleted(this, new SektorenRowChangeEvent(((SektorenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1696,14 +1685,14 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.SektorRowDeleting != null)) {
-                    this.SektorRowDeleting(this, new SektorRowChangeEvent(((SektorRow)(e.Row)), e.Action));
+                if ((this.SektorenRowDeleting != null)) {
+                    this.SektorenRowDeleting(this, new SektorenRowChangeEvent(((SektorenRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveSektorRow(SektorRow row) {
+            public void RemoveSektorenRow(SektorenRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1712,7 +1701,7 @@ namespace KletterDatenbank_MuellerPachler {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EF_KletterRoutenDataSet ds = new EF_KletterRoutenDataSet();
+                EF_DB_KletterroutenDataSet ds = new EF_DB_KletterroutenDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1730,7 +1719,7 @@ namespace KletterDatenbank_MuellerPachler {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SektorDataTable";
+                attribute2.FixedValue = "SektorenDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1776,28 +1765,22 @@ namespace KletterDatenbank_MuellerPachler {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ZOT_DurchstiegslisteDataTable : global::System.Data.TypedTableBase<ZOT_DurchstiegslisteRow> {
+        public partial class ZOT_DurchstiegslistenDataTable : global::System.Data.TypedTableBase<ZOT_DurchstiegslistenRow> {
             
-            private global::System.Data.DataColumn columnID_Person;
-            
-            private global::System.Data.DataColumn columnID_Sektor;
-            
-            private global::System.Data.DataColumn columnID_Route;
+            private global::System.Data.DataColumn columnID;
             
             private global::System.Data.DataColumn columnKommentar;
             
             private global::System.Data.DataColumn columnDurchstiegsdatum;
             
-            private global::System.Data.DataColumn columnRoute_ID_Route;
+            private global::System.Data.DataColumn columnPersonID;
             
-            private global::System.Data.DataColumn columnRoute_ID_Sektor;
-            
-            private global::System.Data.DataColumn columnPerson_ID_Person;
+            private global::System.Data.DataColumn columnRouteID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_DurchstiegslisteDataTable() {
-                this.TableName = "ZOT_Durchstiegsliste";
+            public ZOT_DurchstiegslistenDataTable() {
+                this.TableName = "ZOT_Durchstiegslisten";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1805,7 +1788,7 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ZOT_DurchstiegslisteDataTable(global::System.Data.DataTable table) {
+            internal ZOT_DurchstiegslistenDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1822,32 +1805,16 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected ZOT_DurchstiegslisteDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ZOT_DurchstiegslistenDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ID_PersonColumn {
+            public global::System.Data.DataColumn IDColumn {
                 get {
-                    return this.columnID_Person;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ID_SektorColumn {
-                get {
-                    return this.columnID_Sektor;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ID_RouteColumn {
-                get {
-                    return this.columnID_Route;
+                    return this.columnID;
                 }
             }
             
@@ -1869,25 +1836,17 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Route_ID_RouteColumn {
+            public global::System.Data.DataColumn PersonIDColumn {
                 get {
-                    return this.columnRoute_ID_Route;
+                    return this.columnPersonID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Route_ID_SektorColumn {
+            public global::System.Data.DataColumn RouteIDColumn {
                 get {
-                    return this.columnRoute_ID_Sektor;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Person_ID_PersonColumn {
-                get {
-                    return this.columnPerson_ID_Person;
+                    return this.columnRouteID;
                 }
             }
             
@@ -1902,64 +1861,62 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_DurchstiegslisteRow this[int index] {
+            public ZOT_DurchstiegslistenRow this[int index] {
                 get {
-                    return ((ZOT_DurchstiegslisteRow)(this.Rows[index]));
+                    return ((ZOT_DurchstiegslistenRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ZOT_DurchstiegslisteRowChangeEventHandler ZOT_DurchstiegslisteRowChanging;
+            public event ZOT_DurchstiegslistenRowChangeEventHandler ZOT_DurchstiegslistenRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ZOT_DurchstiegslisteRowChangeEventHandler ZOT_DurchstiegslisteRowChanged;
+            public event ZOT_DurchstiegslistenRowChangeEventHandler ZOT_DurchstiegslistenRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ZOT_DurchstiegslisteRowChangeEventHandler ZOT_DurchstiegslisteRowDeleting;
+            public event ZOT_DurchstiegslistenRowChangeEventHandler ZOT_DurchstiegslistenRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ZOT_DurchstiegslisteRowChangeEventHandler ZOT_DurchstiegslisteRowDeleted;
+            public event ZOT_DurchstiegslistenRowChangeEventHandler ZOT_DurchstiegslistenRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddZOT_DurchstiegslisteRow(ZOT_DurchstiegslisteRow row) {
+            public void AddZOT_DurchstiegslistenRow(ZOT_DurchstiegslistenRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_DurchstiegslisteRow AddZOT_DurchstiegslisteRow(int ID_Person, int ID_Sektor, int ID_Route, string Kommentar, System.DateTime Durchstiegsdatum, int Route_ID_Route, int Route_ID_Sektor, PersonRow parentPersonRowByFK_PersonZOT_Durchstiegsliste) {
-                ZOT_DurchstiegslisteRow rowZOT_DurchstiegslisteRow = ((ZOT_DurchstiegslisteRow)(this.NewRow()));
+            public ZOT_DurchstiegslistenRow AddZOT_DurchstiegslistenRow(int ID, string Kommentar, System.DateTime Durchstiegsdatum, PersonenRow parentPersonenRowByFK_PersonZOT_Durchstiegsliste, RoutenRow parentRoutenRowByFK_RouteZOT_Durchstiegsliste) {
+                ZOT_DurchstiegslistenRow rowZOT_DurchstiegslistenRow = ((ZOT_DurchstiegslistenRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID_Person,
-                        ID_Sektor,
-                        ID_Route,
+                        ID,
                         Kommentar,
                         Durchstiegsdatum,
-                        Route_ID_Route,
-                        Route_ID_Sektor,
+                        null,
                         null};
-                if ((parentPersonRowByFK_PersonZOT_Durchstiegsliste != null)) {
-                    columnValuesArray[7] = parentPersonRowByFK_PersonZOT_Durchstiegsliste[0];
+                if ((parentPersonenRowByFK_PersonZOT_Durchstiegsliste != null)) {
+                    columnValuesArray[3] = parentPersonenRowByFK_PersonZOT_Durchstiegsliste[0];
                 }
-                rowZOT_DurchstiegslisteRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowZOT_DurchstiegslisteRow);
-                return rowZOT_DurchstiegslisteRow;
+                if ((parentRoutenRowByFK_RouteZOT_Durchstiegsliste != null)) {
+                    columnValuesArray[4] = parentRoutenRowByFK_RouteZOT_Durchstiegsliste[0];
+                }
+                rowZOT_DurchstiegslistenRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowZOT_DurchstiegslistenRow);
+                return rowZOT_DurchstiegslistenRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_DurchstiegslisteRow FindByID_PersonID_SektorID_Route(int ID_Person, int ID_Sektor, int ID_Route) {
-                return ((ZOT_DurchstiegslisteRow)(this.Rows.Find(new object[] {
-                            ID_Person,
-                            ID_Sektor,
-                            ID_Route})));
+            public ZOT_DurchstiegslistenRow FindByID(int ID) {
+                return ((ZOT_DurchstiegslistenRow)(this.Rows.Find(new object[] {
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ZOT_DurchstiegslisteDataTable cln = ((ZOT_DurchstiegslisteDataTable)(base.Clone()));
+                ZOT_DurchstiegslistenDataTable cln = ((ZOT_DurchstiegslistenDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1967,79 +1924,66 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ZOT_DurchstiegslisteDataTable();
+                return new ZOT_DurchstiegslistenDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnID_Person = base.Columns["ID_Person"];
-                this.columnID_Sektor = base.Columns["ID_Sektor"];
-                this.columnID_Route = base.Columns["ID_Route"];
+                this.columnID = base.Columns["ID"];
                 this.columnKommentar = base.Columns["Kommentar"];
                 this.columnDurchstiegsdatum = base.Columns["Durchstiegsdatum"];
-                this.columnRoute_ID_Route = base.Columns["Route_ID_Route"];
-                this.columnRoute_ID_Sektor = base.Columns["Route_ID_Sektor"];
-                this.columnPerson_ID_Person = base.Columns["Person_ID_Person"];
+                this.columnPersonID = base.Columns["PersonID"];
+                this.columnRouteID = base.Columns["RouteID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID_Person = new global::System.Data.DataColumn("ID_Person", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID_Person);
-                this.columnID_Sektor = new global::System.Data.DataColumn("ID_Sektor", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID_Sektor);
-                this.columnID_Route = new global::System.Data.DataColumn("ID_Route", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID_Route);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
                 this.columnKommentar = new global::System.Data.DataColumn("Kommentar", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKommentar);
                 this.columnDurchstiegsdatum = new global::System.Data.DataColumn("Durchstiegsdatum", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDurchstiegsdatum);
-                this.columnRoute_ID_Route = new global::System.Data.DataColumn("Route_ID_Route", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRoute_ID_Route);
-                this.columnRoute_ID_Sektor = new global::System.Data.DataColumn("Route_ID_Sektor", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRoute_ID_Sektor);
-                this.columnPerson_ID_Person = new global::System.Data.DataColumn("Person_ID_Person", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPerson_ID_Person);
+                this.columnPersonID = new global::System.Data.DataColumn("PersonID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPersonID);
+                this.columnRouteID = new global::System.Data.DataColumn("RouteID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRouteID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID_Person,
-                                this.columnID_Sektor,
-                                this.columnID_Route}, true));
-                this.columnID_Person.AllowDBNull = false;
-                this.columnID_Sektor.AllowDBNull = false;
-                this.columnID_Route.AllowDBNull = false;
+                                this.columnID}, true));
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
                 this.columnKommentar.MaxLength = 2147483647;
                 this.columnDurchstiegsdatum.AllowDBNull = false;
-                this.columnRoute_ID_Route.AllowDBNull = false;
-                this.columnRoute_ID_Sektor.AllowDBNull = false;
-                this.columnPerson_ID_Person.AllowDBNull = false;
+                this.columnPersonID.AllowDBNull = false;
+                this.columnRouteID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_DurchstiegslisteRow NewZOT_DurchstiegslisteRow() {
-                return ((ZOT_DurchstiegslisteRow)(this.NewRow()));
+            public ZOT_DurchstiegslistenRow NewZOT_DurchstiegslistenRow() {
+                return ((ZOT_DurchstiegslistenRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ZOT_DurchstiegslisteRow(builder);
+                return new ZOT_DurchstiegslistenRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ZOT_DurchstiegslisteRow);
+                return typeof(ZOT_DurchstiegslistenRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ZOT_DurchstiegslisteRowChanged != null)) {
-                    this.ZOT_DurchstiegslisteRowChanged(this, new ZOT_DurchstiegslisteRowChangeEvent(((ZOT_DurchstiegslisteRow)(e.Row)), e.Action));
+                if ((this.ZOT_DurchstiegslistenRowChanged != null)) {
+                    this.ZOT_DurchstiegslistenRowChanged(this, new ZOT_DurchstiegslistenRowChangeEvent(((ZOT_DurchstiegslistenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2047,8 +1991,8 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ZOT_DurchstiegslisteRowChanging != null)) {
-                    this.ZOT_DurchstiegslisteRowChanging(this, new ZOT_DurchstiegslisteRowChangeEvent(((ZOT_DurchstiegslisteRow)(e.Row)), e.Action));
+                if ((this.ZOT_DurchstiegslistenRowChanging != null)) {
+                    this.ZOT_DurchstiegslistenRowChanging(this, new ZOT_DurchstiegslistenRowChangeEvent(((ZOT_DurchstiegslistenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2056,8 +2000,8 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ZOT_DurchstiegslisteRowDeleted != null)) {
-                    this.ZOT_DurchstiegslisteRowDeleted(this, new ZOT_DurchstiegslisteRowChangeEvent(((ZOT_DurchstiegslisteRow)(e.Row)), e.Action));
+                if ((this.ZOT_DurchstiegslistenRowDeleted != null)) {
+                    this.ZOT_DurchstiegslistenRowDeleted(this, new ZOT_DurchstiegslistenRowChangeEvent(((ZOT_DurchstiegslistenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2065,14 +2009,14 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ZOT_DurchstiegslisteRowDeleting != null)) {
-                    this.ZOT_DurchstiegslisteRowDeleting(this, new ZOT_DurchstiegslisteRowChangeEvent(((ZOT_DurchstiegslisteRow)(e.Row)), e.Action));
+                if ((this.ZOT_DurchstiegslistenRowDeleting != null)) {
+                    this.ZOT_DurchstiegslistenRowDeleting(this, new ZOT_DurchstiegslistenRowChangeEvent(((ZOT_DurchstiegslistenRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveZOT_DurchstiegslisteRow(ZOT_DurchstiegslisteRow row) {
+            public void RemoveZOT_DurchstiegslistenRow(ZOT_DurchstiegslistenRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -2081,7 +2025,7 @@ namespace KletterDatenbank_MuellerPachler {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EF_KletterRoutenDataSet ds = new EF_KletterRoutenDataSet();
+                EF_DB_KletterroutenDataSet ds = new EF_DB_KletterroutenDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2099,7 +2043,7 @@ namespace KletterDatenbank_MuellerPachler {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ZOT_DurchstiegslisteDataTable";
+                attribute2.FixedValue = "ZOT_DurchstiegslistenDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2145,26 +2089,20 @@ namespace KletterDatenbank_MuellerPachler {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ZOT_WunschlisteDataTable : global::System.Data.TypedTableBase<ZOT_WunschlisteRow> {
+        public partial class ZOT_WunschlistenDataTable : global::System.Data.TypedTableBase<ZOT_WunschlistenRow> {
             
-            private global::System.Data.DataColumn columnID_Person;
-            
-            private global::System.Data.DataColumn columnID_Sektor;
-            
-            private global::System.Data.DataColumn columnID_Route;
+            private global::System.Data.DataColumn columnID;
             
             private global::System.Data.DataColumn columnKommentar;
             
-            private global::System.Data.DataColumn columnRoute_ID_Route;
+            private global::System.Data.DataColumn columnPersonID;
             
-            private global::System.Data.DataColumn columnRoute_ID_Sektor;
-            
-            private global::System.Data.DataColumn columnPerson_ID_Person;
+            private global::System.Data.DataColumn columnRouteID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_WunschlisteDataTable() {
-                this.TableName = "ZOT_Wunschliste";
+            public ZOT_WunschlistenDataTable() {
+                this.TableName = "ZOT_Wunschlisten";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2172,7 +2110,7 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ZOT_WunschlisteDataTable(global::System.Data.DataTable table) {
+            internal ZOT_WunschlistenDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2189,32 +2127,16 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected ZOT_WunschlisteDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ZOT_WunschlistenDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ID_PersonColumn {
+            public global::System.Data.DataColumn IDColumn {
                 get {
-                    return this.columnID_Person;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ID_SektorColumn {
-                get {
-                    return this.columnID_Sektor;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ID_RouteColumn {
-                get {
-                    return this.columnID_Route;
+                    return this.columnID;
                 }
             }
             
@@ -2228,25 +2150,17 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Route_ID_RouteColumn {
+            public global::System.Data.DataColumn PersonIDColumn {
                 get {
-                    return this.columnRoute_ID_Route;
+                    return this.columnPersonID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Route_ID_SektorColumn {
+            public global::System.Data.DataColumn RouteIDColumn {
                 get {
-                    return this.columnRoute_ID_Sektor;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Person_ID_PersonColumn {
-                get {
-                    return this.columnPerson_ID_Person;
+                    return this.columnRouteID;
                 }
             }
             
@@ -2261,63 +2175,61 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_WunschlisteRow this[int index] {
+            public ZOT_WunschlistenRow this[int index] {
                 get {
-                    return ((ZOT_WunschlisteRow)(this.Rows[index]));
+                    return ((ZOT_WunschlistenRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ZOT_WunschlisteRowChangeEventHandler ZOT_WunschlisteRowChanging;
+            public event ZOT_WunschlistenRowChangeEventHandler ZOT_WunschlistenRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ZOT_WunschlisteRowChangeEventHandler ZOT_WunschlisteRowChanged;
+            public event ZOT_WunschlistenRowChangeEventHandler ZOT_WunschlistenRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ZOT_WunschlisteRowChangeEventHandler ZOT_WunschlisteRowDeleting;
+            public event ZOT_WunschlistenRowChangeEventHandler ZOT_WunschlistenRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ZOT_WunschlisteRowChangeEventHandler ZOT_WunschlisteRowDeleted;
+            public event ZOT_WunschlistenRowChangeEventHandler ZOT_WunschlistenRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddZOT_WunschlisteRow(ZOT_WunschlisteRow row) {
+            public void AddZOT_WunschlistenRow(ZOT_WunschlistenRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_WunschlisteRow AddZOT_WunschlisteRow(int ID_Person, int ID_Sektor, int ID_Route, string Kommentar, int Route_ID_Route, int Route_ID_Sektor, PersonRow parentPersonRowByFK_PersonZOT_Wunschliste) {
-                ZOT_WunschlisteRow rowZOT_WunschlisteRow = ((ZOT_WunschlisteRow)(this.NewRow()));
+            public ZOT_WunschlistenRow AddZOT_WunschlistenRow(int ID, string Kommentar, PersonenRow parentPersonenRowByFK_PersonZOT_Wunschliste, RoutenRow parentRoutenRowByFK_RouteZOT_Wunschliste) {
+                ZOT_WunschlistenRow rowZOT_WunschlistenRow = ((ZOT_WunschlistenRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID_Person,
-                        ID_Sektor,
-                        ID_Route,
+                        ID,
                         Kommentar,
-                        Route_ID_Route,
-                        Route_ID_Sektor,
+                        null,
                         null};
-                if ((parentPersonRowByFK_PersonZOT_Wunschliste != null)) {
-                    columnValuesArray[6] = parentPersonRowByFK_PersonZOT_Wunschliste[0];
+                if ((parentPersonenRowByFK_PersonZOT_Wunschliste != null)) {
+                    columnValuesArray[2] = parentPersonenRowByFK_PersonZOT_Wunschliste[0];
                 }
-                rowZOT_WunschlisteRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowZOT_WunschlisteRow);
-                return rowZOT_WunschlisteRow;
+                if ((parentRoutenRowByFK_RouteZOT_Wunschliste != null)) {
+                    columnValuesArray[3] = parentRoutenRowByFK_RouteZOT_Wunschliste[0];
+                }
+                rowZOT_WunschlistenRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowZOT_WunschlistenRow);
+                return rowZOT_WunschlistenRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_WunschlisteRow FindByID_PersonID_SektorID_Route(int ID_Person, int ID_Sektor, int ID_Route) {
-                return ((ZOT_WunschlisteRow)(this.Rows.Find(new object[] {
-                            ID_Person,
-                            ID_Sektor,
-                            ID_Route})));
+            public ZOT_WunschlistenRow FindByID(int ID) {
+                return ((ZOT_WunschlistenRow)(this.Rows.Find(new object[] {
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ZOT_WunschlisteDataTable cln = ((ZOT_WunschlisteDataTable)(base.Clone()));
+                ZOT_WunschlistenDataTable cln = ((ZOT_WunschlistenDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2325,75 +2237,62 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ZOT_WunschlisteDataTable();
+                return new ZOT_WunschlistenDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnID_Person = base.Columns["ID_Person"];
-                this.columnID_Sektor = base.Columns["ID_Sektor"];
-                this.columnID_Route = base.Columns["ID_Route"];
+                this.columnID = base.Columns["ID"];
                 this.columnKommentar = base.Columns["Kommentar"];
-                this.columnRoute_ID_Route = base.Columns["Route_ID_Route"];
-                this.columnRoute_ID_Sektor = base.Columns["Route_ID_Sektor"];
-                this.columnPerson_ID_Person = base.Columns["Person_ID_Person"];
+                this.columnPersonID = base.Columns["PersonID"];
+                this.columnRouteID = base.Columns["RouteID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID_Person = new global::System.Data.DataColumn("ID_Person", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID_Person);
-                this.columnID_Sektor = new global::System.Data.DataColumn("ID_Sektor", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID_Sektor);
-                this.columnID_Route = new global::System.Data.DataColumn("ID_Route", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID_Route);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
                 this.columnKommentar = new global::System.Data.DataColumn("Kommentar", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKommentar);
-                this.columnRoute_ID_Route = new global::System.Data.DataColumn("Route_ID_Route", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRoute_ID_Route);
-                this.columnRoute_ID_Sektor = new global::System.Data.DataColumn("Route_ID_Sektor", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRoute_ID_Sektor);
-                this.columnPerson_ID_Person = new global::System.Data.DataColumn("Person_ID_Person", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPerson_ID_Person);
+                this.columnPersonID = new global::System.Data.DataColumn("PersonID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPersonID);
+                this.columnRouteID = new global::System.Data.DataColumn("RouteID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRouteID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID_Person,
-                                this.columnID_Sektor,
-                                this.columnID_Route}, true));
-                this.columnID_Person.AllowDBNull = false;
-                this.columnID_Sektor.AllowDBNull = false;
-                this.columnID_Route.AllowDBNull = false;
+                                this.columnID}, true));
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
                 this.columnKommentar.MaxLength = 2147483647;
-                this.columnRoute_ID_Route.AllowDBNull = false;
-                this.columnRoute_ID_Sektor.AllowDBNull = false;
-                this.columnPerson_ID_Person.AllowDBNull = false;
+                this.columnPersonID.AllowDBNull = false;
+                this.columnRouteID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_WunschlisteRow NewZOT_WunschlisteRow() {
-                return ((ZOT_WunschlisteRow)(this.NewRow()));
+            public ZOT_WunschlistenRow NewZOT_WunschlistenRow() {
+                return ((ZOT_WunschlistenRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ZOT_WunschlisteRow(builder);
+                return new ZOT_WunschlistenRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ZOT_WunschlisteRow);
+                return typeof(ZOT_WunschlistenRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ZOT_WunschlisteRowChanged != null)) {
-                    this.ZOT_WunschlisteRowChanged(this, new ZOT_WunschlisteRowChangeEvent(((ZOT_WunschlisteRow)(e.Row)), e.Action));
+                if ((this.ZOT_WunschlistenRowChanged != null)) {
+                    this.ZOT_WunschlistenRowChanged(this, new ZOT_WunschlistenRowChangeEvent(((ZOT_WunschlistenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2401,8 +2300,8 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ZOT_WunschlisteRowChanging != null)) {
-                    this.ZOT_WunschlisteRowChanging(this, new ZOT_WunschlisteRowChangeEvent(((ZOT_WunschlisteRow)(e.Row)), e.Action));
+                if ((this.ZOT_WunschlistenRowChanging != null)) {
+                    this.ZOT_WunschlistenRowChanging(this, new ZOT_WunschlistenRowChangeEvent(((ZOT_WunschlistenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2410,8 +2309,8 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ZOT_WunschlisteRowDeleted != null)) {
-                    this.ZOT_WunschlisteRowDeleted(this, new ZOT_WunschlisteRowChangeEvent(((ZOT_WunschlisteRow)(e.Row)), e.Action));
+                if ((this.ZOT_WunschlistenRowDeleted != null)) {
+                    this.ZOT_WunschlistenRowDeleted(this, new ZOT_WunschlistenRowChangeEvent(((ZOT_WunschlistenRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2419,14 +2318,14 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ZOT_WunschlisteRowDeleting != null)) {
-                    this.ZOT_WunschlisteRowDeleting(this, new ZOT_WunschlisteRowChangeEvent(((ZOT_WunschlisteRow)(e.Row)), e.Action));
+                if ((this.ZOT_WunschlistenRowDeleting != null)) {
+                    this.ZOT_WunschlistenRowDeleting(this, new ZOT_WunschlistenRowChangeEvent(((ZOT_WunschlistenRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveZOT_WunschlisteRow(ZOT_WunschlisteRow row) {
+            public void RemoveZOT_WunschlistenRow(ZOT_WunschlistenRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -2435,7 +2334,7 @@ namespace KletterDatenbank_MuellerPachler {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EF_KletterRoutenDataSet ds = new EF_KletterRoutenDataSet();
+                EF_DB_KletterroutenDataSet ds = new EF_DB_KletterroutenDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2453,7 +2352,7 @@ namespace KletterDatenbank_MuellerPachler {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ZOT_WunschlisteDataTable";
+                attribute2.FixedValue = "ZOT_WunschlistenDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2497,25 +2396,25 @@ namespace KletterDatenbank_MuellerPachler {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class GebietRow : global::System.Data.DataRow {
+        public partial class GebieteRow : global::System.Data.DataRow {
             
-            private GebietDataTable tableGebiet;
+            private GebieteDataTable tableGebiete;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GebietRow(global::System.Data.DataRowBuilder rb) : 
+            internal GebieteRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableGebiet = ((GebietDataTable)(this.Table));
+                this.tableGebiete = ((GebieteDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID_Gebiet {
+            public int ID {
                 get {
-                    return ((int)(this[this.tableGebiet.ID_GebietColumn]));
+                    return ((int)(this[this.tableGebiete.IDColumn]));
                 }
                 set {
-                    this[this.tableGebiet.ID_GebietColumn] = value;
+                    this[this.tableGebiete.IDColumn] = value;
                 }
             }
             
@@ -2523,10 +2422,10 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NameGebiet {
                 get {
-                    return ((string)(this[this.tableGebiet.NameGebietColumn]));
+                    return ((string)(this[this.tableGebiete.NameGebietColumn]));
                 }
                 set {
-                    this[this.tableGebiet.NameGebietColumn] = value;
+                    this[this.tableGebiete.NameGebietColumn] = value;
                 }
             }
             
@@ -2534,10 +2433,10 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Ort {
                 get {
-                    return ((string)(this[this.tableGebiet.OrtColumn]));
+                    return ((string)(this[this.tableGebiete.OrtColumn]));
                 }
                 set {
-                    this[this.tableGebiet.OrtColumn] = value;
+                    this[this.tableGebiete.OrtColumn] = value;
                 }
             }
             
@@ -2545,10 +2444,10 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int PLZ {
                 get {
-                    return ((int)(this[this.tableGebiet.PLZColumn]));
+                    return ((int)(this[this.tableGebiete.PLZColumn]));
                 }
                 set {
-                    this[this.tableGebiet.PLZColumn] = value;
+                    this[this.tableGebiete.PLZColumn] = value;
                 }
             }
             
@@ -2557,37 +2456,37 @@ namespace KletterDatenbank_MuellerPachler {
             public string GPS_Parkplatz {
                 get {
                     try {
-                        return ((string)(this[this.tableGebiet.GPS_ParkplatzColumn]));
+                        return ((string)(this[this.tableGebiete.GPS_ParkplatzColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GPS_Parkplatz\' in table \'Gebiet\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'GPS_Parkplatz\' in table \'Gebiete\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGebiet.GPS_ParkplatzColumn] = value;
+                    this[this.tableGebiete.GPS_ParkplatzColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsGPS_ParkplatzNull() {
-                return this.IsNull(this.tableGebiet.GPS_ParkplatzColumn);
+                return this.IsNull(this.tableGebiete.GPS_ParkplatzColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetGPS_ParkplatzNull() {
-                this[this.tableGebiet.GPS_ParkplatzColumn] = global::System.Convert.DBNull;
+                this[this.tableGebiete.GPS_ParkplatzColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SektorRow[] GetSektorRows() {
+            public SektorenRow[] GetSektorenRows() {
                 if ((this.Table.ChildRelations["FK_GebietSektor"] == null)) {
-                    return new SektorRow[0];
+                    return new SektorenRow[0];
                 }
                 else {
-                    return ((SektorRow[])(base.GetChildRows(this.Table.ChildRelations["FK_GebietSektor"])));
+                    return ((SektorenRow[])(base.GetChildRows(this.Table.ChildRelations["FK_GebietSektor"])));
                 }
             }
         }
@@ -2595,25 +2494,25 @@ namespace KletterDatenbank_MuellerPachler {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class PersonRow : global::System.Data.DataRow {
+        public partial class PersonenRow : global::System.Data.DataRow {
             
-            private PersonDataTable tablePerson;
+            private PersonenDataTable tablePersonen;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal PersonRow(global::System.Data.DataRowBuilder rb) : 
+            internal PersonenRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tablePerson = ((PersonDataTable)(this.Table));
+                this.tablePersonen = ((PersonenDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID_Person {
+            public int ID {
                 get {
-                    return ((int)(this[this.tablePerson.ID_PersonColumn]));
+                    return ((int)(this[this.tablePersonen.IDColumn]));
                 }
                 set {
-                    this[this.tablePerson.ID_PersonColumn] = value;
+                    this[this.tablePersonen.IDColumn] = value;
                 }
             }
             
@@ -2621,10 +2520,10 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Vorname {
                 get {
-                    return ((string)(this[this.tablePerson.VornameColumn]));
+                    return ((string)(this[this.tablePersonen.VornameColumn]));
                 }
                 set {
-                    this[this.tablePerson.VornameColumn] = value;
+                    this[this.tablePersonen.VornameColumn] = value;
                 }
             }
             
@@ -2632,10 +2531,10 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Nachname {
                 get {
-                    return ((string)(this[this.tablePerson.NachnameColumn]));
+                    return ((string)(this[this.tablePersonen.NachnameColumn]));
                 }
                 set {
-                    this[this.tablePerson.NachnameColumn] = value;
+                    this[this.tablePersonen.NachnameColumn] = value;
                 }
             }
             
@@ -2643,32 +2542,32 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime Geburtsdatum {
                 get {
-                    return ((global::System.DateTime)(this[this.tablePerson.GeburtsdatumColumn]));
+                    return ((global::System.DateTime)(this[this.tablePersonen.GeburtsdatumColumn]));
                 }
                 set {
-                    this[this.tablePerson.GeburtsdatumColumn] = value;
+                    this[this.tablePersonen.GeburtsdatumColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_DurchstiegslisteRow[] GetZOT_DurchstiegslisteRows() {
+            public ZOT_DurchstiegslistenRow[] GetZOT_DurchstiegslistenRows() {
                 if ((this.Table.ChildRelations["FK_PersonZOT_Durchstiegsliste"] == null)) {
-                    return new ZOT_DurchstiegslisteRow[0];
+                    return new ZOT_DurchstiegslistenRow[0];
                 }
                 else {
-                    return ((ZOT_DurchstiegslisteRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PersonZOT_Durchstiegsliste"])));
+                    return ((ZOT_DurchstiegslistenRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PersonZOT_Durchstiegsliste"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_WunschlisteRow[] GetZOT_WunschlisteRows() {
+            public ZOT_WunschlistenRow[] GetZOT_WunschlistenRows() {
                 if ((this.Table.ChildRelations["FK_PersonZOT_Wunschliste"] == null)) {
-                    return new ZOT_WunschlisteRow[0];
+                    return new ZOT_WunschlistenRow[0];
                 }
                 else {
-                    return ((ZOT_WunschlisteRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PersonZOT_Wunschliste"])));
+                    return ((ZOT_WunschlistenRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PersonZOT_Wunschliste"])));
                 }
             }
         }
@@ -2676,36 +2575,25 @@ namespace KletterDatenbank_MuellerPachler {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class RouteRow : global::System.Data.DataRow {
+        public partial class RoutenRow : global::System.Data.DataRow {
             
-            private RouteDataTable tableRoute;
+            private RoutenDataTable tableRouten;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RouteRow(global::System.Data.DataRowBuilder rb) : 
+            internal RoutenRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableRoute = ((RouteDataTable)(this.Table));
+                this.tableRouten = ((RoutenDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID_Route {
+            public int ID {
                 get {
-                    return ((int)(this[this.tableRoute.ID_RouteColumn]));
+                    return ((int)(this[this.tableRouten.IDColumn]));
                 }
                 set {
-                    this[this.tableRoute.ID_RouteColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID_Sektor {
-                get {
-                    return ((int)(this[this.tableRoute.ID_SektorColumn]));
-                }
-                set {
-                    this[this.tableRoute.ID_SektorColumn] = value;
+                    this[this.tableRouten.IDColumn] = value;
                 }
             }
             
@@ -2713,10 +2601,10 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Name {
                 get {
-                    return ((string)(this[this.tableRoute.NameColumn]));
+                    return ((string)(this[this.tableRouten.NameColumn]));
                 }
                 set {
-                    this[this.tableRoute.NameColumn] = value;
+                    this[this.tableRouten.NameColumn] = value;
                 }
             }
             
@@ -2724,10 +2612,10 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Schwierigkeitsgrad {
                 get {
-                    return ((string)(this[this.tableRoute.SchwierigkeitsgradColumn]));
+                    return ((string)(this[this.tableRouten.SchwierigkeitsgradColumn]));
                 }
                 set {
-                    this[this.tableRoute.SchwierigkeitsgradColumn] = value;
+                    this[this.tableRouten.SchwierigkeitsgradColumn] = value;
                 }
             }
             
@@ -2735,32 +2623,54 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IstBoulder {
                 get {
-                    return ((bool)(this[this.tableRoute.IstBoulderColumn]));
+                    return ((bool)(this[this.tableRouten.IstBoulderColumn]));
                 }
                 set {
-                    this[this.tableRoute.IstBoulderColumn] = value;
+                    this[this.tableRouten.IstBoulderColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_DurchstiegslisteRow[] GetZOT_DurchstiegslisteRows() {
+            public int SektorID {
+                get {
+                    return ((int)(this[this.tableRouten.SektorIDColumn]));
+                }
+                set {
+                    this[this.tableRouten.SektorIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SektorenRow SektorenRow {
+                get {
+                    return ((SektorenRow)(this.GetParentRow(this.Table.ParentRelations["FK_SektorRoute"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_SektorRoute"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ZOT_DurchstiegslistenRow[] GetZOT_DurchstiegslistenRows() {
                 if ((this.Table.ChildRelations["FK_RouteZOT_Durchstiegsliste"] == null)) {
-                    return new ZOT_DurchstiegslisteRow[0];
+                    return new ZOT_DurchstiegslistenRow[0];
                 }
                 else {
-                    return ((ZOT_DurchstiegslisteRow[])(base.GetChildRows(this.Table.ChildRelations["FK_RouteZOT_Durchstiegsliste"])));
+                    return ((ZOT_DurchstiegslistenRow[])(base.GetChildRows(this.Table.ChildRelations["FK_RouteZOT_Durchstiegsliste"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_WunschlisteRow[] GetZOT_WunschlisteRows() {
+            public ZOT_WunschlistenRow[] GetZOT_WunschlistenRows() {
                 if ((this.Table.ChildRelations["FK_RouteZOT_Wunschliste"] == null)) {
-                    return new ZOT_WunschlisteRow[0];
+                    return new ZOT_WunschlistenRow[0];
                 }
                 else {
-                    return ((ZOT_WunschlisteRow[])(base.GetChildRows(this.Table.ChildRelations["FK_RouteZOT_Wunschliste"])));
+                    return ((ZOT_WunschlistenRow[])(base.GetChildRows(this.Table.ChildRelations["FK_RouteZOT_Wunschliste"])));
                 }
             }
         }
@@ -2768,36 +2678,25 @@ namespace KletterDatenbank_MuellerPachler {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class SektorRow : global::System.Data.DataRow {
+        public partial class SektorenRow : global::System.Data.DataRow {
             
-            private SektorDataTable tableSektor;
+            private SektorenDataTable tableSektoren;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SektorRow(global::System.Data.DataRowBuilder rb) : 
+            internal SektorenRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableSektor = ((SektorDataTable)(this.Table));
+                this.tableSektoren = ((SektorenDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID_Sektor {
+            public int ID {
                 get {
-                    return ((int)(this[this.tableSektor.ID_SektorColumn]));
+                    return ((int)(this[this.tableSektoren.IDColumn]));
                 }
                 set {
-                    this[this.tableSektor.ID_SektorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID_Gebiet {
-                get {
-                    return ((int)(this[this.tableSektor.ID_GebietColumn]));
-                }
-                set {
-                    this[this.tableSektor.ID_GebietColumn] = value;
+                    this[this.tableSektoren.IDColumn] = value;
                 }
             }
             
@@ -2805,10 +2704,10 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NameSektor {
                 get {
-                    return ((string)(this[this.tableSektor.NameSektorColumn]));
+                    return ((string)(this[this.tableSektoren.NameSektorColumn]));
                 }
                 set {
-                    this[this.tableSektor.NameSektorColumn] = value;
+                    this[this.tableSektoren.NameSektorColumn] = value;
                 }
             }
             
@@ -2817,33 +2716,33 @@ namespace KletterDatenbank_MuellerPachler {
             public string GPS_Exakt {
                 get {
                     try {
-                        return ((string)(this[this.tableSektor.GPS_ExaktColumn]));
+                        return ((string)(this[this.tableSektoren.GPS_ExaktColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GPS_Exakt\' in table \'Sektor\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'GPS_Exakt\' in table \'Sektoren\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSektor.GPS_ExaktColumn] = value;
+                    this[this.tableSektoren.GPS_ExaktColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Gebiet_ID_Gebiet {
+            public int GebietID {
                 get {
-                    return ((int)(this[this.tableSektor.Gebiet_ID_GebietColumn]));
+                    return ((int)(this[this.tableSektoren.GebietIDColumn]));
                 }
                 set {
-                    this[this.tableSektor.Gebiet_ID_GebietColumn] = value;
+                    this[this.tableSektoren.GebietIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GebietRow GebietRow {
+            public GebieteRow GebieteRow {
                 get {
-                    return ((GebietRow)(this.GetParentRow(this.Table.ParentRelations["FK_GebietSektor"])));
+                    return ((GebieteRow)(this.GetParentRow(this.Table.ParentRelations["FK_GebietSektor"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_GebietSektor"]);
@@ -2853,60 +2752,49 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsGPS_ExaktNull() {
-                return this.IsNull(this.tableSektor.GPS_ExaktColumn);
+                return this.IsNull(this.tableSektoren.GPS_ExaktColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetGPS_ExaktNull() {
-                this[this.tableSektor.GPS_ExaktColumn] = global::System.Convert.DBNull;
+                this[this.tableSektoren.GPS_ExaktColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RoutenRow[] GetRoutenRows() {
+                if ((this.Table.ChildRelations["FK_SektorRoute"] == null)) {
+                    return new RoutenRow[0];
+                }
+                else {
+                    return ((RoutenRow[])(base.GetChildRows(this.Table.ChildRelations["FK_SektorRoute"])));
+                }
             }
         }
         
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ZOT_DurchstiegslisteRow : global::System.Data.DataRow {
+        public partial class ZOT_DurchstiegslistenRow : global::System.Data.DataRow {
             
-            private ZOT_DurchstiegslisteDataTable tableZOT_Durchstiegsliste;
+            private ZOT_DurchstiegslistenDataTable tableZOT_Durchstiegslisten;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ZOT_DurchstiegslisteRow(global::System.Data.DataRowBuilder rb) : 
+            internal ZOT_DurchstiegslistenRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableZOT_Durchstiegsliste = ((ZOT_DurchstiegslisteDataTable)(this.Table));
+                this.tableZOT_Durchstiegslisten = ((ZOT_DurchstiegslistenDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID_Person {
+            public int ID {
                 get {
-                    return ((int)(this[this.tableZOT_Durchstiegsliste.ID_PersonColumn]));
+                    return ((int)(this[this.tableZOT_Durchstiegslisten.IDColumn]));
                 }
                 set {
-                    this[this.tableZOT_Durchstiegsliste.ID_PersonColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID_Sektor {
-                get {
-                    return ((int)(this[this.tableZOT_Durchstiegsliste.ID_SektorColumn]));
-                }
-                set {
-                    this[this.tableZOT_Durchstiegsliste.ID_SektorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID_Route {
-                get {
-                    return ((int)(this[this.tableZOT_Durchstiegsliste.ID_RouteColumn]));
-                }
-                set {
-                    this[this.tableZOT_Durchstiegsliste.ID_RouteColumn] = value;
+                    this[this.tableZOT_Durchstiegslisten.IDColumn] = value;
                 }
             }
             
@@ -2915,14 +2803,14 @@ namespace KletterDatenbank_MuellerPachler {
             public string Kommentar {
                 get {
                     try {
-                        return ((string)(this[this.tableZOT_Durchstiegsliste.KommentarColumn]));
+                        return ((string)(this[this.tableZOT_Durchstiegslisten.KommentarColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Kommentar\' in table \'ZOT_Durchstiegsliste\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Kommentar\' in table \'ZOT_Durchstiegslisten\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableZOT_Durchstiegsliste.KommentarColumn] = value;
+                    this[this.tableZOT_Durchstiegslisten.KommentarColumn] = value;
                 }
             }
             
@@ -2930,51 +2818,40 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime Durchstiegsdatum {
                 get {
-                    return ((global::System.DateTime)(this[this.tableZOT_Durchstiegsliste.DurchstiegsdatumColumn]));
+                    return ((global::System.DateTime)(this[this.tableZOT_Durchstiegslisten.DurchstiegsdatumColumn]));
                 }
                 set {
-                    this[this.tableZOT_Durchstiegsliste.DurchstiegsdatumColumn] = value;
+                    this[this.tableZOT_Durchstiegslisten.DurchstiegsdatumColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Route_ID_Route {
+            public int PersonID {
                 get {
-                    return ((int)(this[this.tableZOT_Durchstiegsliste.Route_ID_RouteColumn]));
+                    return ((int)(this[this.tableZOT_Durchstiegslisten.PersonIDColumn]));
                 }
                 set {
-                    this[this.tableZOT_Durchstiegsliste.Route_ID_RouteColumn] = value;
+                    this[this.tableZOT_Durchstiegslisten.PersonIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Route_ID_Sektor {
+            public int RouteID {
                 get {
-                    return ((int)(this[this.tableZOT_Durchstiegsliste.Route_ID_SektorColumn]));
+                    return ((int)(this[this.tableZOT_Durchstiegslisten.RouteIDColumn]));
                 }
                 set {
-                    this[this.tableZOT_Durchstiegsliste.Route_ID_SektorColumn] = value;
+                    this[this.tableZOT_Durchstiegslisten.RouteIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Person_ID_Person {
+            public PersonenRow PersonenRow {
                 get {
-                    return ((int)(this[this.tableZOT_Durchstiegsliste.Person_ID_PersonColumn]));
-                }
-                set {
-                    this[this.tableZOT_Durchstiegsliste.Person_ID_PersonColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PersonRow PersonRow {
-                get {
-                    return ((PersonRow)(this.GetParentRow(this.Table.ParentRelations["FK_PersonZOT_Durchstiegsliste"])));
+                    return ((PersonenRow)(this.GetParentRow(this.Table.ParentRelations["FK_PersonZOT_Durchstiegsliste"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_PersonZOT_Durchstiegsliste"]);
@@ -2983,9 +2860,9 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RouteRow RouteRowParent {
+            public RoutenRow RoutenRow {
                 get {
-                    return ((RouteRow)(this.GetParentRow(this.Table.ParentRelations["FK_RouteZOT_Durchstiegsliste"])));
+                    return ((RoutenRow)(this.GetParentRow(this.Table.ParentRelations["FK_RouteZOT_Durchstiegsliste"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_RouteZOT_Durchstiegsliste"]);
@@ -2995,60 +2872,38 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsKommentarNull() {
-                return this.IsNull(this.tableZOT_Durchstiegsliste.KommentarColumn);
+                return this.IsNull(this.tableZOT_Durchstiegslisten.KommentarColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetKommentarNull() {
-                this[this.tableZOT_Durchstiegsliste.KommentarColumn] = global::System.Convert.DBNull;
+                this[this.tableZOT_Durchstiegslisten.KommentarColumn] = global::System.Convert.DBNull;
             }
         }
         
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ZOT_WunschlisteRow : global::System.Data.DataRow {
+        public partial class ZOT_WunschlistenRow : global::System.Data.DataRow {
             
-            private ZOT_WunschlisteDataTable tableZOT_Wunschliste;
+            private ZOT_WunschlistenDataTable tableZOT_Wunschlisten;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ZOT_WunschlisteRow(global::System.Data.DataRowBuilder rb) : 
+            internal ZOT_WunschlistenRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableZOT_Wunschliste = ((ZOT_WunschlisteDataTable)(this.Table));
+                this.tableZOT_Wunschlisten = ((ZOT_WunschlistenDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID_Person {
+            public int ID {
                 get {
-                    return ((int)(this[this.tableZOT_Wunschliste.ID_PersonColumn]));
+                    return ((int)(this[this.tableZOT_Wunschlisten.IDColumn]));
                 }
                 set {
-                    this[this.tableZOT_Wunschliste.ID_PersonColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID_Sektor {
-                get {
-                    return ((int)(this[this.tableZOT_Wunschliste.ID_SektorColumn]));
-                }
-                set {
-                    this[this.tableZOT_Wunschliste.ID_SektorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID_Route {
-                get {
-                    return ((int)(this[this.tableZOT_Wunschliste.ID_RouteColumn]));
-                }
-                set {
-                    this[this.tableZOT_Wunschliste.ID_RouteColumn] = value;
+                    this[this.tableZOT_Wunschlisten.IDColumn] = value;
                 }
             }
             
@@ -3057,55 +2912,44 @@ namespace KletterDatenbank_MuellerPachler {
             public string Kommentar {
                 get {
                     try {
-                        return ((string)(this[this.tableZOT_Wunschliste.KommentarColumn]));
+                        return ((string)(this[this.tableZOT_Wunschlisten.KommentarColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Kommentar\' in table \'ZOT_Wunschliste\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Kommentar\' in table \'ZOT_Wunschlisten\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableZOT_Wunschliste.KommentarColumn] = value;
+                    this[this.tableZOT_Wunschlisten.KommentarColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Route_ID_Route {
+            public int PersonID {
                 get {
-                    return ((int)(this[this.tableZOT_Wunschliste.Route_ID_RouteColumn]));
+                    return ((int)(this[this.tableZOT_Wunschlisten.PersonIDColumn]));
                 }
                 set {
-                    this[this.tableZOT_Wunschliste.Route_ID_RouteColumn] = value;
+                    this[this.tableZOT_Wunschlisten.PersonIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Route_ID_Sektor {
+            public int RouteID {
                 get {
-                    return ((int)(this[this.tableZOT_Wunschliste.Route_ID_SektorColumn]));
+                    return ((int)(this[this.tableZOT_Wunschlisten.RouteIDColumn]));
                 }
                 set {
-                    this[this.tableZOT_Wunschliste.Route_ID_SektorColumn] = value;
+                    this[this.tableZOT_Wunschlisten.RouteIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Person_ID_Person {
+            public PersonenRow PersonenRow {
                 get {
-                    return ((int)(this[this.tableZOT_Wunschliste.Person_ID_PersonColumn]));
-                }
-                set {
-                    this[this.tableZOT_Wunschliste.Person_ID_PersonColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PersonRow PersonRow {
-                get {
-                    return ((PersonRow)(this.GetParentRow(this.Table.ParentRelations["FK_PersonZOT_Wunschliste"])));
+                    return ((PersonenRow)(this.GetParentRow(this.Table.ParentRelations["FK_PersonZOT_Wunschliste"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_PersonZOT_Wunschliste"]);
@@ -3114,9 +2958,9 @@ namespace KletterDatenbank_MuellerPachler {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RouteRow RouteRowParent {
+            public RoutenRow RoutenRow {
                 get {
-                    return ((RouteRow)(this.GetParentRow(this.Table.ParentRelations["FK_RouteZOT_Wunschliste"])));
+                    return ((RoutenRow)(this.GetParentRow(this.Table.ParentRelations["FK_RouteZOT_Wunschliste"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_RouteZOT_Wunschliste"]);
@@ -3126,13 +2970,13 @@ namespace KletterDatenbank_MuellerPachler {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsKommentarNull() {
-                return this.IsNull(this.tableZOT_Wunschliste.KommentarColumn);
+                return this.IsNull(this.tableZOT_Wunschlisten.KommentarColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetKommentarNull() {
-                this[this.tableZOT_Wunschliste.KommentarColumn] = global::System.Convert.DBNull;
+                this[this.tableZOT_Wunschlisten.KommentarColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3140,22 +2984,22 @@ namespace KletterDatenbank_MuellerPachler {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class GebietRowChangeEvent : global::System.EventArgs {
+        public class GebieteRowChangeEvent : global::System.EventArgs {
             
-            private GebietRow eventRow;
+            private GebieteRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GebietRowChangeEvent(GebietRow row, global::System.Data.DataRowAction action) {
+            public GebieteRowChangeEvent(GebieteRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GebietRow Row {
+            public GebieteRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3174,22 +3018,22 @@ namespace KletterDatenbank_MuellerPachler {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class PersonRowChangeEvent : global::System.EventArgs {
+        public class PersonenRowChangeEvent : global::System.EventArgs {
             
-            private PersonRow eventRow;
+            private PersonenRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PersonRowChangeEvent(PersonRow row, global::System.Data.DataRowAction action) {
+            public PersonenRowChangeEvent(PersonenRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PersonRow Row {
+            public PersonenRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3208,22 +3052,22 @@ namespace KletterDatenbank_MuellerPachler {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class RouteRowChangeEvent : global::System.EventArgs {
+        public class RoutenRowChangeEvent : global::System.EventArgs {
             
-            private RouteRow eventRow;
+            private RoutenRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RouteRowChangeEvent(RouteRow row, global::System.Data.DataRowAction action) {
+            public RoutenRowChangeEvent(RoutenRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RouteRow Row {
+            public RoutenRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3242,22 +3086,22 @@ namespace KletterDatenbank_MuellerPachler {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class SektorRowChangeEvent : global::System.EventArgs {
+        public class SektorenRowChangeEvent : global::System.EventArgs {
             
-            private SektorRow eventRow;
+            private SektorenRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SektorRowChangeEvent(SektorRow row, global::System.Data.DataRowAction action) {
+            public SektorenRowChangeEvent(SektorenRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SektorRow Row {
+            public SektorenRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3276,22 +3120,22 @@ namespace KletterDatenbank_MuellerPachler {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class ZOT_DurchstiegslisteRowChangeEvent : global::System.EventArgs {
+        public class ZOT_DurchstiegslistenRowChangeEvent : global::System.EventArgs {
             
-            private ZOT_DurchstiegslisteRow eventRow;
+            private ZOT_DurchstiegslistenRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_DurchstiegslisteRowChangeEvent(ZOT_DurchstiegslisteRow row, global::System.Data.DataRowAction action) {
+            public ZOT_DurchstiegslistenRowChangeEvent(ZOT_DurchstiegslistenRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_DurchstiegslisteRow Row {
+            public ZOT_DurchstiegslistenRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3310,22 +3154,22 @@ namespace KletterDatenbank_MuellerPachler {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class ZOT_WunschlisteRowChangeEvent : global::System.EventArgs {
+        public class ZOT_WunschlistenRowChangeEvent : global::System.EventArgs {
             
-            private ZOT_WunschlisteRow eventRow;
+            private ZOT_WunschlistenRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_WunschlisteRowChangeEvent(ZOT_WunschlisteRow row, global::System.Data.DataRowAction action) {
+            public ZOT_WunschlistenRowChangeEvent(ZOT_WunschlistenRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZOT_WunschlisteRow Row {
+            public ZOT_WunschlistenRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3341,7 +3185,7 @@ namespace KletterDatenbank_MuellerPachler {
         }
     }
 }
-namespace KletterDatenbank_MuellerPachler.EF_KletterRoutenDataSetTableAdapters {
+namespace KletterDatenbank_MuellerPachler.EF_DB_KletterroutenDataSetTableAdapters {
     
     
     /// <summary>
@@ -3353,7 +3197,7 @@ namespace KletterDatenbank_MuellerPachler.EF_KletterRoutenDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class GebietTableAdapter : global::System.ComponentModel.Component {
+    public partial class GebieteTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -3367,7 +3211,7 @@ namespace KletterDatenbank_MuellerPachler.EF_KletterRoutenDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public GebietTableAdapter() {
+        public GebieteTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -3464,8 +3308,8 @@ namespace KletterDatenbank_MuellerPachler.EF_KletterRoutenDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Gebiet";
-            tableMapping.ColumnMappings.Add("ID_Gebiet", "ID_Gebiet");
+            tableMapping.DataSetTable = "Gebiete";
+            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("NameGebiet", "NameGebiet");
             tableMapping.ColumnMappings.Add("Ort", "Ort");
             tableMapping.ColumnMappings.Add("PLZ", "PLZ");
@@ -3473,16 +3317,16 @@ namespace KletterDatenbank_MuellerPachler.EF_KletterRoutenDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Gebiet] WHERE (([ID_Gebiet] = @Original_ID_Gebiet) AND ([PLZ] " +
-                "= @Original_PLZ))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Gebiete] WHERE (([ID] = @Original_ID) AND ([PLZ] = @Original_P" +
+                "LZ))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Gebiet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Gebiet", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PLZ", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PLZ", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Gebiet] ([NameGebiet], [Ort], [PLZ], [GPS_Parkplatz]) VALUES (" +
-                "@NameGebiet, @Ort, @PLZ, @GPS_Parkplatz);\r\nSELECT ID_Gebiet, NameGebiet, Ort, PL" +
-                "Z, GPS_Parkplatz FROM Gebiet WHERE (ID_Gebiet = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Gebiete] ([NameGebiet], [Ort], [PLZ], [GPS_Parkplatz]) VALUES " +
+                "(@NameGebiet, @Ort, @PLZ, @GPS_Parkplatz);\r\nSELECT ID, NameGebiet, Ort, PLZ, GPS" +
+                "_Parkplatz FROM Gebiete WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NameGebiet", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameGebiet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ort", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ort", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3490,23 +3334,25 @@ namespace KletterDatenbank_MuellerPachler.EF_KletterRoutenDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GPS_Parkplatz", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GPS_Parkplatz", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Gebiet] SET [NameGebiet] = @NameGebiet, [Ort] = @Ort, [PLZ] = @PLZ, [GPS_Parkplatz] = @GPS_Parkplatz WHERE (([ID_Gebiet] = @Original_ID_Gebiet) AND ([PLZ] = @Original_PLZ));
-SELECT ID_Gebiet, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM Gebiet WHERE (ID_Gebiet = @ID_Gebiet)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Gebiete] SET [NameGebiet] = @NameGebiet, [Ort] = @Ort, [PLZ] = @PLZ" +
+                ", [GPS_Parkplatz] = @GPS_Parkplatz WHERE (([ID] = @Original_ID) AND ([PLZ] = @Or" +
+                "iginal_PLZ));\r\nSELECT ID, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM Gebiete WHERE" +
+                " (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NameGebiet", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameGebiet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ort", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ort", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PLZ", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PLZ", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GPS_Parkplatz", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GPS_Parkplatz", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Gebiet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Gebiet", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PLZ", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PLZ", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Gebiet", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Gebiet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::KletterDatenbank_MuellerPachler.Properties.Settings.Default.EF_KletterRoutenConnectionString;
+            this._connection.ConnectionString = global::KletterDatenbank_MuellerPachler.Properties.Settings.Default.EF_DB_KletterroutenConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3515,7 +3361,7 @@ SELECT ID_Gebiet, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM Gebiet WHERE (ID_Gebi
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_Gebiet, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM dbo.Gebiet";
+            this._commandCollection[0].CommandText = "SELECT ID, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM dbo.Gebiete";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3523,7 +3369,7 @@ SELECT ID_Gebiet, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM Gebiet WHERE (ID_Gebi
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EF_KletterRoutenDataSet.GebietDataTable dataTable) {
+        public virtual int Fill(EF_DB_KletterroutenDataSet.GebieteDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3536,9 +3382,9 @@ SELECT ID_Gebiet, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM Gebiet WHERE (ID_Gebi
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EF_KletterRoutenDataSet.GebietDataTable GetData() {
+        public virtual EF_DB_KletterroutenDataSet.GebieteDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EF_KletterRoutenDataSet.GebietDataTable dataTable = new EF_KletterRoutenDataSet.GebietDataTable();
+            EF_DB_KletterroutenDataSet.GebieteDataTable dataTable = new EF_DB_KletterroutenDataSet.GebieteDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3546,15 +3392,15 @@ SELECT ID_Gebiet, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM Gebiet WHERE (ID_Gebi
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EF_KletterRoutenDataSet.GebietDataTable dataTable) {
+        public virtual int Update(EF_DB_KletterroutenDataSet.GebieteDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EF_KletterRoutenDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Gebiet");
+        public virtual int Update(EF_DB_KletterroutenDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Gebiete");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3576,8 +3422,8 @@ SELECT ID_Gebiet, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM Gebiet WHERE (ID_Gebi
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID_Gebiet, int Original_PLZ) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID_Gebiet));
+        public virtual int Delete(int Original_ID, int Original_PLZ) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_PLZ));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3639,7 +3485,7 @@ SELECT ID_Gebiet, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM Gebiet WHERE (ID_Gebi
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NameGebiet, string Ort, int PLZ, string GPS_Parkplatz, int Original_ID_Gebiet, int Original_PLZ, int ID_Gebiet) {
+        public virtual int Update(string NameGebiet, string Ort, int PLZ, string GPS_Parkplatz, int Original_ID, int Original_PLZ, int ID) {
             if ((NameGebiet == null)) {
                 throw new global::System.ArgumentNullException("NameGebiet");
             }
@@ -3659,9 +3505,9 @@ SELECT ID_Gebiet, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM Gebiet WHERE (ID_Gebi
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(GPS_Parkplatz));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID_Gebiet));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID));
             this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_PLZ));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(ID_Gebiet));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3682,8 +3528,8 @@ SELECT ID_Gebiet, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM Gebiet WHERE (ID_Gebi
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NameGebiet, string Ort, int PLZ, string GPS_Parkplatz, int Original_ID_Gebiet, int Original_PLZ) {
-            return this.Update(NameGebiet, Ort, PLZ, GPS_Parkplatz, Original_ID_Gebiet, Original_PLZ, Original_ID_Gebiet);
+        public virtual int Update(string NameGebiet, string Ort, int PLZ, string GPS_Parkplatz, int Original_ID, int Original_PLZ) {
+            return this.Update(NameGebiet, Ort, PLZ, GPS_Parkplatz, Original_ID, Original_PLZ, Original_ID);
         }
     }
     
@@ -3696,7 +3542,7 @@ SELECT ID_Gebiet, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM Gebiet WHERE (ID_Gebi
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class PersonTableAdapter : global::System.ComponentModel.Component {
+    public partial class PersonenTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -3710,7 +3556,7 @@ SELECT ID_Gebiet, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM Gebiet WHERE (ID_Gebi
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public PersonTableAdapter() {
+        public PersonenTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -3807,46 +3653,46 @@ SELECT ID_Gebiet, NameGebiet, Ort, PLZ, GPS_Parkplatz FROM Gebiet WHERE (ID_Gebi
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Person";
-            tableMapping.ColumnMappings.Add("ID_Person", "ID_Person");
+            tableMapping.DataSetTable = "Personen";
+            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("Vorname", "Vorname");
             tableMapping.ColumnMappings.Add("Nachname", "Nachname");
             tableMapping.ColumnMappings.Add("Geburtsdatum", "Geburtsdatum");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Person] WHERE (([ID_Person] = @Original_ID_Person) AND ([Gebur" +
-                "tsdatum] = @Original_Geburtsdatum))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Personen] WHERE (([ID] = @Original_ID) AND ([Geburtsdatum] = @" +
+                "Original_Geburtsdatum))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Person", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Geburtsdatum", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Geburtsdatum", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Person] ([Vorname], [Nachname], [Geburtsdatum]) VALUES (@Vorna" +
-                "me, @Nachname, @Geburtsdatum);\r\nSELECT ID_Person, Vorname, Nachname, Geburtsdatu" +
-                "m FROM Person WHERE (ID_Person = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Personen] ([Vorname], [Nachname], [Geburtsdatum]) VALUES (@Vor" +
+                "name, @Nachname, @Geburtsdatum);\r\nSELECT ID, Vorname, Nachname, Geburtsdatum FRO" +
+                "M Personen WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vorname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vorname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nachname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nachname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Geburtsdatum", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Geburtsdatum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Person] SET [Vorname] = @Vorname, [Nachname] = @Nachname, [Geburtsdatum] = @Geburtsdatum WHERE (([ID_Person] = @Original_ID_Person) AND ([Geburtsdatum] = @Original_Geburtsdatum));
-SELECT ID_Person, Vorname, Nachname, Geburtsdatum FROM Person WHERE (ID_Person = @ID_Person)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Personen] SET [Vorname] = @Vorname, [Nachname] = @Nachname, [Geburtsdatum] = @Geburtsdatum WHERE (([ID] = @Original_ID) AND ([Geburtsdatum] = @Original_Geburtsdatum));
+SELECT ID, Vorname, Nachname, Geburtsdatum FROM Personen WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vorname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vorname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nachname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nachname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Geburtsdatum", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Geburtsdatum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Person", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Geburtsdatum", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Geburtsdatum", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Person", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Person", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::KletterDatenbank_MuellerPachler.Properties.Settings.Default.EF_KletterRoutenConnectionString;
+            this._connection.ConnectionString = global::KletterDatenbank_MuellerPachler.Properties.Settings.Default.EF_DB_KletterroutenConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3855,7 +3701,7 @@ SELECT ID_Person, Vorname, Nachname, Geburtsdatum FROM Person WHERE (ID_Person =
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_Person, Vorname, Nachname, Geburtsdatum FROM dbo.Person";
+            this._commandCollection[0].CommandText = "SELECT ID, Vorname, Nachname, Geburtsdatum FROM dbo.Personen";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3863,7 +3709,7 @@ SELECT ID_Person, Vorname, Nachname, Geburtsdatum FROM Person WHERE (ID_Person =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EF_KletterRoutenDataSet.PersonDataTable dataTable) {
+        public virtual int Fill(EF_DB_KletterroutenDataSet.PersonenDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3876,9 +3722,9 @@ SELECT ID_Person, Vorname, Nachname, Geburtsdatum FROM Person WHERE (ID_Person =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EF_KletterRoutenDataSet.PersonDataTable GetData() {
+        public virtual EF_DB_KletterroutenDataSet.PersonenDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EF_KletterRoutenDataSet.PersonDataTable dataTable = new EF_KletterRoutenDataSet.PersonDataTable();
+            EF_DB_KletterroutenDataSet.PersonenDataTable dataTable = new EF_DB_KletterroutenDataSet.PersonenDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3886,15 +3732,15 @@ SELECT ID_Person, Vorname, Nachname, Geburtsdatum FROM Person WHERE (ID_Person =
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EF_KletterRoutenDataSet.PersonDataTable dataTable) {
+        public virtual int Update(EF_DB_KletterroutenDataSet.PersonenDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EF_KletterRoutenDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Person");
+        public virtual int Update(EF_DB_KletterroutenDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Personen");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3916,8 +3762,8 @@ SELECT ID_Person, Vorname, Nachname, Geburtsdatum FROM Person WHERE (ID_Person =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID_Person, System.DateTime Original_Geburtsdatum) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID_Person));
+        public virtual int Delete(int Original_ID, System.DateTime Original_Geburtsdatum) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_Geburtsdatum));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3973,7 +3819,7 @@ SELECT ID_Person, Vorname, Nachname, Geburtsdatum FROM Person WHERE (ID_Person =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Vorname, string Nachname, System.DateTime Geburtsdatum, int Original_ID_Person, System.DateTime Original_Geburtsdatum, int ID_Person) {
+        public virtual int Update(string Vorname, string Nachname, System.DateTime Geburtsdatum, int Original_ID, System.DateTime Original_Geburtsdatum, int ID) {
             if ((Vorname == null)) {
                 throw new global::System.ArgumentNullException("Vorname");
             }
@@ -3987,9 +3833,9 @@ SELECT ID_Person, Vorname, Nachname, Geburtsdatum FROM Person WHERE (ID_Person =
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Nachname));
             }
             this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(Geburtsdatum));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID_Person));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID));
             this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Original_Geburtsdatum));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(ID_Person));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4010,8 +3856,8 @@ SELECT ID_Person, Vorname, Nachname, Geburtsdatum FROM Person WHERE (ID_Person =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Vorname, string Nachname, System.DateTime Geburtsdatum, int Original_ID_Person, System.DateTime Original_Geburtsdatum) {
-            return this.Update(Vorname, Nachname, Geburtsdatum, Original_ID_Person, Original_Geburtsdatum, Original_ID_Person);
+        public virtual int Update(string Vorname, string Nachname, System.DateTime Geburtsdatum, int Original_ID, System.DateTime Original_Geburtsdatum) {
+            return this.Update(Vorname, Nachname, Geburtsdatum, Original_ID, Original_Geburtsdatum, Original_ID);
         }
     }
     
@@ -4024,7 +3870,7 @@ SELECT ID_Person, Vorname, Nachname, Geburtsdatum FROM Person WHERE (ID_Person =
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class RouteTableAdapter : global::System.ComponentModel.Component {
+    public partial class RoutenTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -4038,7 +3884,7 @@ SELECT ID_Person, Vorname, Nachname, Geburtsdatum FROM Person WHERE (ID_Person =
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public RouteTableAdapter() {
+        public RoutenTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -4135,50 +3981,52 @@ SELECT ID_Person, Vorname, Nachname, Geburtsdatum FROM Person WHERE (ID_Person =
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Route";
-            tableMapping.ColumnMappings.Add("ID_Route", "ID_Route");
-            tableMapping.ColumnMappings.Add("ID_Sektor", "ID_Sektor");
+            tableMapping.DataSetTable = "Routen";
+            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("Name", "Name");
             tableMapping.ColumnMappings.Add("Schwierigkeitsgrad", "Schwierigkeitsgrad");
             tableMapping.ColumnMappings.Add("IstBoulder", "IstBoulder");
+            tableMapping.ColumnMappings.Add("SektorID", "SektorID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Route] WHERE (([ID_Route] = @Original_ID_Route) AND ([ID_Sekto" +
-                "r] = @Original_ID_Sektor) AND ([IstBoulder] = @Original_IstBoulder))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Routen] WHERE (([ID] = @Original_ID) AND ([IstBoulder] = @Orig" +
+                "inal_IstBoulder) AND ([SektorID] = @Original_SektorID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Route", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IstBoulder", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstBoulder", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SektorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SektorID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Route] ([ID_Sektor], [Name], [Schwierigkeitsgrad], [IstBoulder]) VALUES (@ID_Sektor, @Name, @Schwierigkeitsgrad, @IstBoulder);
-SELECT ID_Route, ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder FROM Route WHERE (ID_Route = SCOPE_IDENTITY()) AND (ID_Sektor = @ID_Sektor)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Routen] ([Name], [Schwierigkeitsgrad], [IstBoulder], [SektorID" +
+                "]) VALUES (@Name, @Schwierigkeitsgrad, @IstBoulder, @SektorID);\r\nSELECT ID, Name" +
+                ", Schwierigkeitsgrad, IstBoulder, SektorID FROM Routen WHERE (ID = SCOPE_IDENTIT" +
+                "Y())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schwierigkeitsgrad", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Schwierigkeitsgrad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IstBoulder", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstBoulder", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SektorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SektorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Route] SET [ID_Sektor] = @ID_Sektor, [Name] = @Name, [Schwierigkeitsgrad] = @Schwierigkeitsgrad, [IstBoulder] = @IstBoulder WHERE (([ID_Route] = @Original_ID_Route) AND ([ID_Sektor] = @Original_ID_Sektor) AND ([IstBoulder] = @Original_IstBoulder));
-SELECT ID_Route, ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder FROM Route WHERE (ID_Route = @ID_Route) AND (ID_Sektor = @ID_Sektor)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Routen] SET [Name] = @Name, [Schwierigkeitsgrad] = @Schwierigkeitsgrad, [IstBoulder] = @IstBoulder, [SektorID] = @SektorID WHERE (([ID] = @Original_ID) AND ([IstBoulder] = @Original_IstBoulder) AND ([SektorID] = @Original_SektorID));
+SELECT ID, Name, Schwierigkeitsgrad, IstBoulder, SektorID FROM Routen WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schwierigkeitsgrad", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Schwierigkeitsgrad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IstBoulder", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstBoulder", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Route", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SektorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SektorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IstBoulder", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IstBoulder", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Route", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Route", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SektorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SektorID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::KletterDatenbank_MuellerPachler.Properties.Settings.Default.EF_KletterRoutenConnectionString;
+            this._connection.ConnectionString = global::KletterDatenbank_MuellerPachler.Properties.Settings.Default.EF_DB_KletterroutenConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4187,7 +4035,7 @@ SELECT ID_Route, ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder FROM Route WHER
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_Route, ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder FROM dbo.Route";
+            this._commandCollection[0].CommandText = "SELECT ID, Name, Schwierigkeitsgrad, IstBoulder, SektorID FROM dbo.Routen";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4195,7 +4043,7 @@ SELECT ID_Route, ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder FROM Route WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EF_KletterRoutenDataSet.RouteDataTable dataTable) {
+        public virtual int Fill(EF_DB_KletterroutenDataSet.RoutenDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4208,9 +4056,9 @@ SELECT ID_Route, ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder FROM Route WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EF_KletterRoutenDataSet.RouteDataTable GetData() {
+        public virtual EF_DB_KletterroutenDataSet.RoutenDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EF_KletterRoutenDataSet.RouteDataTable dataTable = new EF_KletterRoutenDataSet.RouteDataTable();
+            EF_DB_KletterroutenDataSet.RoutenDataTable dataTable = new EF_DB_KletterroutenDataSet.RoutenDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4218,15 +4066,15 @@ SELECT ID_Route, ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder FROM Route WHER
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EF_KletterRoutenDataSet.RouteDataTable dataTable) {
+        public virtual int Update(EF_DB_KletterroutenDataSet.RoutenDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EF_KletterRoutenDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Route");
+        public virtual int Update(EF_DB_KletterroutenDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Routen");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4248,10 +4096,10 @@ SELECT ID_Route, ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder FROM Route WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID_Route, int Original_ID_Sektor, bool Original_IstBoulder) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID_Route));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_ID_Sektor));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((bool)(Original_IstBoulder));
+        public virtual int Delete(int Original_ID, bool Original_IstBoulder, int Original_SektorID) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((bool)(Original_IstBoulder));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_SektorID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4272,21 +4120,21 @@ SELECT ID_Route, ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder FROM Route WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int ID_Sektor, string Name, string Schwierigkeitsgrad, bool IstBoulder) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ID_Sektor));
+        public virtual int Insert(string Name, string Schwierigkeitsgrad, bool IstBoulder, int SektorID) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Name));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Name));
             }
             if ((Schwierigkeitsgrad == null)) {
                 throw new global::System.ArgumentNullException("Schwierigkeitsgrad");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Schwierigkeitsgrad));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Schwierigkeitsgrad));
             }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(IstBoulder));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(IstBoulder));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(SektorID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4307,25 +4155,25 @@ SELECT ID_Route, ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder FROM Route WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ID_Sektor, string Name, string Schwierigkeitsgrad, bool IstBoulder, int Original_ID_Route, int Original_ID_Sektor, bool Original_IstBoulder, int ID_Route) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ID_Sektor));
+        public virtual int Update(string Name, string Schwierigkeitsgrad, bool IstBoulder, int SektorID, int Original_ID, bool Original_IstBoulder, int Original_SektorID, int ID) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Name));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Name));
             }
             if ((Schwierigkeitsgrad == null)) {
                 throw new global::System.ArgumentNullException("Schwierigkeitsgrad");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Schwierigkeitsgrad));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Schwierigkeitsgrad));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(IstBoulder));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID_Route));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_ID_Sektor));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((bool)(Original_IstBoulder));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(ID_Route));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((bool)(IstBoulder));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(SektorID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((bool)(Original_IstBoulder));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_SektorID));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4346,8 +4194,8 @@ SELECT ID_Route, ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder FROM Route WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, string Schwierigkeitsgrad, bool IstBoulder, int Original_ID_Route, int Original_ID_Sektor, bool Original_IstBoulder) {
-            return this.Update(Original_ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder, Original_ID_Route, Original_ID_Sektor, Original_IstBoulder, Original_ID_Route);
+        public virtual int Update(string Name, string Schwierigkeitsgrad, bool IstBoulder, int SektorID, int Original_ID, bool Original_IstBoulder, int Original_SektorID) {
+            return this.Update(Name, Schwierigkeitsgrad, IstBoulder, SektorID, Original_ID, Original_IstBoulder, Original_SektorID, Original_ID);
         }
     }
     
@@ -4360,7 +4208,7 @@ SELECT ID_Route, ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder FROM Route WHER
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class SektorTableAdapter : global::System.ComponentModel.Component {
+    public partial class SektorenTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -4374,7 +4222,7 @@ SELECT ID_Route, ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder FROM Route WHER
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public SektorTableAdapter() {
+        public SektorenTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -4471,51 +4319,48 @@ SELECT ID_Route, ID_Sektor, Name, Schwierigkeitsgrad, IstBoulder FROM Route WHER
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Sektor";
-            tableMapping.ColumnMappings.Add("ID_Sektor", "ID_Sektor");
-            tableMapping.ColumnMappings.Add("ID_Gebiet", "ID_Gebiet");
+            tableMapping.DataSetTable = "Sektoren";
+            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("NameSektor", "NameSektor");
             tableMapping.ColumnMappings.Add("GPS_Exakt", "GPS_Exakt");
-            tableMapping.ColumnMappings.Add("Gebiet_ID_Gebiet", "Gebiet_ID_Gebiet");
+            tableMapping.ColumnMappings.Add("GebietID", "GebietID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Sektor] WHERE (([ID_Sektor] = @Original_ID_Sektor) AND ([ID_Ge" +
-                "biet] = @Original_ID_Gebiet) AND ([Gebiet_ID_Gebiet] = @Original_Gebiet_ID_Gebie" +
-                "t))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Sektoren] WHERE (([ID] = @Original_ID) AND ([GebietID] = @Orig" +
+                "inal_GebietID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Gebiet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Gebiet", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Gebiet_ID_Gebiet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gebiet_ID_Gebiet", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GebietID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GebietID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Sektor] ([ID_Gebiet], [NameSektor], [GPS_Exakt], [Gebiet_ID_Gebiet]) VALUES (@ID_Gebiet, @NameSektor, @GPS_Exakt, @Gebiet_ID_Gebiet);
-SELECT ID_Sektor, ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet FROM Sektor WHERE (ID_Gebiet = @ID_Gebiet) AND (ID_Sektor = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Sektoren] ([NameSektor], [GPS_Exakt], [GebietID]) VALUES (@Nam" +
+                "eSektor, @GPS_Exakt, @GebietID);\r\nSELECT ID, NameSektor, GPS_Exakt, GebietID FRO" +
+                "M Sektoren WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Gebiet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Gebiet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NameSektor", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameSektor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GPS_Exakt", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GPS_Exakt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gebiet_ID_Gebiet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gebiet_ID_Gebiet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GebietID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GebietID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Sektor] SET [ID_Gebiet] = @ID_Gebiet, [NameSektor] = @NameSektor, [GPS_Exakt] = @GPS_Exakt, [Gebiet_ID_Gebiet] = @Gebiet_ID_Gebiet WHERE (([ID_Sektor] = @Original_ID_Sektor) AND ([ID_Gebiet] = @Original_ID_Gebiet) AND ([Gebiet_ID_Gebiet] = @Original_Gebiet_ID_Gebiet));
-SELECT ID_Sektor, ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet FROM Sektor WHERE (ID_Gebiet = @ID_Gebiet) AND (ID_Sektor = @ID_Sektor)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Sektoren] SET [NameSektor] = @NameSektor, [GPS_Exakt] = @GPS_Exakt," +
+                " [GebietID] = @GebietID WHERE (([ID] = @Original_ID) AND ([GebietID] = @Original" +
+                "_GebietID));\r\nSELECT ID, NameSektor, GPS_Exakt, GebietID FROM Sektoren WHERE (ID" +
+                " = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Gebiet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Gebiet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NameSektor", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameSektor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GPS_Exakt", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GPS_Exakt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gebiet_ID_Gebiet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gebiet_ID_Gebiet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Gebiet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Gebiet", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Gebiet_ID_Gebiet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gebiet_ID_Gebiet", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Sektor", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GebietID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GebietID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GebietID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GebietID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::KletterDatenbank_MuellerPachler.Properties.Settings.Default.EF_KletterRoutenConnectionString;
+            this._connection.ConnectionString = global::KletterDatenbank_MuellerPachler.Properties.Settings.Default.EF_DB_KletterroutenConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4524,8 +4369,7 @@ SELECT ID_Sektor, ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet FROM Sektor
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_Sektor, ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet FROM dbo.Sek" +
-                "tor";
+            this._commandCollection[0].CommandText = "SELECT ID, NameSektor, GPS_Exakt, GebietID FROM dbo.Sektoren";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4533,7 +4377,7 @@ SELECT ID_Sektor, ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet FROM Sektor
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EF_KletterRoutenDataSet.SektorDataTable dataTable) {
+        public virtual int Fill(EF_DB_KletterroutenDataSet.SektorenDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4546,9 +4390,9 @@ SELECT ID_Sektor, ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet FROM Sektor
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EF_KletterRoutenDataSet.SektorDataTable GetData() {
+        public virtual EF_DB_KletterroutenDataSet.SektorenDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EF_KletterRoutenDataSet.SektorDataTable dataTable = new EF_KletterRoutenDataSet.SektorDataTable();
+            EF_DB_KletterroutenDataSet.SektorenDataTable dataTable = new EF_DB_KletterroutenDataSet.SektorenDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4556,15 +4400,15 @@ SELECT ID_Sektor, ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet FROM Sektor
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EF_KletterRoutenDataSet.SektorDataTable dataTable) {
+        public virtual int Update(EF_DB_KletterroutenDataSet.SektorenDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EF_KletterRoutenDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Sektor");
+        public virtual int Update(EF_DB_KletterroutenDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Sektoren");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4586,10 +4430,9 @@ SELECT ID_Sektor, ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet FROM Sektor
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID_Sektor, int Original_ID_Gebiet, int Original_Gebiet_ID_Gebiet) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID_Sektor));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_ID_Gebiet));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Gebiet_ID_Gebiet));
+        public virtual int Delete(int Original_ID, int Original_GebietID) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_GebietID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4610,21 +4453,20 @@ SELECT ID_Sektor, ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet FROM Sektor
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int ID_Gebiet, string NameSektor, string GPS_Exakt, int Gebiet_ID_Gebiet) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ID_Gebiet));
+        public virtual int Insert(string NameSektor, string GPS_Exakt, int GebietID) {
             if ((NameSektor == null)) {
                 throw new global::System.ArgumentNullException("NameSektor");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(NameSektor));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(NameSektor));
             }
             if ((GPS_Exakt == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(GPS_Exakt));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(GPS_Exakt));
             }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(Gebiet_ID_Gebiet));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(GebietID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4645,25 +4487,23 @@ SELECT ID_Sektor, ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet FROM Sektor
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ID_Gebiet, string NameSektor, string GPS_Exakt, int Gebiet_ID_Gebiet, int Original_ID_Sektor, int Original_ID_Gebiet, int Original_Gebiet_ID_Gebiet, int ID_Sektor) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ID_Gebiet));
+        public virtual int Update(string NameSektor, string GPS_Exakt, int GebietID, int Original_ID, int Original_GebietID, int ID) {
             if ((NameSektor == null)) {
                 throw new global::System.ArgumentNullException("NameSektor");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(NameSektor));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(NameSektor));
             }
             if ((GPS_Exakt == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(GPS_Exakt));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(GPS_Exakt));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Gebiet_ID_Gebiet));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID_Sektor));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_ID_Gebiet));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Gebiet_ID_Gebiet));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(ID_Sektor));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(GebietID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_GebietID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4684,8 +4524,8 @@ SELECT ID_Sektor, ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet FROM Sektor
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NameSektor, string GPS_Exakt, int Gebiet_ID_Gebiet, int Original_ID_Sektor, int Original_ID_Gebiet, int Original_Gebiet_ID_Gebiet) {
-            return this.Update(Original_ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet, Original_ID_Sektor, Original_ID_Gebiet, Original_Gebiet_ID_Gebiet, Original_ID_Sektor);
+        public virtual int Update(string NameSektor, string GPS_Exakt, int GebietID, int Original_ID, int Original_GebietID) {
+            return this.Update(NameSektor, GPS_Exakt, GebietID, Original_ID, Original_GebietID, Original_ID);
         }
     }
     
@@ -4698,7 +4538,7 @@ SELECT ID_Sektor, ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet FROM Sektor
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ZOT_DurchstiegslisteTableAdapter : global::System.ComponentModel.Component {
+    public partial class ZOT_DurchstiegslistenTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -4712,7 +4552,7 @@ SELECT ID_Sektor, ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet FROM Sektor
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public ZOT_DurchstiegslisteTableAdapter() {
+        public ZOT_DurchstiegslistenTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -4809,67 +4649,54 @@ SELECT ID_Sektor, ID_Gebiet, NameSektor, GPS_Exakt, Gebiet_ID_Gebiet FROM Sektor
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "ZOT_Durchstiegsliste";
-            tableMapping.ColumnMappings.Add("ID_Person", "ID_Person");
-            tableMapping.ColumnMappings.Add("ID_Sektor", "ID_Sektor");
-            tableMapping.ColumnMappings.Add("ID_Route", "ID_Route");
+            tableMapping.DataSetTable = "ZOT_Durchstiegslisten";
+            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("Kommentar", "Kommentar");
             tableMapping.ColumnMappings.Add("Durchstiegsdatum", "Durchstiegsdatum");
-            tableMapping.ColumnMappings.Add("Route_ID_Route", "Route_ID_Route");
-            tableMapping.ColumnMappings.Add("Route_ID_Sektor", "Route_ID_Sektor");
-            tableMapping.ColumnMappings.Add("Person_ID_Person", "Person_ID_Person");
+            tableMapping.ColumnMappings.Add("PersonID", "PersonID");
+            tableMapping.ColumnMappings.Add("RouteID", "RouteID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[ZOT_Durchstiegsliste] WHERE (([ID_Person] = @Original_ID_Person) AND ([ID_Sektor] = @Original_ID_Sektor) AND ([ID_Route] = @Original_ID_Route) AND ([Durchstiegsdatum] = @Original_Durchstiegsdatum) AND ([Route_ID_Route] = @Original_Route_ID_Route) AND ([Route_ID_Sektor] = @Original_Route_ID_Sektor) AND ([Person_ID_Person] = @Original_Person_ID_Person))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[ZOT_Durchstiegslisten] WHERE (([ID] = @Original_ID) AND ([Durc" +
+                "hstiegsdatum] = @Original_Durchstiegsdatum) AND ([PersonID] = @Original_PersonID" +
+                ") AND ([RouteID] = @Original_RouteID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Person", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Route", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Durchstiegsdatum", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Durchstiegsdatum", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Route_ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Route", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Route_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Sektor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Person_ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Person_ID_Person", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PersonID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RouteID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RouteID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ZOT_Durchstiegsliste] ([ID_Person], [ID_Sektor], [ID_Route], [Kommentar], [Durchstiegsdatum], [Route_ID_Route], [Route_ID_Sektor], [Person_ID_Person]) VALUES (@ID_Person, @ID_Sektor, @ID_Route, @Kommentar, @Durchstiegsdatum, @Route_ID_Route, @Route_ID_Sektor, @Person_ID_Person);
-SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Route, Route_ID_Sektor, Person_ID_Person FROM ZOT_Durchstiegsliste WHERE (ID_Person = @ID_Person) AND (ID_Route = @ID_Route) AND (ID_Sektor = @ID_Sektor)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ZOT_Durchstiegslisten] ([ID], [Kommentar], [Durchstiegsdatum], [PersonID], [RouteID]) VALUES (@ID, @Kommentar, @Durchstiegsdatum, @PersonID, @RouteID);
+SELECT ID, Kommentar, Durchstiegsdatum, PersonID, RouteID FROM ZOT_Durchstiegslisten WHERE (ID = @ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Person", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Route", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kommentar", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kommentar", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Durchstiegsdatum", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Durchstiegsdatum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Route_ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Route", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Route_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Sektor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Person_ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Person_ID_Person", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PersonID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RouteID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RouteID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[ZOT_Durchstiegsliste] SET [ID_Person] = @ID_Person, [ID_Sektor] = @ID_Sektor, [ID_Route] = @ID_Route, [Kommentar] = @Kommentar, [Durchstiegsdatum] = @Durchstiegsdatum, [Route_ID_Route] = @Route_ID_Route, [Route_ID_Sektor] = @Route_ID_Sektor, [Person_ID_Person] = @Person_ID_Person WHERE (([ID_Person] = @Original_ID_Person) AND ([ID_Sektor] = @Original_ID_Sektor) AND ([ID_Route] = @Original_ID_Route) AND ([Durchstiegsdatum] = @Original_Durchstiegsdatum) AND ([Route_ID_Route] = @Original_Route_ID_Route) AND ([Route_ID_Sektor] = @Original_Route_ID_Sektor) AND ([Person_ID_Person] = @Original_Person_ID_Person));
-SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Route, Route_ID_Sektor, Person_ID_Person FROM ZOT_Durchstiegsliste WHERE (ID_Person = @ID_Person) AND (ID_Route = @ID_Route) AND (ID_Sektor = @ID_Sektor)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[ZOT_Durchstiegslisten] SET [ID] = @ID, [Kommentar] = @Kommentar, [Durchstiegsdatum] = @Durchstiegsdatum, [PersonID] = @PersonID, [RouteID] = @RouteID WHERE (([ID] = @Original_ID) AND ([Durchstiegsdatum] = @Original_Durchstiegsdatum) AND ([PersonID] = @Original_PersonID) AND ([RouteID] = @Original_RouteID));
+SELECT ID, Kommentar, Durchstiegsdatum, PersonID, RouteID FROM ZOT_Durchstiegslisten WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Person", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Route", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kommentar", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kommentar", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Durchstiegsdatum", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Durchstiegsdatum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Route_ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Route", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Route_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Sektor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Person_ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Person_ID_Person", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Person", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Route", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PersonID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RouteID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RouteID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Durchstiegsdatum", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Durchstiegsdatum", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Route_ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Route", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Route_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Sektor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Person_ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Person_ID_Person", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PersonID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RouteID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RouteID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::KletterDatenbank_MuellerPachler.Properties.Settings.Default.EF_KletterRoutenConnectionString;
+            this._connection.ConnectionString = global::KletterDatenbank_MuellerPachler.Properties.Settings.Default.EF_DB_KletterroutenConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4878,8 +4705,8 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Rou
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Rout" +
-                "e, Route_ID_Sektor, Person_ID_Person FROM dbo.ZOT_Durchstiegsliste";
+            this._commandCollection[0].CommandText = "SELECT ID, Kommentar, Durchstiegsdatum, PersonID, RouteID FROM dbo.ZOT_Durchstieg" +
+                "slisten";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4887,7 +4714,7 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Rou
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EF_KletterRoutenDataSet.ZOT_DurchstiegslisteDataTable dataTable) {
+        public virtual int Fill(EF_DB_KletterroutenDataSet.ZOT_DurchstiegslistenDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4900,9 +4727,9 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Rou
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EF_KletterRoutenDataSet.ZOT_DurchstiegslisteDataTable GetData() {
+        public virtual EF_DB_KletterroutenDataSet.ZOT_DurchstiegslistenDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EF_KletterRoutenDataSet.ZOT_DurchstiegslisteDataTable dataTable = new EF_KletterRoutenDataSet.ZOT_DurchstiegslisteDataTable();
+            EF_DB_KletterroutenDataSet.ZOT_DurchstiegslistenDataTable dataTable = new EF_DB_KletterroutenDataSet.ZOT_DurchstiegslistenDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4910,15 +4737,15 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Rou
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EF_KletterRoutenDataSet.ZOT_DurchstiegslisteDataTable dataTable) {
+        public virtual int Update(EF_DB_KletterroutenDataSet.ZOT_DurchstiegslistenDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EF_KletterRoutenDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "ZOT_Durchstiegsliste");
+        public virtual int Update(EF_DB_KletterroutenDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "ZOT_Durchstiegslisten");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4940,14 +4767,11 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Rou
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID_Person, int Original_ID_Sektor, int Original_ID_Route, System.DateTime Original_Durchstiegsdatum, int Original_Route_ID_Route, int Original_Route_ID_Sektor, int Original_Person_ID_Person) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID_Person));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_ID_Sektor));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_ID_Route));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(Original_Durchstiegsdatum));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_Route_ID_Route));
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_Route_ID_Sektor));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_Person_ID_Person));
+        public virtual int Delete(int Original_ID, System.DateTime Original_Durchstiegsdatum, int Original_PersonID, int Original_RouteID) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_Durchstiegsdatum));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_PersonID));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_RouteID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4968,20 +4792,17 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Rou
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int ID_Person, int ID_Sektor, int ID_Route, string Kommentar, System.DateTime Durchstiegsdatum, int Route_ID_Route, int Route_ID_Sektor, int Person_ID_Person) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ID_Person));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(ID_Sektor));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(ID_Route));
+        public virtual int Insert(int ID, string Kommentar, System.DateTime Durchstiegsdatum, int PersonID, int RouteID) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ID));
             if ((Kommentar == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Kommentar));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Kommentar));
             }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(Durchstiegsdatum));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(Route_ID_Route));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(Route_ID_Sektor));
-            this.Adapter.InsertCommand.Parameters[7].Value = ((int)(Person_ID_Person));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(Durchstiegsdatum));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(PersonID));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(RouteID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5002,27 +4823,21 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Rou
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ID_Person, int ID_Sektor, int ID_Route, string Kommentar, System.DateTime Durchstiegsdatum, int Route_ID_Route, int Route_ID_Sektor, int Person_ID_Person, int Original_ID_Person, int Original_ID_Sektor, int Original_ID_Route, System.DateTime Original_Durchstiegsdatum, int Original_Route_ID_Route, int Original_Route_ID_Sektor, int Original_Person_ID_Person) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ID_Person));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(ID_Sektor));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(ID_Route));
+        public virtual int Update(int ID, string Kommentar, System.DateTime Durchstiegsdatum, int PersonID, int RouteID, int Original_ID, System.DateTime Original_Durchstiegsdatum, int Original_PersonID, int Original_RouteID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ID));
             if ((Kommentar == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Kommentar));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Kommentar));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Durchstiegsdatum));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Route_ID_Route));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Route_ID_Sektor));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Person_ID_Person));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_ID_Person));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_ID_Sektor));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_ID_Route));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(Original_Durchstiegsdatum));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_Route_ID_Route));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_Route_ID_Sektor));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_Person_ID_Person));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(Durchstiegsdatum));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(PersonID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(RouteID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Original_Durchstiegsdatum));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_PersonID));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_RouteID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5043,8 +4858,8 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Rou
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Kommentar, System.DateTime Durchstiegsdatum, int Route_ID_Route, int Route_ID_Sektor, int Person_ID_Person, int Original_ID_Person, int Original_ID_Sektor, int Original_ID_Route, System.DateTime Original_Durchstiegsdatum, int Original_Route_ID_Route, int Original_Route_ID_Sektor, int Original_Person_ID_Person) {
-            return this.Update(Original_ID_Person, Original_ID_Sektor, Original_ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Route, Route_ID_Sektor, Person_ID_Person, Original_ID_Person, Original_ID_Sektor, Original_ID_Route, Original_Durchstiegsdatum, Original_Route_ID_Route, Original_Route_ID_Sektor, Original_Person_ID_Person);
+        public virtual int Update(string Kommentar, System.DateTime Durchstiegsdatum, int PersonID, int RouteID, int Original_ID, System.DateTime Original_Durchstiegsdatum, int Original_PersonID, int Original_RouteID) {
+            return this.Update(Original_ID, Kommentar, Durchstiegsdatum, PersonID, RouteID, Original_ID, Original_Durchstiegsdatum, Original_PersonID, Original_RouteID);
         }
     }
     
@@ -5057,7 +4872,7 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Rou
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ZOT_WunschlisteTableAdapter : global::System.ComponentModel.Component {
+    public partial class ZOT_WunschlistenTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -5071,7 +4886,7 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Rou
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public ZOT_WunschlisteTableAdapter() {
+        public ZOT_WunschlistenTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -5168,62 +4983,49 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Durchstiegsdatum, Route_ID_Rou
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "ZOT_Wunschliste";
-            tableMapping.ColumnMappings.Add("ID_Person", "ID_Person");
-            tableMapping.ColumnMappings.Add("ID_Sektor", "ID_Sektor");
-            tableMapping.ColumnMappings.Add("ID_Route", "ID_Route");
+            tableMapping.DataSetTable = "ZOT_Wunschlisten";
+            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("Kommentar", "Kommentar");
-            tableMapping.ColumnMappings.Add("Route_ID_Route", "Route_ID_Route");
-            tableMapping.ColumnMappings.Add("Route_ID_Sektor", "Route_ID_Sektor");
-            tableMapping.ColumnMappings.Add("Person_ID_Person", "Person_ID_Person");
+            tableMapping.ColumnMappings.Add("PersonID", "PersonID");
+            tableMapping.ColumnMappings.Add("RouteID", "RouteID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[ZOT_Wunschliste] WHERE (([ID_Person] = @Original_ID_Person) AND ([ID_Sektor] = @Original_ID_Sektor) AND ([ID_Route] = @Original_ID_Route) AND ([Route_ID_Route] = @Original_Route_ID_Route) AND ([Route_ID_Sektor] = @Original_Route_ID_Sektor) AND ([Person_ID_Person] = @Original_Person_ID_Person))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[ZOT_Wunschlisten] WHERE (([ID] = @Original_ID) AND ([PersonID]" +
+                " = @Original_PersonID) AND ([RouteID] = @Original_RouteID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Person", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Route", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Route_ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Route", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Route_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Sektor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Person_ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Person_ID_Person", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PersonID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RouteID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RouteID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ZOT_Wunschliste] ([ID_Person], [ID_Sektor], [ID_Route], [Kommentar], [Route_ID_Route], [Route_ID_Sektor], [Person_ID_Person]) VALUES (@ID_Person, @ID_Sektor, @ID_Route, @Kommentar, @Route_ID_Route, @Route_ID_Sektor, @Person_ID_Person);
-SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sektor, Person_ID_Person FROM ZOT_Wunschliste WHERE (ID_Person = @ID_Person) AND (ID_Route = @ID_Route) AND (ID_Sektor = @ID_Sektor)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ZOT_Wunschlisten] ([ID], [Kommentar], [PersonID], [RouteID]) V" +
+                "ALUES (@ID, @Kommentar, @PersonID, @RouteID);\r\nSELECT ID, Kommentar, PersonID, R" +
+                "outeID FROM ZOT_Wunschlisten WHERE (ID = @ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Person", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Route", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kommentar", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kommentar", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Route_ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Route", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Route_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Sektor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Person_ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Person_ID_Person", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PersonID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RouteID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RouteID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[ZOT_Wunschliste] SET [ID_Person] = @ID_Person, [ID_Sektor] = @ID_Sektor, [ID_Route] = @ID_Route, [Kommentar] = @Kommentar, [Route_ID_Route] = @Route_ID_Route, [Route_ID_Sektor] = @Route_ID_Sektor, [Person_ID_Person] = @Person_ID_Person WHERE (([ID_Person] = @Original_ID_Person) AND ([ID_Sektor] = @Original_ID_Sektor) AND ([ID_Route] = @Original_ID_Route) AND ([Route_ID_Route] = @Original_Route_ID_Route) AND ([Route_ID_Sektor] = @Original_Route_ID_Sektor) AND ([Person_ID_Person] = @Original_Person_ID_Person));
-SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sektor, Person_ID_Person FROM ZOT_Wunschliste WHERE (ID_Person = @ID_Person) AND (ID_Route = @ID_Route) AND (ID_Sektor = @ID_Sektor)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[ZOT_Wunschlisten] SET [ID] = @ID, [Kommentar] = @Kommentar, [PersonID] = @PersonID, [RouteID] = @RouteID WHERE (([ID] = @Original_ID) AND ([PersonID] = @Original_PersonID) AND ([RouteID] = @Original_RouteID));
+SELECT ID, Kommentar, PersonID, RouteID FROM ZOT_Wunschlisten WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Person", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Route", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kommentar", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kommentar", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Route_ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Route", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Route_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Sektor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Person_ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Person_ID_Person", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Person", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Sektor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Route", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Route_ID_Route", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Route", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Route_ID_Sektor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Route_ID_Sektor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Person_ID_Person", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Person_ID_Person", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PersonID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RouteID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RouteID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PersonID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PersonID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RouteID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RouteID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::KletterDatenbank_MuellerPachler.Properties.Settings.Default.EF_KletterRoutenConnectionString;
+            this._connection.ConnectionString = global::KletterDatenbank_MuellerPachler.Properties.Settings.Default.EF_DB_KletterroutenConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5232,8 +5034,7 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sektor" +
-                ", Person_ID_Person FROM dbo.ZOT_Wunschliste";
+            this._commandCollection[0].CommandText = "SELECT ID, Kommentar, PersonID, RouteID FROM dbo.ZOT_Wunschlisten";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5241,7 +5042,7 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EF_KletterRoutenDataSet.ZOT_WunschlisteDataTable dataTable) {
+        public virtual int Fill(EF_DB_KletterroutenDataSet.ZOT_WunschlistenDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5254,9 +5055,9 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EF_KletterRoutenDataSet.ZOT_WunschlisteDataTable GetData() {
+        public virtual EF_DB_KletterroutenDataSet.ZOT_WunschlistenDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EF_KletterRoutenDataSet.ZOT_WunschlisteDataTable dataTable = new EF_KletterRoutenDataSet.ZOT_WunschlisteDataTable();
+            EF_DB_KletterroutenDataSet.ZOT_WunschlistenDataTable dataTable = new EF_DB_KletterroutenDataSet.ZOT_WunschlistenDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5264,15 +5065,15 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EF_KletterRoutenDataSet.ZOT_WunschlisteDataTable dataTable) {
+        public virtual int Update(EF_DB_KletterroutenDataSet.ZOT_WunschlistenDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(EF_KletterRoutenDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "ZOT_Wunschliste");
+        public virtual int Update(EF_DB_KletterroutenDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "ZOT_Wunschlisten");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5294,13 +5095,10 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID_Person, int Original_ID_Sektor, int Original_ID_Route, int Original_Route_ID_Route, int Original_Route_ID_Sektor, int Original_Person_ID_Person) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID_Person));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_ID_Sektor));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_ID_Route));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_Route_ID_Route));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_Route_ID_Sektor));
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_Person_ID_Person));
+        public virtual int Delete(int Original_ID, int Original_PersonID, int Original_RouteID) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_PersonID));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_RouteID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5321,19 +5119,16 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int ID_Person, int ID_Sektor, int ID_Route, string Kommentar, int Route_ID_Route, int Route_ID_Sektor, int Person_ID_Person) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ID_Person));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(ID_Sektor));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(ID_Route));
+        public virtual int Insert(int ID, string Kommentar, int PersonID, int RouteID) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ID));
             if ((Kommentar == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Kommentar));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Kommentar));
             }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(Route_ID_Route));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(Route_ID_Sektor));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(Person_ID_Person));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(PersonID));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(RouteID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5354,25 +5149,19 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ID_Person, int ID_Sektor, int ID_Route, string Kommentar, int Route_ID_Route, int Route_ID_Sektor, int Person_ID_Person, int Original_ID_Person, int Original_ID_Sektor, int Original_ID_Route, int Original_Route_ID_Route, int Original_Route_ID_Sektor, int Original_Person_ID_Person) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ID_Person));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(ID_Sektor));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(ID_Route));
+        public virtual int Update(int ID, string Kommentar, int PersonID, int RouteID, int Original_ID, int Original_PersonID, int Original_RouteID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ID));
             if ((Kommentar == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Kommentar));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Kommentar));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Route_ID_Route));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Route_ID_Sektor));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Person_ID_Person));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_ID_Person));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_ID_Sektor));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_ID_Route));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Route_ID_Route));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_Route_ID_Sektor));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_Person_ID_Person));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(PersonID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(RouteID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_PersonID));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_RouteID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5393,8 +5182,8 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Kommentar, int Route_ID_Route, int Route_ID_Sektor, int Person_ID_Person, int Original_ID_Person, int Original_ID_Sektor, int Original_ID_Route, int Original_Route_ID_Route, int Original_Route_ID_Sektor, int Original_Person_ID_Person) {
-            return this.Update(Original_ID_Person, Original_ID_Sektor, Original_ID_Route, Kommentar, Route_ID_Route, Route_ID_Sektor, Person_ID_Person, Original_ID_Person, Original_ID_Sektor, Original_ID_Route, Original_Route_ID_Route, Original_Route_ID_Sektor, Original_Person_ID_Person);
+        public virtual int Update(string Kommentar, int PersonID, int RouteID, int Original_ID, int Original_PersonID, int Original_RouteID) {
+            return this.Update(Original_ID, Kommentar, PersonID, RouteID, Original_ID, Original_PersonID, Original_RouteID);
         }
     }
     
@@ -5410,17 +5199,17 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         
         private UpdateOrderOption _updateOrder;
         
-        private GebietTableAdapter _gebietTableAdapter;
+        private GebieteTableAdapter _gebieteTableAdapter;
         
-        private PersonTableAdapter _personTableAdapter;
+        private PersonenTableAdapter _personenTableAdapter;
         
-        private RouteTableAdapter _routeTableAdapter;
+        private RoutenTableAdapter _routenTableAdapter;
         
-        private SektorTableAdapter _sektorTableAdapter;
+        private SektorenTableAdapter _sektorenTableAdapter;
         
-        private ZOT_DurchstiegslisteTableAdapter _zOT_DurchstiegslisteTableAdapter;
+        private ZOT_DurchstiegslistenTableAdapter _zOT_DurchstiegslistenTableAdapter;
         
-        private ZOT_WunschlisteTableAdapter _zOT_WunschlisteTableAdapter;
+        private ZOT_WunschlistenTableAdapter _zOT_WunschlistenTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -5442,12 +5231,12 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public GebietTableAdapter GebietTableAdapter {
+        public GebieteTableAdapter GebieteTableAdapter {
             get {
-                return this._gebietTableAdapter;
+                return this._gebieteTableAdapter;
             }
             set {
-                this._gebietTableAdapter = value;
+                this._gebieteTableAdapter = value;
             }
         }
         
@@ -5456,12 +5245,12 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public PersonTableAdapter PersonTableAdapter {
+        public PersonenTableAdapter PersonenTableAdapter {
             get {
-                return this._personTableAdapter;
+                return this._personenTableAdapter;
             }
             set {
-                this._personTableAdapter = value;
+                this._personenTableAdapter = value;
             }
         }
         
@@ -5470,12 +5259,12 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public RouteTableAdapter RouteTableAdapter {
+        public RoutenTableAdapter RoutenTableAdapter {
             get {
-                return this._routeTableAdapter;
+                return this._routenTableAdapter;
             }
             set {
-                this._routeTableAdapter = value;
+                this._routenTableAdapter = value;
             }
         }
         
@@ -5484,12 +5273,12 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public SektorTableAdapter SektorTableAdapter {
+        public SektorenTableAdapter SektorenTableAdapter {
             get {
-                return this._sektorTableAdapter;
+                return this._sektorenTableAdapter;
             }
             set {
-                this._sektorTableAdapter = value;
+                this._sektorenTableAdapter = value;
             }
         }
         
@@ -5498,12 +5287,12 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public ZOT_DurchstiegslisteTableAdapter ZOT_DurchstiegslisteTableAdapter {
+        public ZOT_DurchstiegslistenTableAdapter ZOT_DurchstiegslistenTableAdapter {
             get {
-                return this._zOT_DurchstiegslisteTableAdapter;
+                return this._zOT_DurchstiegslistenTableAdapter;
             }
             set {
-                this._zOT_DurchstiegslisteTableAdapter = value;
+                this._zOT_DurchstiegslistenTableAdapter = value;
             }
         }
         
@@ -5512,12 +5301,12 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public ZOT_WunschlisteTableAdapter ZOT_WunschlisteTableAdapter {
+        public ZOT_WunschlistenTableAdapter ZOT_WunschlistenTableAdapter {
             get {
-                return this._zOT_WunschlisteTableAdapter;
+                return this._zOT_WunschlistenTableAdapter;
             }
             set {
-                this._zOT_WunschlisteTableAdapter = value;
+                this._zOT_WunschlistenTableAdapter = value;
             }
         }
         
@@ -5540,29 +5329,29 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._gebietTableAdapter != null) 
-                            && (this._gebietTableAdapter.Connection != null))) {
-                    return this._gebietTableAdapter.Connection;
+                if (((this._gebieteTableAdapter != null) 
+                            && (this._gebieteTableAdapter.Connection != null))) {
+                    return this._gebieteTableAdapter.Connection;
                 }
-                if (((this._personTableAdapter != null) 
-                            && (this._personTableAdapter.Connection != null))) {
-                    return this._personTableAdapter.Connection;
+                if (((this._personenTableAdapter != null) 
+                            && (this._personenTableAdapter.Connection != null))) {
+                    return this._personenTableAdapter.Connection;
                 }
-                if (((this._routeTableAdapter != null) 
-                            && (this._routeTableAdapter.Connection != null))) {
-                    return this._routeTableAdapter.Connection;
+                if (((this._routenTableAdapter != null) 
+                            && (this._routenTableAdapter.Connection != null))) {
+                    return this._routenTableAdapter.Connection;
                 }
-                if (((this._sektorTableAdapter != null) 
-                            && (this._sektorTableAdapter.Connection != null))) {
-                    return this._sektorTableAdapter.Connection;
+                if (((this._sektorenTableAdapter != null) 
+                            && (this._sektorenTableAdapter.Connection != null))) {
+                    return this._sektorenTableAdapter.Connection;
                 }
-                if (((this._zOT_DurchstiegslisteTableAdapter != null) 
-                            && (this._zOT_DurchstiegslisteTableAdapter.Connection != null))) {
-                    return this._zOT_DurchstiegslisteTableAdapter.Connection;
+                if (((this._zOT_DurchstiegslistenTableAdapter != null) 
+                            && (this._zOT_DurchstiegslistenTableAdapter.Connection != null))) {
+                    return this._zOT_DurchstiegslistenTableAdapter.Connection;
                 }
-                if (((this._zOT_WunschlisteTableAdapter != null) 
-                            && (this._zOT_WunschlisteTableAdapter.Connection != null))) {
-                    return this._zOT_WunschlisteTableAdapter.Connection;
+                if (((this._zOT_WunschlistenTableAdapter != null) 
+                            && (this._zOT_WunschlistenTableAdapter.Connection != null))) {
+                    return this._zOT_WunschlistenTableAdapter.Connection;
                 }
                 return null;
             }
@@ -5577,22 +5366,22 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._gebietTableAdapter != null)) {
+                if ((this._gebieteTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._personTableAdapter != null)) {
+                if ((this._personenTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._routeTableAdapter != null)) {
+                if ((this._routenTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._sektorTableAdapter != null)) {
+                if ((this._sektorenTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._zOT_DurchstiegslisteTableAdapter != null)) {
+                if ((this._zOT_DurchstiegslistenTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._zOT_WunschlisteTableAdapter != null)) {
+                if ((this._zOT_WunschlistenTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -5604,59 +5393,59 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(EF_KletterRoutenDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(EF_DB_KletterroutenDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._gebietTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Gebiet.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._gebieteTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Gebiete.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._gebietTableAdapter.Update(updatedRows));
+                    result = (result + this._gebieteTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._personTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Person.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._sektorenTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Sektoren.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._personTableAdapter.Update(updatedRows));
+                    result = (result + this._sektorenTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._routeTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Route.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._personenTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Personen.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._routeTableAdapter.Update(updatedRows));
+                    result = (result + this._personenTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._sektorTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Sektor.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._routenTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Routen.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._sektorTableAdapter.Update(updatedRows));
+                    result = (result + this._routenTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._zOT_DurchstiegslisteTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ZOT_Durchstiegsliste.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._zOT_DurchstiegslistenTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ZOT_Durchstiegslisten.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._zOT_DurchstiegslisteTableAdapter.Update(updatedRows));
+                    result = (result + this._zOT_DurchstiegslistenTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._zOT_WunschlisteTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ZOT_Wunschliste.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._zOT_WunschlistenTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ZOT_Wunschlisten.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._zOT_WunschlisteTableAdapter.Update(updatedRows));
+                    result = (result + this._zOT_WunschlistenTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -5668,53 +5457,53 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(EF_KletterRoutenDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(EF_DB_KletterroutenDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._gebietTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Gebiet.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._gebieteTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Gebiete.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._gebietTableAdapter.Update(addedRows));
+                    result = (result + this._gebieteTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._personTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Person.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._sektorenTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Sektoren.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._personTableAdapter.Update(addedRows));
+                    result = (result + this._sektorenTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._routeTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Route.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._personenTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Personen.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._routeTableAdapter.Update(addedRows));
+                    result = (result + this._personenTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._sektorTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Sektor.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._routenTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Routen.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._sektorTableAdapter.Update(addedRows));
+                    result = (result + this._routenTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._zOT_DurchstiegslisteTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ZOT_Durchstiegsliste.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._zOT_DurchstiegslistenTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ZOT_Durchstiegslisten.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._zOT_DurchstiegslisteTableAdapter.Update(addedRows));
+                    result = (result + this._zOT_DurchstiegslistenTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._zOT_WunschlisteTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ZOT_Wunschliste.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._zOT_WunschlistenTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ZOT_Wunschlisten.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._zOT_WunschlisteTableAdapter.Update(addedRows));
+                    result = (result + this._zOT_WunschlistenTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -5726,53 +5515,53 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(EF_KletterRoutenDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(EF_DB_KletterroutenDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._zOT_WunschlisteTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ZOT_Wunschliste.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._zOT_WunschlistenTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ZOT_Wunschlisten.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._zOT_WunschlisteTableAdapter.Update(deletedRows));
+                    result = (result + this._zOT_WunschlistenTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._zOT_DurchstiegslisteTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ZOT_Durchstiegsliste.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._zOT_DurchstiegslistenTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ZOT_Durchstiegslisten.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._zOT_DurchstiegslisteTableAdapter.Update(deletedRows));
+                    result = (result + this._zOT_DurchstiegslistenTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._sektorTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Sektor.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._routenTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Routen.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._sektorTableAdapter.Update(deletedRows));
+                    result = (result + this._routenTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._routeTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Route.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._personenTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Personen.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._routeTableAdapter.Update(deletedRows));
+                    result = (result + this._personenTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._personTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Person.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._sektorenTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Sektoren.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._personTableAdapter.Update(deletedRows));
+                    result = (result + this._sektorenTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._gebietTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Gebiet.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._gebieteTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Gebiete.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._gebietTableAdapter.Update(deletedRows));
+                    result = (result + this._gebieteTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -5808,40 +5597,40 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(EF_KletterRoutenDataSet dataSet) {
+        public virtual int UpdateAll(EF_DB_KletterroutenDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._gebietTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._gebietTableAdapter.Connection) == false))) {
+            if (((this._gebieteTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._gebieteTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._personTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._personTableAdapter.Connection) == false))) {
+            if (((this._personenTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._personenTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._routeTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._routeTableAdapter.Connection) == false))) {
+            if (((this._routenTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._routenTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._sektorTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._sektorTableAdapter.Connection) == false))) {
+            if (((this._sektorenTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._sektorenTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._zOT_DurchstiegslisteTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._zOT_DurchstiegslisteTableAdapter.Connection) == false))) {
+            if (((this._zOT_DurchstiegslistenTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._zOT_DurchstiegslistenTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._zOT_WunschlisteTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._zOT_WunschlisteTableAdapter.Connection) == false))) {
+            if (((this._zOT_WunschlistenTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._zOT_WunschlistenTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -5877,58 +5666,58 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._gebietTableAdapter != null)) {
-                    revertConnections.Add(this._gebietTableAdapter, this._gebietTableAdapter.Connection);
-                    this._gebietTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._gebietTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._gebietTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._gebietTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._gebietTableAdapter.Adapter);
+                if ((this._gebieteTableAdapter != null)) {
+                    revertConnections.Add(this._gebieteTableAdapter, this._gebieteTableAdapter.Connection);
+                    this._gebieteTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._gebieteTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._gebieteTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._gebieteTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._gebieteTableAdapter.Adapter);
                     }
                 }
-                if ((this._personTableAdapter != null)) {
-                    revertConnections.Add(this._personTableAdapter, this._personTableAdapter.Connection);
-                    this._personTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._personTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._personTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._personTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._personTableAdapter.Adapter);
+                if ((this._personenTableAdapter != null)) {
+                    revertConnections.Add(this._personenTableAdapter, this._personenTableAdapter.Connection);
+                    this._personenTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._personenTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._personenTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._personenTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._personenTableAdapter.Adapter);
                     }
                 }
-                if ((this._routeTableAdapter != null)) {
-                    revertConnections.Add(this._routeTableAdapter, this._routeTableAdapter.Connection);
-                    this._routeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._routeTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._routeTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._routeTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._routeTableAdapter.Adapter);
+                if ((this._routenTableAdapter != null)) {
+                    revertConnections.Add(this._routenTableAdapter, this._routenTableAdapter.Connection);
+                    this._routenTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._routenTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._routenTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._routenTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._routenTableAdapter.Adapter);
                     }
                 }
-                if ((this._sektorTableAdapter != null)) {
-                    revertConnections.Add(this._sektorTableAdapter, this._sektorTableAdapter.Connection);
-                    this._sektorTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._sektorTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._sektorTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._sektorTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._sektorTableAdapter.Adapter);
+                if ((this._sektorenTableAdapter != null)) {
+                    revertConnections.Add(this._sektorenTableAdapter, this._sektorenTableAdapter.Connection);
+                    this._sektorenTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._sektorenTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._sektorenTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._sektorenTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._sektorenTableAdapter.Adapter);
                     }
                 }
-                if ((this._zOT_DurchstiegslisteTableAdapter != null)) {
-                    revertConnections.Add(this._zOT_DurchstiegslisteTableAdapter, this._zOT_DurchstiegslisteTableAdapter.Connection);
-                    this._zOT_DurchstiegslisteTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._zOT_DurchstiegslisteTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._zOT_DurchstiegslisteTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._zOT_DurchstiegslisteTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._zOT_DurchstiegslisteTableAdapter.Adapter);
+                if ((this._zOT_DurchstiegslistenTableAdapter != null)) {
+                    revertConnections.Add(this._zOT_DurchstiegslistenTableAdapter, this._zOT_DurchstiegslistenTableAdapter.Connection);
+                    this._zOT_DurchstiegslistenTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._zOT_DurchstiegslistenTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._zOT_DurchstiegslistenTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._zOT_DurchstiegslistenTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._zOT_DurchstiegslistenTableAdapter.Adapter);
                     }
                 }
-                if ((this._zOT_WunschlisteTableAdapter != null)) {
-                    revertConnections.Add(this._zOT_WunschlisteTableAdapter, this._zOT_WunschlisteTableAdapter.Connection);
-                    this._zOT_WunschlisteTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._zOT_WunschlisteTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._zOT_WunschlisteTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._zOT_WunschlisteTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._zOT_WunschlisteTableAdapter.Adapter);
+                if ((this._zOT_WunschlistenTableAdapter != null)) {
+                    revertConnections.Add(this._zOT_WunschlistenTableAdapter, this._zOT_WunschlistenTableAdapter.Connection);
+                    this._zOT_WunschlistenTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._zOT_WunschlistenTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._zOT_WunschlistenTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._zOT_WunschlistenTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._zOT_WunschlistenTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -5989,29 +5778,29 @@ SELECT ID_Person, ID_Sektor, ID_Route, Kommentar, Route_ID_Route, Route_ID_Sekto
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._gebietTableAdapter != null)) {
-                    this._gebietTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._gebietTableAdapter]));
-                    this._gebietTableAdapter.Transaction = null;
+                if ((this._gebieteTableAdapter != null)) {
+                    this._gebieteTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._gebieteTableAdapter]));
+                    this._gebieteTableAdapter.Transaction = null;
                 }
-                if ((this._personTableAdapter != null)) {
-                    this._personTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._personTableAdapter]));
-                    this._personTableAdapter.Transaction = null;
+                if ((this._personenTableAdapter != null)) {
+                    this._personenTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._personenTableAdapter]));
+                    this._personenTableAdapter.Transaction = null;
                 }
-                if ((this._routeTableAdapter != null)) {
-                    this._routeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._routeTableAdapter]));
-                    this._routeTableAdapter.Transaction = null;
+                if ((this._routenTableAdapter != null)) {
+                    this._routenTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._routenTableAdapter]));
+                    this._routenTableAdapter.Transaction = null;
                 }
-                if ((this._sektorTableAdapter != null)) {
-                    this._sektorTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._sektorTableAdapter]));
-                    this._sektorTableAdapter.Transaction = null;
+                if ((this._sektorenTableAdapter != null)) {
+                    this._sektorenTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._sektorenTableAdapter]));
+                    this._sektorenTableAdapter.Transaction = null;
                 }
-                if ((this._zOT_DurchstiegslisteTableAdapter != null)) {
-                    this._zOT_DurchstiegslisteTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._zOT_DurchstiegslisteTableAdapter]));
-                    this._zOT_DurchstiegslisteTableAdapter.Transaction = null;
+                if ((this._zOT_DurchstiegslistenTableAdapter != null)) {
+                    this._zOT_DurchstiegslistenTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._zOT_DurchstiegslistenTableAdapter]));
+                    this._zOT_DurchstiegslistenTableAdapter.Transaction = null;
                 }
-                if ((this._zOT_WunschlisteTableAdapter != null)) {
-                    this._zOT_WunschlisteTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._zOT_WunschlisteTableAdapter]));
-                    this._zOT_WunschlisteTableAdapter.Transaction = null;
+                if ((this._zOT_WunschlistenTableAdapter != null)) {
+                    this._zOT_WunschlistenTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._zOT_WunschlistenTableAdapter]));
+                    this._zOT_WunschlistenTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

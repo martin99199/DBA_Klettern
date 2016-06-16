@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/01/2016 09:49:59
--- Generated from EDMX file: C:\Users\Pachler Martin\Documents\_1Studium FH_ATMaster\Semester2\Datenbanken_ILV\KletterDatenbank_MuellerPachler\KletterDatenbank_MuellerPachler\EF_KletterRouten.edmx
+-- Date Created: 06/16/2016 12:04:46
+-- Generated from EDMX file: C:\Users\Pachler Martin\Documents\GitHub\DBA_Klettern\KletterDatenbank_MuellerPachler\KletterDatenbank_MuellerPachler\EF_KletterRouten.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [EF_KletterRouten];
+USE [EF_DB_Kletterrouten];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -63,65 +63,56 @@ GO
 -- Creating all tables
 -- --------------------------------------------------
 
--- Creating table 'PersonSet'
-CREATE TABLE [dbo].[PersonSet] (
-    [ID_Person] int IDENTITY(1,1) NOT NULL,
+-- Creating table 'Personen'
+CREATE TABLE [dbo].[Personen] (
+    [ID] int IDENTITY(1,1) NOT NULL,
     [Vorname] nvarchar(max)  NOT NULL,
     [Nachname] nvarchar(max)  NOT NULL,
     [Geburtsdatum] datetime  NOT NULL
 );
 GO
 
--- Creating table 'ZOT_WunschlisteSet'
-CREATE TABLE [dbo].[ZOT_WunschlisteSet] (
-    [ID_Person] int  NOT NULL,
-    [ID_Sektor] int  NOT NULL,
-    [ID_Route] int  NOT NULL,
+-- Creating table 'ZOT_Wunschlisten'
+CREATE TABLE [dbo].[ZOT_Wunschlisten] (
+    [ID] int  NOT NULL,
     [Kommentar] nvarchar(max)  NULL,
-    [Route_ID_Route] int  NOT NULL,
-    [Route_ID_Sektor] int  NOT NULL,
-    [Person_ID_Person] int  NOT NULL
+    [PersonID] int  NOT NULL,
+    [RouteID] int  NOT NULL
 );
 GO
 
--- Creating table 'ZOT_DurchstiegslisteSet'
-CREATE TABLE [dbo].[ZOT_DurchstiegslisteSet] (
-    [ID_Person] int  NOT NULL,
-    [ID_Sektor] int  NOT NULL,
-    [ID_Route] int  NOT NULL,
+-- Creating table 'ZOT_Durchstiegslisten'
+CREATE TABLE [dbo].[ZOT_Durchstiegslisten] (
+    [ID] int  NOT NULL,
     [Kommentar] nvarchar(max)  NULL,
     [Durchstiegsdatum] datetime  NOT NULL,
-    [Route_ID_Route] int  NOT NULL,
-    [Route_ID_Sektor] int  NOT NULL,
-    [Person_ID_Person] int  NOT NULL
+    [PersonID] int  NOT NULL,
+    [RouteID] int  NOT NULL
 );
 GO
 
--- Creating table 'RouteSet'
-CREATE TABLE [dbo].[RouteSet] (
-    [ID_Route] int IDENTITY(1,1) NOT NULL,
-    [ID_Sektor] int  NOT NULL,
+-- Creating table 'Routen'
+CREATE TABLE [dbo].[Routen] (
+    [ID] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Schwierigkeitsgrad] nvarchar(max)  NOT NULL,
     [IstBoulder] bit  NOT NULL,
-    [Sektor_ID_Sektor] int  NOT NULL,
-    [Sektor_ID_Gebiet] int  NOT NULL
+    [SektorID] int  NOT NULL
 );
 GO
 
--- Creating table 'SektorSet'
-CREATE TABLE [dbo].[SektorSet] (
-    [ID_Sektor] int IDENTITY(1,1) NOT NULL,
-    [ID_Gebiet] int  NOT NULL,
+-- Creating table 'Sektoren'
+CREATE TABLE [dbo].[Sektoren] (
+    [ID] int IDENTITY(1,1) NOT NULL,
     [NameSektor] nvarchar(max)  NOT NULL,
     [GPS_Exakt] nvarchar(max)  NULL,
-    [Gebiet_ID_Gebiet] int  NOT NULL
+    [GebietID] int  NOT NULL
 );
 GO
 
--- Creating table 'GebietSet'
-CREATE TABLE [dbo].[GebietSet] (
-    [ID_Gebiet] int IDENTITY(1,1) NOT NULL,
+-- Creating table 'Gebiete'
+CREATE TABLE [dbo].[Gebiete] (
+    [ID] int IDENTITY(1,1) NOT NULL,
     [NameGebiet] nvarchar(max)  NOT NULL,
     [Ort] nvarchar(max)  NOT NULL,
     [PLZ] int  NOT NULL,
@@ -133,134 +124,134 @@ GO
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
 
--- Creating primary key on [ID_Person] in table 'PersonSet'
-ALTER TABLE [dbo].[PersonSet]
-ADD CONSTRAINT [PK_PersonSet]
-    PRIMARY KEY CLUSTERED ([ID_Person] ASC);
+-- Creating primary key on [ID] in table 'Personen'
+ALTER TABLE [dbo].[Personen]
+ADD CONSTRAINT [PK_Personen]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
--- Creating primary key on [ID_Person], [ID_Sektor], [ID_Route] in table 'ZOT_WunschlisteSet'
-ALTER TABLE [dbo].[ZOT_WunschlisteSet]
-ADD CONSTRAINT [PK_ZOT_WunschlisteSet]
-    PRIMARY KEY CLUSTERED ([ID_Person], [ID_Sektor], [ID_Route] ASC);
+-- Creating primary key on [ID] in table 'ZOT_Wunschlisten'
+ALTER TABLE [dbo].[ZOT_Wunschlisten]
+ADD CONSTRAINT [PK_ZOT_Wunschlisten]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
--- Creating primary key on [ID_Person], [ID_Sektor], [ID_Route] in table 'ZOT_DurchstiegslisteSet'
-ALTER TABLE [dbo].[ZOT_DurchstiegslisteSet]
-ADD CONSTRAINT [PK_ZOT_DurchstiegslisteSet]
-    PRIMARY KEY CLUSTERED ([ID_Person], [ID_Sektor], [ID_Route] ASC);
+-- Creating primary key on [ID] in table 'ZOT_Durchstiegslisten'
+ALTER TABLE [dbo].[ZOT_Durchstiegslisten]
+ADD CONSTRAINT [PK_ZOT_Durchstiegslisten]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
--- Creating primary key on [ID_Route], [ID_Sektor] in table 'RouteSet'
-ALTER TABLE [dbo].[RouteSet]
-ADD CONSTRAINT [PK_RouteSet]
-    PRIMARY KEY CLUSTERED ([ID_Route], [ID_Sektor] ASC);
+-- Creating primary key on [ID] in table 'Routen'
+ALTER TABLE [dbo].[Routen]
+ADD CONSTRAINT [PK_Routen]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
--- Creating primary key on [ID_Sektor], [ID_Gebiet] in table 'SektorSet'
-ALTER TABLE [dbo].[SektorSet]
-ADD CONSTRAINT [PK_SektorSet]
-    PRIMARY KEY CLUSTERED ([ID_Sektor], [ID_Gebiet] ASC);
+-- Creating primary key on [ID] in table 'Sektoren'
+ALTER TABLE [dbo].[Sektoren]
+ADD CONSTRAINT [PK_Sektoren]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
--- Creating primary key on [ID_Gebiet] in table 'GebietSet'
-ALTER TABLE [dbo].[GebietSet]
-ADD CONSTRAINT [PK_GebietSet]
-    PRIMARY KEY CLUSTERED ([ID_Gebiet] ASC);
+-- Creating primary key on [ID] in table 'Gebiete'
+ALTER TABLE [dbo].[Gebiete]
+ADD CONSTRAINT [PK_Gebiete]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [Gebiet_ID_Gebiet] in table 'SektorSet'
-ALTER TABLE [dbo].[SektorSet]
-ADD CONSTRAINT [FK_GebietSektor]
-    FOREIGN KEY ([Gebiet_ID_Gebiet])
-    REFERENCES [dbo].[GebietSet]
-        ([ID_Gebiet])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_GebietSektor'
-CREATE INDEX [IX_FK_GebietSektor]
-ON [dbo].[SektorSet]
-    ([Gebiet_ID_Gebiet]);
-GO
-
--- Creating foreign key on [Sektor_ID_Sektor], [Sektor_ID_Gebiet] in table 'RouteSet'
-ALTER TABLE [dbo].[RouteSet]
-ADD CONSTRAINT [FK_SektorRoute]
-    FOREIGN KEY ([Sektor_ID_Sektor], [Sektor_ID_Gebiet])
-    REFERENCES [dbo].[SektorSet]
-        ([ID_Sektor], [ID_Gebiet])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_SektorRoute'
-CREATE INDEX [IX_FK_SektorRoute]
-ON [dbo].[RouteSet]
-    ([Sektor_ID_Sektor], [Sektor_ID_Gebiet]);
-GO
-
--- Creating foreign key on [Route_ID_Route], [Route_ID_Sektor] in table 'ZOT_DurchstiegslisteSet'
-ALTER TABLE [dbo].[ZOT_DurchstiegslisteSet]
-ADD CONSTRAINT [FK_RouteZOT_Durchstiegsliste]
-    FOREIGN KEY ([Route_ID_Route], [Route_ID_Sektor])
-    REFERENCES [dbo].[RouteSet]
-        ([ID_Route], [ID_Sektor])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RouteZOT_Durchstiegsliste'
-CREATE INDEX [IX_FK_RouteZOT_Durchstiegsliste]
-ON [dbo].[ZOT_DurchstiegslisteSet]
-    ([Route_ID_Route], [Route_ID_Sektor]);
-GO
-
--- Creating foreign key on [Route_ID_Route], [Route_ID_Sektor] in table 'ZOT_WunschlisteSet'
-ALTER TABLE [dbo].[ZOT_WunschlisteSet]
-ADD CONSTRAINT [FK_RouteZOT_Wunschliste]
-    FOREIGN KEY ([Route_ID_Route], [Route_ID_Sektor])
-    REFERENCES [dbo].[RouteSet]
-        ([ID_Route], [ID_Sektor])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RouteZOT_Wunschliste'
-CREATE INDEX [IX_FK_RouteZOT_Wunschliste]
-ON [dbo].[ZOT_WunschlisteSet]
-    ([Route_ID_Route], [Route_ID_Sektor]);
-GO
-
--- Creating foreign key on [Person_ID_Person] in table 'ZOT_DurchstiegslisteSet'
-ALTER TABLE [dbo].[ZOT_DurchstiegslisteSet]
-ADD CONSTRAINT [FK_PersonZOT_Durchstiegsliste]
-    FOREIGN KEY ([Person_ID_Person])
-    REFERENCES [dbo].[PersonSet]
-        ([ID_Person])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_PersonZOT_Durchstiegsliste'
-CREATE INDEX [IX_FK_PersonZOT_Durchstiegsliste]
-ON [dbo].[ZOT_DurchstiegslisteSet]
-    ([Person_ID_Person]);
-GO
-
--- Creating foreign key on [Person_ID_Person] in table 'ZOT_WunschlisteSet'
-ALTER TABLE [dbo].[ZOT_WunschlisteSet]
+-- Creating foreign key on [PersonID] in table 'ZOT_Wunschlisten'
+ALTER TABLE [dbo].[ZOT_Wunschlisten]
 ADD CONSTRAINT [FK_PersonZOT_Wunschliste]
-    FOREIGN KEY ([Person_ID_Person])
-    REFERENCES [dbo].[PersonSet]
-        ([ID_Person])
+    FOREIGN KEY ([PersonID])
+    REFERENCES [dbo].[Personen]
+        ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_PersonZOT_Wunschliste'
 CREATE INDEX [IX_FK_PersonZOT_Wunschliste]
-ON [dbo].[ZOT_WunschlisteSet]
-    ([Person_ID_Person]);
+ON [dbo].[ZOT_Wunschlisten]
+    ([PersonID]);
+GO
+
+-- Creating foreign key on [PersonID] in table 'ZOT_Durchstiegslisten'
+ALTER TABLE [dbo].[ZOT_Durchstiegslisten]
+ADD CONSTRAINT [FK_PersonZOT_Durchstiegsliste]
+    FOREIGN KEY ([PersonID])
+    REFERENCES [dbo].[Personen]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PersonZOT_Durchstiegsliste'
+CREATE INDEX [IX_FK_PersonZOT_Durchstiegsliste]
+ON [dbo].[ZOT_Durchstiegslisten]
+    ([PersonID]);
+GO
+
+-- Creating foreign key on [RouteID] in table 'ZOT_Wunschlisten'
+ALTER TABLE [dbo].[ZOT_Wunschlisten]
+ADD CONSTRAINT [FK_RouteZOT_Wunschliste]
+    FOREIGN KEY ([RouteID])
+    REFERENCES [dbo].[Routen]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RouteZOT_Wunschliste'
+CREATE INDEX [IX_FK_RouteZOT_Wunschliste]
+ON [dbo].[ZOT_Wunschlisten]
+    ([RouteID]);
+GO
+
+-- Creating foreign key on [RouteID] in table 'ZOT_Durchstiegslisten'
+ALTER TABLE [dbo].[ZOT_Durchstiegslisten]
+ADD CONSTRAINT [FK_RouteZOT_Durchstiegsliste]
+    FOREIGN KEY ([RouteID])
+    REFERENCES [dbo].[Routen]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RouteZOT_Durchstiegsliste'
+CREATE INDEX [IX_FK_RouteZOT_Durchstiegsliste]
+ON [dbo].[ZOT_Durchstiegslisten]
+    ([RouteID]);
+GO
+
+-- Creating foreign key on [SektorID] in table 'Routen'
+ALTER TABLE [dbo].[Routen]
+ADD CONSTRAINT [FK_SektorRoute]
+    FOREIGN KEY ([SektorID])
+    REFERENCES [dbo].[Sektoren]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SektorRoute'
+CREATE INDEX [IX_FK_SektorRoute]
+ON [dbo].[Routen]
+    ([SektorID]);
+GO
+
+-- Creating foreign key on [GebietID] in table 'Sektoren'
+ALTER TABLE [dbo].[Sektoren]
+ADD CONSTRAINT [FK_GebietSektor]
+    FOREIGN KEY ([GebietID])
+    REFERENCES [dbo].[Gebiete]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_GebietSektor'
+CREATE INDEX [IX_FK_GebietSektor]
+ON [dbo].[Sektoren]
+    ([GebietID]);
 GO
 
 -- --------------------------------------------------
