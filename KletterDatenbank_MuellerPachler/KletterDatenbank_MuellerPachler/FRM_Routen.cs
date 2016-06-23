@@ -16,5 +16,25 @@ namespace KletterDatenbank_MuellerPachler
         {
             InitializeComponent();
         }
+
+        private void FRM_Routen_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'eF_DB_KletterroutenDataSet.Sektoren' table. You can move, or remove it, as needed.
+            this.sektorenTableAdapter.Fill(this.eF_DB_KletterroutenDataSet.Sektoren);
+            // TODO: This line of code loads data into the 'eF_DB_KletterroutenDataSet.Gebiete' table. You can move, or remove it, as needed.
+            this.gebieteTableAdapter.Fill(this.eF_DB_KletterroutenDataSet.Gebiete);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            this.sektorenTableAdapter.Update(eF_DB_KletterroutenDataSet);
+            this.Close();
+        }
     }
 }

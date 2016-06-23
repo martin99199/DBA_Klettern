@@ -29,148 +29,142 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.eF_DB_KletterroutenDataSet = new KletterDatenbank_MuellerPachler.EF_DB_KletterroutenDataSet();
-            this.gebieteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gebieteTableAdapter = new KletterDatenbank_MuellerPachler.EF_DB_KletterroutenDataSetTableAdapters.GebieteTableAdapter();
-            this.nameGebietDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ortDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pLZDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gPSParkplatzDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.fKGebietSektorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sektorenTableAdapter = new KletterDatenbank_MuellerPachler.EF_DB_KletterroutenDataSetTableAdapters.SektorenTableAdapter();
-            this.nameSektorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gPSExaktDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.personenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.personenTableAdapter = new KletterDatenbank_MuellerPachler.EF_DB_KletterroutenDataSetTableAdapters.PersonenTableAdapter();
+            this.tableAdapterManager = new KletterDatenbank_MuellerPachler.EF_DB_KletterroutenDataSetTableAdapters.TableAdapterManager();
+            this.personenDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGebiete = new System.Windows.Forms.Button();
+            this.btnWunsch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.eF_DB_KletterroutenDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gebieteBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKGebietSektorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.personenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.personenDataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameGebietDataGridViewTextBoxColumn,
-            this.ortDataGridViewTextBoxColumn,
-            this.pLZDataGridViewTextBoxColumn,
-            this.gPSParkplatzDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.gebieteBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(31, 33);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(471, 143);
-            this.dataGridView1.TabIndex = 0;
             // 
             // eF_DB_KletterroutenDataSet
             // 
             this.eF_DB_KletterroutenDataSet.DataSetName = "EF_DB_KletterroutenDataSet";
             this.eF_DB_KletterroutenDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // gebieteBindingSource
+            // personenBindingSource
             // 
-            this.gebieteBindingSource.DataMember = "Gebiete";
-            this.gebieteBindingSource.DataSource = this.eF_DB_KletterroutenDataSet;
+            this.personenBindingSource.DataMember = "Personen";
+            this.personenBindingSource.DataSource = this.eF_DB_KletterroutenDataSet;
             // 
-            // gebieteTableAdapter
+            // personenTableAdapter
             // 
-            this.gebieteTableAdapter.ClearBeforeFill = true;
+            this.personenTableAdapter.ClearBeforeFill = true;
             // 
-            // nameGebietDataGridViewTextBoxColumn
+            // tableAdapterManager
             // 
-            this.nameGebietDataGridViewTextBoxColumn.DataPropertyName = "NameGebiet";
-            this.nameGebietDataGridViewTextBoxColumn.HeaderText = "NameGebiet";
-            this.nameGebietDataGridViewTextBoxColumn.Name = "nameGebietDataGridViewTextBoxColumn";
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.GebieteTableAdapter = null;
+            this.tableAdapterManager.PersonenTableAdapter = this.personenTableAdapter;
+            this.tableAdapterManager.RoutenTableAdapter = null;
+            this.tableAdapterManager.SektorenTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = KletterDatenbank_MuellerPachler.EF_DB_KletterroutenDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.ZOT_DurchstiegslistenTableAdapter = null;
+            this.tableAdapterManager.ZOT_WunschlistenTableAdapter = null;
             // 
-            // ortDataGridViewTextBoxColumn
+            // personenDataGridView
             // 
-            this.ortDataGridViewTextBoxColumn.DataPropertyName = "Ort";
-            this.ortDataGridViewTextBoxColumn.HeaderText = "Ort";
-            this.ortDataGridViewTextBoxColumn.Name = "ortDataGridViewTextBoxColumn";
+            this.personenDataGridView.AutoGenerateColumns = false;
+            this.personenDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.personenDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.personenDataGridView.DataSource = this.personenBindingSource;
+            this.personenDataGridView.Location = new System.Drawing.Point(40, 37);
+            this.personenDataGridView.Name = "personenDataGridView";
+            this.personenDataGridView.RowTemplate.Height = 24;
+            this.personenDataGridView.Size = new System.Drawing.Size(469, 220);
+            this.personenDataGridView.TabIndex = 1;
             // 
-            // pLZDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            this.pLZDataGridViewTextBoxColumn.DataPropertyName = "PLZ";
-            this.pLZDataGridViewTextBoxColumn.HeaderText = "PLZ";
-            this.pLZDataGridViewTextBoxColumn.Name = "pLZDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // gPSParkplatzDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn2
             // 
-            this.gPSParkplatzDataGridViewTextBoxColumn.DataPropertyName = "GPS_Parkplatz";
-            this.gPSParkplatzDataGridViewTextBoxColumn.HeaderText = "GPS_Parkplatz";
-            this.gPSParkplatzDataGridViewTextBoxColumn.Name = "gPSParkplatzDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Vorname";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Vorname";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // dataGridView2
+            // dataGridViewTextBoxColumn3
             // 
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameSektorDataGridViewTextBoxColumn,
-            this.gPSExaktDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.fKGebietSektorBindingSource;
-            this.dataGridView2.Location = new System.Drawing.Point(31, 216);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView2.TabIndex = 1;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Nachname";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Nachname";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
-            // fKGebietSektorBindingSource
+            // dataGridViewTextBoxColumn4
             // 
-            this.fKGebietSektorBindingSource.DataMember = "FK_GebietSektor";
-            this.fKGebietSektorBindingSource.DataSource = this.gebieteBindingSource;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Geburtsdatum";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Geburtsdatum";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
-            // sektorenTableAdapter
+            // btnGebiete
             // 
-            this.sektorenTableAdapter.ClearBeforeFill = true;
+            this.btnGebiete.Location = new System.Drawing.Point(558, 37);
+            this.btnGebiete.Name = "btnGebiete";
+            this.btnGebiete.Size = new System.Drawing.Size(102, 58);
+            this.btnGebiete.TabIndex = 2;
+            this.btnGebiete.Text = "Gebiete und Routen";
+            this.btnGebiete.UseVisualStyleBackColor = true;
+            this.btnGebiete.Click += new System.EventHandler(this.btnGebiete_Click);
             // 
-            // nameSektorDataGridViewTextBoxColumn
+            // btnWunsch
             // 
-            this.nameSektorDataGridViewTextBoxColumn.DataPropertyName = "NameSektor";
-            this.nameSektorDataGridViewTextBoxColumn.HeaderText = "NameSektor";
-            this.nameSektorDataGridViewTextBoxColumn.Name = "nameSektorDataGridViewTextBoxColumn";
-            // 
-            // gPSExaktDataGridViewTextBoxColumn
-            // 
-            this.gPSExaktDataGridViewTextBoxColumn.DataPropertyName = "GPS_Exakt";
-            this.gPSExaktDataGridViewTextBoxColumn.HeaderText = "GPS_Exakt";
-            this.gPSExaktDataGridViewTextBoxColumn.Name = "gPSExaktDataGridViewTextBoxColumn";
+            this.btnWunsch.Location = new System.Drawing.Point(558, 199);
+            this.btnWunsch.Name = "btnWunsch";
+            this.btnWunsch.Size = new System.Drawing.Size(102, 58);
+            this.btnWunsch.TabIndex = 2;
+            this.btnWunsch.Text = "Wunsch- und Durchstiegsliste";
+            this.btnWunsch.UseVisualStyleBackColor = true;
+            this.btnWunsch.Click += new System.EventHandler(this.btnWunsch_Click);
             // 
             // FrmTop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(865, 456);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(719, 316);
+            this.Controls.Add(this.btnWunsch);
+            this.Controls.Add(this.btnGebiete);
+            this.Controls.Add(this.personenDataGridView);
             this.Name = "FrmTop";
-            this.Text = "FrmTop";
+            this.Text = "Kletterrouten Datenbank";
             this.Load += new System.EventHandler(this.FrmTop_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eF_DB_KletterroutenDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gebieteBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKGebietSektorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.personenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.personenDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
         private EF_DB_KletterroutenDataSet eF_DB_KletterroutenDataSet;
-        private System.Windows.Forms.BindingSource gebieteBindingSource;
-        private EF_DB_KletterroutenDataSetTableAdapters.GebieteTableAdapter gebieteTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameGebietDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ortDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pLZDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gPSParkplatzDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.BindingSource fKGebietSektorBindingSource;
-        private EF_DB_KletterroutenDataSetTableAdapters.SektorenTableAdapter sektorenTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameSektorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gPSExaktDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource personenBindingSource;
+        private EF_DB_KletterroutenDataSetTableAdapters.PersonenTableAdapter personenTableAdapter;
+        private EF_DB_KletterroutenDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.DataGridView personenDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Button btnGebiete;
+        private System.Windows.Forms.Button btnWunsch;
+
+
+
+
     }
 }
